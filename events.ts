@@ -23,8 +23,8 @@ export const events: Event[] = [
   },
   {
     date: new Date("2025-10-12"),
-    title: "Stage Benjamins-Minimes à Thezan les Beziers",
-    description: "Stage Benjamins-Minimes à Thezan les Beziers - Thezan-les-Beziers",
+    title: "Stage Benjamins-Minimes à Thézan-lès-Béziers",
+    description: "Stage Benjamins-Minimes à Thézan-lès-Béziers",
     type: "training",
     category: "Benjamins - Minimes"
   },
@@ -80,21 +80,21 @@ export const events: Event[] = [
   {
     date: new Date("2025-12-13"),
     title: "Tournoi de Noël du Club",
-    description: "Tournoi de Noël du Club - Villeneuve les Beziers",
+    description: "Tournoi de Noël du Club - Villeneuve-lès-Béziers",
     type: "competition",
     category: "Club"
   },
   {
     date: new Date("2025-12-13"),
     title: "Passage de Grade Mi-Saison",
-    description: "Passage de Grade Mi-Saison - Villeneuve les Beziers",
+    description: "Passage de Grade Mi-Saison - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club"
   },
   {
     date: new Date("2025-12-14"),
     title: "Papa Noël pour les Baby",
-    description: "Papa Noël pour les Baby - Thezan les Beziers",
+    description: "Papa Noël pour les Baby - Thézan-lès-Béziers",
     type: "event",
     category: "Club"
   },
@@ -129,7 +129,7 @@ export const events: Event[] = [
   {
     date: new Date("2026-01-18"),
     title: "Raclette, Photos Club et Tombola",
-    description: "Raclette, Photos Club et Tombola - Villeneuve les Beziers",
+    description: "Raclette, Photos Club et Tombola - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club"
   },
@@ -255,14 +255,14 @@ export const events: Event[] = [
   {
     date: new Date("2026-04-25"),
     title: "Passage de Grade anticipé",
-    description: "Passage de Grade anticipé - Villeneuve les Beziers",
+    description: "Passage de Grade anticipé - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club"
   },
   {
     date: new Date("2026-04-25"),
     title: "Stage de paques (2 jours)",
-    description: "Stage de paques (2 jours) - Villeneuve les Beziers",
+    description: "Stage de paques (2 jours) - Villeneuve-lès-Béziers",
     type: "training",
     category: "Club"
   },
@@ -290,21 +290,21 @@ export const events: Event[] = [
   {
     date: new Date("2026-06-06"),
     title: "Passage de Grade",
-    description: "Passage de Grade - Villeneuve les Beziers",
+    description: "Passage de Grade - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club"
   },
   {
     date: new Date("2026-06-07"),
     title: "Passage de Grade",
-    description: "Passage de Grade - Villeneuve les Beziers",
+    description: "Passage de Grade - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club"
   },
   {
     date: new Date("2026-06-13"),
     title: "Fete de fin d'année",
-    description: "Fete de fin d'année - Villeneuve les Beziers",
+    description: "Fete de fin d'année - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club"
   },
@@ -325,35 +325,35 @@ export const events: Event[] = [
   {
     date: new Date("2026-07-04"),
     title: "Summer Camp",
-    description: "Summer Camp - Villeneuve les Beziers",
+    description: "Summer Camp - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club"
   },
   {
     date: new Date(2025, 7, 30),
     title: "Vital Sports",
-    description: "Vital Sport - Villeneuve les Beziers",
+    description: "Vital Sport - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club"
   },
   {
     date: new Date(2025, 7, 31),
     title: "Vital Sports",
-    description: "Vital Sport - Villeneuve les Beziers",
+    description: "Vital Sport - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club"
   },
   {
     date: new Date(2025, 8, 6),
     title: "Journée des Associations",
-    description: "Journée des Associations - Thezan les Beziers",
+    description: "Journée des Associations - Thézan-lès-Béziers",
     type: "event",
     category: "Club"
   },
    {
     date: new Date(2025, 8, 7),
     title: "Journée des Associations",
-    description: "Journée des Associations - Villeneuve les Beziers",
+    description: "Journée des Associations - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club"
   },
