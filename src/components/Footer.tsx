@@ -22,9 +22,11 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 text-yellow-600 font-bold text-xl mb-4">
-              <div className="w-8 h-8 bg-yellow-600 rounded-full flex items-center justify-center text-white text-sm">
-                🥋
-              </div>
+              <img 
+                src="/img/Logo.png" 
+                alt="AJBB Logo" 
+                className="w-8 h-8 object-contain"
+              />
               <span>AJBB</span>
             </div>
             <p className="text-gray-400">Club affilié à la Fédération Française de Judo</p>
