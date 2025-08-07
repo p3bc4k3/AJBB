@@ -233,7 +233,7 @@ const Calendar = () => {
                       <p className="text-sm text-gray-600">{event.description}</p>
                     </div>
                   </div>
-                <div className="absolute bottom-1 right-1 w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                ))
               )}
             </div>
           </div>
