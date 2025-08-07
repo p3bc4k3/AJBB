@@ -59,16 +59,6 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        category: '',
-        message: ''
-      });
-      setIsSubmitting(false);
-    }, 2000);
-  };
 
   return (
     <section id="contact" className="py-20">
