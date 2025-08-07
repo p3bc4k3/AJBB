@@ -8,46 +8,25 @@ export interface Event {
 
 export const events: Event[] = [
   {
-    date: new Date("2025-10-04"),
+    date: new Date("2025-10-12"),
     title: "Stages arbitrage et commissaires sportifs",
     description: "Stages arbitrage et commissaires sportifs - Narbonne",
     type: "training",
-    category: "Minimes"
-  },
-  {
-    date: new Date("2025-10-04"),
-    title: "Stages arbitrage et commissaires sportifs",
-    description: "Stages arbitrage et commissaires sportifs - Narbonne",
-    type: "training",
-    category: "Autre"
+    category: "Minimes+"
   },
   {
     date: new Date("2025-10-11"),
     title: "Stages arbitrage et commissaires sportifs",
     description: "Stages arbitrage et commissaires sportifs - Mèze",
     type: "training",
-    category: "Minimes"
-  },
-  {
-    date: new Date("2025-10-11"),
-    title: "Stages arbitrage et commissaires sportifs",
-    description: "Stages arbitrage et commissaires sportifs - Mèze",
-    type: "training",
-    category: "Autre"
+    category: "Minimes+"
   },
   {
     date: new Date("2025-10-12"),
     title: "Stage Benjamins-Minimes à Thezan les Beziers",
     description: "Stage Benjamins-Minimes à Thezan les Beziers - Thezan-les-Beziers",
     type: "training",
-    category: "Benjamins"
-  },
-  {
-    date: new Date("2025-10-12"),
-    title: "Stage Benjamins-Minimes à Thezan les Beziers",
-    description: "Stage Benjamins-Minimes à Thezan les Beziers - Thezan-les-Beziers",
-    type: "training",
-    category: "Minimes"
+    category: "Benjamins - Minimes"
   },
   {
     date: new Date("2025-11-01"),
@@ -65,7 +44,7 @@ export const events: Event[] = [
   },
   {
     date: new Date("2025-11-09"),
-    title: "UV3 1D, 2D, 3D & 4D et UV4 3D & 4D",
+    title: "SHO DAN",
     description: "UV3 1D, 2D, 3D & 4D et UV4 3D & 4D - Dojo de Narbonne",
     type: "event",
     category: "Autre"
@@ -89,14 +68,7 @@ export const events: Event[] = [
     title: "Compétitions Benjamins Minimes",
     description: "Compétitions Benjamins Minimes - Lavelanet",
     type: "competition",
-    category: "Benjamins"
-  },
-  {
-    date: new Date("2025-11-23"),
-    title: "Compétitions Benjamins Minimes",
-    description: "Compétitions Benjamins Minimes - Lavelanet",
-    type: "competition",
-    category: "Minimes"
+    category: "Benjamins - Minimes"
   },
   {
     date: new Date("2025-11-30"),
@@ -141,15 +113,8 @@ export const events: Event[] = [
     category: "Minimes"
   },
   {
-    date: new Date("2025-12-20"),
-    title: "Tournoi label A Minimes de Toulouse",
-    description: "Tournoi label A Minimes de Toulouse - Maison du judo Toulouse",
-    type: "competition",
-    category: "Ju Jitsu"
-  },
-  {
     date: new Date("2025-12-21"),
-    title: "Stage Minimes de Toulouse (3 jours)",
+    title: "Stage Minimes de Toulouse",
     description: "Stage Minimes de Toulouse (3 jours) - CREPS Toulouse",
     type: "training",
     category: "Minimes"
@@ -173,14 +138,7 @@ export const events: Event[] = [
     title: "Coupe de zone Minimes et Coupe de zone jeunes officiels Cadets",
     description: "Coupe de zone Minimes et Coupe de zone jeunes officiels Cadets - 3 lieux (zones)",
     type: "event",
-    category: "Minimes"
-  },
-  {
-    date: new Date("2026-01-24"),
-    title: "Coupe de zone Minimes et Coupe de zone jeunes officiels Cadets",
-    description: "Coupe de zone Minimes et Coupe de zone jeunes officiels Cadets - 3 lieux (zones)",
-    type: "event",
-    category: "Autre"
+    category: "Minimes et Arbitrage Cadets"
   },
   {
     date: new Date("2026-01-24"),
@@ -215,14 +173,7 @@ export const events: Event[] = [
     title: "Coupe Occitanie minimes et Coupe Occitanie jeunes officiels cadets",
     description: "Coupe Occitanie minimes et Coupe Occitanie jeunes officiels cadets - Maison du judo Toulouse",
     type: "event",
-    category: "Minimes"
-  },
-  {
-    date: new Date("2026-02-15"),
-    title: "Coupe Occitanie minimes et Coupe Occitanie jeunes officiels cadets",
-    description: "Coupe Occitanie minimes et Coupe Occitanie jeunes officiels cadets - Maison du judo Toulouse",
-    type: "event",
-    category: "Autre"
+    category: "Minimes - Arbitrage Cadet"
   },
   {
     date: new Date("2026-03-14"),
@@ -271,14 +222,7 @@ export const events: Event[] = [
     title: "Critérium de Zone benjamins et coupe de Zone jeunes officiels minimes",
     description: "Critérium de Zone benjamins et coupe de Zone jeunes officiels minimes - 3 lieux (zones)",
     type: "event",
-    category: "Benjamins"
-  },
-  {
-    date: new Date("2026-03-28"),
-    title: "Critérium de Zone benjamins et coupe de Zone jeunes officiels minimes",
-    description: "Critérium de Zone benjamins et coupe de Zone jeunes officiels minimes - 3 lieux (zones)",
-    type: "event",
-    category: "Minimes"
+    category: "Benjamins - Arbitrage Minimes"
   },
   {
     date: new Date("2026-03-28"),
