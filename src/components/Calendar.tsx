@@ -44,6 +44,17 @@ const Calendar = () => {
     );
   };
 
+  const getEventTypeForDay = (day: number) => {
+    if (!day) return null;
+    const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+    const dayEvents = events.filter(event => 
+      event.date.toDateString() === dayDate.toDateString()
+    );
+    if (dayEvents.length === 0) return null;
+    // Retourne le type du premier événement (ou on pourrait prioriser)
+    return dayEvents[0].type;
+  };
+
   const isToday = (day: number) => {
     if (!day) return false;
     const today = new Date();
@@ -135,7 +146,11 @@ const Calendar = () => {
                 >
                   {day}
                   {hasEvent(day || 0) && (
-                    <div className="absolute bottom-1 right-1 w-2 h-2 bg-yellow-400 rounded-full"></div>
+                    <div className={`absolute bottom-1 right-1 w-2 h-2 rounded-full ${
+                      getEventTypeForDay(day || 0) === 'competition' ? 'bg-red-500' : 
+                      getEventTypeForDay(day || 0) === 'training' ? 'bg-blue-500' : 
+                      'bg-yellow-600'
+                    }`}></div>
                   )}
                 </div>
               ))}
@@ -157,23 +172,11 @@ const Calendar = () => {
                     </p>
                   ) : (
                     getEventsForDate(selectedDate).map((event, index) => (
-                      <div key={index} className={`flex gap-4 p-4 bg-gray-50 rounded-lg border-l-4 ${
+                      <div key={index} className={`p-4 bg-gray-50 rounded-lg border-l-4 ${
                         event.type === 'competition' ? 'border-red-500' : 
                         event.type === 'training' ? 'border-blue-500' : 
                         'border-yellow-600'
                       }`}>
-                        <div className="text-center min-w-[60px]">
-                          <div className={`text-xl font-bold ${
-                            event.type === 'competition' ? 'text-red-500' : 
-                            event.type === 'training' ? 'text-blue-500' : 
-                            'text-yellow-600'
-                          }`}>
-                            {event.date.getDate()}
-                          </div>
-                          <div className="text-xs text-gray-600 uppercase">
-                            {monthNames[event.date.getMonth()].slice(0, 3)}
-                          </div>
-                        </div>
                         <div>
                           <div className="flex items-center gap-2 mb-1">
                             <h4 className="font-semibold text-gray-900">{event.title}</h4>
@@ -217,7 +220,7 @@ const Calendar = () => {
                 ) : (
                   getUpcomingEvents().map((event, index) => (
                     <div key={index} className={`flex gap-4 p-4 bg-gray-50 rounded-lg border-l-4 ${
-                        event.type === 'competition' ? 'text-red-500' : 
+                        event.type === 'competition' ? 'border-red-500' : 
                         event.type === 'training' ? 'text-blue-500' : 
                         'border-yellow-600'
                       }`}>
