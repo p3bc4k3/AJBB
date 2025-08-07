@@ -26,8 +26,8 @@ const Planning = () => {
       year: "2020-2021",
       sessions: [
         { day: "Vendredi", time: "17h30-18h15", location: "Sauvian" },
-        { day: "Samedi", time: "09h00-09h45", location: "Thézan" },
-        { day: "Samedi", time: "10h30-11h15", location: "Villeneuve" }
+        { day: "Samedi", time: "09h00-09h45", location: "Thézan-lès-Béziers" },
+        { day: "Samedi", time: "10h30-11h15", location: "Villeneuve-lès-Béziers" }
       ],
       color: "#f59e0b"
     },
@@ -35,10 +35,10 @@ const Planning = () => {
       category: "Pré-poussins",
       year: "2018-2019",
       sessions: [
-        { day: "Lundi", time: "18h30-19h30", location: "Thézan" },
-        { day: "Lundi", time: "18h00-19h00", location: "Villeneuve" },
+        { day: "Lundi", time: "18h30-19h30", location: "Thézan-lès-Béziers" },
+        { day: "Lundi", time: "18h00-19h00", location: "Villeneuve-lès-Béziers" },
         { day: "Vendredi", time: "18h15-19h15", location: "Sauvian" },
-        { day: "Samedi", time: "11h15-12h15", location: "Villeneuve" }
+        { day: "Samedi", time: "11h15-12h15", location: "Villeneuve-lès-Béziers" }
       ],
       color: "#10b981"
     },
@@ -46,10 +46,10 @@ const Planning = () => {
       category: "Poussins 1",
       year: "2017",
       sessions: [
-        { day: "Lundi", time: "18h30-19h30", location: "Thézan" },
-        { day: "Lundi", time: "18h00-19h00", location: "Villeneuve" },
+        { day: "Lundi", time: "18h30-19h30", location: "Thézan-lès-Béziers" },
+        { day: "Lundi", time: "18h00-19h00", location: "Villeneuve-lès-Béziers" },
         { day: "Vendredi", time: "18h15-19h15", location: "Sauvian" },
-        { day: "Samedi", time: "11h15-12h15", location: "Villeneuve" }
+        { day: "Samedi", time: "11h15-12h15", location: "Villeneuve-lès-Béziers" }
       ],
       color: "#3b82f6"
     },
@@ -57,9 +57,9 @@ const Planning = () => {
       category: "Poussins 2",
       year: "2016",
       sessions: [
-        { day: "Lundi", time: "18h30-19h30", location: "Thézan" },
-        { day: "Mardi", time: "18h00-19h00", location: "Villeneuve" },
-        { day: "Jeudi", time: "18h00-19h00", location: "Villeneuve" },
+        { day: "Lundi", time: "18h30-19h30", location: "Thézan-lès-Béziers" },
+        { day: "Mardi", time: "18h00-19h00", location: "Villeneuve-lès-Béziers" },
+        { day: "Jeudi", time: "18h00-19h00", location: "Villeneuve-lès-Béziers" },
         { day: "Vendredi", time: "18h15-19h15", location: "Sauvian" }
       ],
       color: "#8b5cf6"
@@ -68,9 +68,9 @@ const Planning = () => {
       category: "Benjamins",
       year: "2014-2015",
       sessions: [
-        { day: "Lundi", time: "18h30-19h30", location: "Thézan" },
-        { day: "Mardi", time: "18h00-19h00", location: "Villeneuve" },
-        { day: "Jeudi", time: "18h00-19h00", location: "Villeneuve" },
+        { day: "Lundi", time: "18h30-19h30", location: "Thézan-lès-Béziers" },
+        { day: "Mardi", time: "18h00-19h00", location: "Villeneuve-lès-Béziers" },
+        { day: "Jeudi", time: "18h00-19h00", location: "Villeneuve-lès-Béziers" },
         { day: "Vendredi", time: "18h15-19h15", location: "Sauvian" }
       ],
       color: "#f97316"
@@ -79,16 +79,16 @@ const Planning = () => {
       category: "Minimes +",
       year: "2013 et avant",
       sessions: [
-        { day: "Lundi", time: "19h30-20h30", location: "Thézan" },
-        { day: "Mardi", time: "19h00-20h30", location: "Villeneuve" },
-        { day: "Jeudi", time: "19h00-20h30", location: "Villeneuve" }
+        { day: "Lundi", time: "19h30-20h30", location: "Thézan-lès-Béziers" },
+        { day: "Mardi", time: "19h00-20h30", location: "Villeneuve-lès-Béziers" },
+        { day: "Jeudi", time: "19h00-20h30", location: "Villeneuve-lès-Béziers" }
       ],
       color: "#dc2626"
     }
   ];
 
   const days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
-  const locations = ['Villeneuve', 'Thézan', 'Sauvian'];
+  const locations = ['Villeneuve-lès-Béziers', 'Thézan-lès-Béziers', 'Sauvian'];
 
   const getFilteredData = () => {
     return trainingSchedule.map(category => ({
