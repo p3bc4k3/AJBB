@@ -265,7 +265,7 @@ const Planning = () => {
         </div>
 
         {/* Affichage des résultats */}
-        {activeFilter === 'all' && (
+        {(activeFilter === 'all' || activeFilter === 'category') && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {getFilteredData().map((category, index) => (
               <div

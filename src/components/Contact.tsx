@@ -77,8 +77,26 @@ const Contact = () => {
               </div>
               <h3 className="text-xl font-bold mb-4 text-gray-900">Téléphone</h3>
               <div className="space-y-2 text-gray-600">
-                <p>Jean : 06 45 88 01 84</p>
-                <p>Lucie : 06 99 55 01 04</p>
+                <div className="flex items-center justify-between">
+                  <span>Jean : 06 45 88 01 84</span>
+                  <a
+                    href="tel:+33645880184"
+                    className="inline-flex items-center gap-1 px-3 py-1 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-all duration-300"
+                  >
+                    <Phone size={14} />
+                    J'appelle
+                  </a>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span>Lucie : 06 99 55 01 04</span>
+                  <a
+                    href="tel:+33699550104"
+                    className="inline-flex items-center gap-1 px-3 py-1 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-all duration-300"
+                  >
+                    <Phone size={14} />
+                    J'appelle
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -87,7 +105,16 @@ const Contact = () => {
                 <Mail size={24} className="text-white" />
               </div>
               <h3 className="text-xl font-bold mb-4 text-gray-900">Email</h3>
-              <p className="text-gray-600">alliancejudobassinbiterrois@gmail.com</p>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-600">alliancejudobassinbiterrois@gmail.com</span>
+                <a
+                  href="mailto:alliancejudobassinbiterrois@gmail.com"
+                  className="inline-flex items-center gap-1 px-3 py-1 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-all duration-300"
+                >
+                  <Mail size={14} />
+                  J'envoie un mail
+                </a>
+              </div>
             </div>
           </div>
 
