@@ -1,3 +1,11 @@
+export interface Event {
+  title: string;
+  date: Date; // Format ISO (YYYY-MM-DD), ou "Vacances Toussaint" pour les événements sans date fixe
+  location: string;
+  category: string;
+  description?: string;
+}
+
 export const events = [
   { title: "Stages arbitrage et commissaires sportifs", date: new Date(2025, 9, 4), location: "Narbonne", categories: ["Autre", "Minimes"] },
   { title: "Stages arbitrage et commissaires sportifs", date: new Date(2025, 9, 11), location: "Mèze", categories: ["Autre", "Minimes"] },
