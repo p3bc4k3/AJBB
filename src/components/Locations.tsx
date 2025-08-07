@@ -1,19 +1,22 @@
 import React from 'react';
-import { MapPin } from 'lucide-react';
+import { MapPin, Navigation } from 'lucide-react';
 
 const Locations = () => {
   const locations = [
     {
       name: "Villeneuve-lès-Béziers",
-      address: "Chem. Saint-Michel\n34420 Villeneuve-lès-Béziers"
+      address: "Chem. Saint-Michel\n34420 Villeneuve-lès-Béziers",
+      googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Chem.+Saint-Michel,+34420+Villeneuve-lès-Béziers"
     },
     {
       name: "Thézan-lès-Béziers",
-      address: "Rue Antoine De Saint Exupéry\n34490 Thézan-lès-Béziers"
+      address: "Rue Antoine de Saint-Exupéry\n34490 Thézan-lès-Béziers",
+      googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Rue+Antoine+de+Saint-Exupéry,+34490+Thézan-lès-Béziers"
     },
     {
       name: "Sauvian",
-      address: "26 Rue des Tulipes\n34410 Sauvian"
+      address: "26 Rue des Tulipes\n34410 Sauvian",
+      googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=26+Rue+des+Tulipes,+34410+Sauvian"
     }
   ];
 
@@ -40,6 +43,16 @@ const Locations = () => {
               <p className="text-gray-600 leading-relaxed whitespace-pre-line">
                 {location.address}
               </p>
+              
+              <a
+                href={location.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-6 px-4 py-2 bg-yellow-600 text-white font-semibold rounded-lg hover:bg-black transition-all duration-300 transform hover:-translate-y-1"
+              >
+                <Navigation size={16} />
+                S'y rendre
+              </a>
             </div>
           ))}
         </div>

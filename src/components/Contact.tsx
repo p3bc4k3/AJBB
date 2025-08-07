@@ -23,9 +23,42 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      alert('Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.');
+    try {
+      // Utilisation de Formspree pour l'envoi d'emails gratuit
+      const response = await fetch('https://formspree.io/f/xdkogkvo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          category: formData.category,
+          message: formData.message,
+          _replyto: formData.email,
+          _subject: `Nouveau message de ${formData.name} - AJBB`
+        }),
+      });
+
+      if (response.ok) {
+        alert('Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          category: '',
+          message: ''
+        });
+      } else {
+        throw new Error('Erreur lors de l\'envoi');
+      }
+    } catch (error) {
+      alert('Erreur lors de l\'envoi du message. Veuillez réessayer ou nous contacter directement par téléphone.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
       setFormData({
         name: '',
         email: '',
@@ -65,17 +98,6 @@ const Contact = () => {
               </div>
               <h3 className="text-xl font-bold mb-4 text-gray-900">Email</h3>
               <p className="text-gray-600">alliancejudobassinbiterrois@gmail.com</p>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 shadow-lg text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-16 h-16 bg-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Clock size={24} className="text-white" />
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-900">Horaires secrétariat</h3>
-              <div className="text-gray-600">
-                <p>Lun-Ven: 18h00-20h00</p>
-                <p>Sam: 9h00-12h00</p>
-              </div>
             </div>
           </div>
 
