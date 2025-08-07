@@ -134,7 +134,7 @@ export const events: Event[] = [
     category: "Kata"
   },
   {
-    date: new Date(2025, 0, 19),
+    date: new Date(2026, 0, 18),
     title: "Raclette, Photos Club et Tombola",
     description: "Événement à Villeneuve-lès-Béziers",
     type: 'event',
