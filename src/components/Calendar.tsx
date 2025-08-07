@@ -1,73 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-interface Event {
-  date: Date;
-  title: string;
-  description: string;
-  type?: 'competition' | 'training' | 'event';
-}
+import { events, Event } from '../data/events';
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  
-  const events: Event[] = [
-    // Janvier 2025
-    { date: new Date(2025, 0, 11), title: "Compétition Poussins", description: "Tournoi jeunes - Catégorie Poussins", type: 'competition' },
-    { date: new Date(2025, 0, 18), title: "Compétition Benjamins", description: "Tournoi jeunes - Catégorie Benjamins", type: 'competition' },
-    { date: new Date(2025, 0, 25), title: "Compétition Minimes", description: "Championnat départemental - Catégorie Minimes", type: 'competition' },
-    
-    // Février 2025
-    { date: new Date(2025, 1, 1), title: "Compétition Cadets", description: "Championnat départemental - Catégorie Cadets", type: 'competition' },
-    { date: new Date(2025, 1, 8), title: "Compétition Juniors", description: "Championnat départemental - Catégorie Juniors", type: 'competition' },
-    { date: new Date(2025, 1, 15), title: "Compétition Seniors", description: "Championnat départemental - Catégorie Seniors", type: 'competition' },
-    { date: new Date(2025, 1, 22), title: "Stage Technique", description: "Stage de perfectionnement technique", type: 'training' },
-    
-    // Mars 2025
-    { date: new Date(2025, 2, 1), title: "Compétition Régionale Minimes", description: "Championnat régional - Catégorie Minimes", type: 'competition' },
-    { date: new Date(2025, 2, 8), title: "Compétition Régionale Cadets", description: "Championnat régional - Catégorie Cadets", type: 'competition' },
-    { date: new Date(2025, 2, 15), title: "Compétition Régionale Juniors", description: "Championnat régional - Catégorie Juniors", type: 'competition' },
-    { date: new Date(2025, 2, 22), title: "Compétition Régionale Seniors", description: "Championnat régional - Catégorie Seniors", type: 'competition' },
-    { date: new Date(2025, 2, 29), title: "Assemblée Générale", description: "Assemblée générale annuelle du club", type: 'event' },
-    
-    // Avril 2025
-    { date: new Date(2025, 3, 5), title: "Compétition Interrégionale Minimes", description: "Championnat interrégional - Catégorie Minimes", type: 'competition' },
-    { date: new Date(2025, 3, 12), title: "Compétition Interrégionale Cadets", description: "Championnat interrégional - Catégorie Cadets", type: 'competition' },
-    { date: new Date(2025, 3, 19), title: "Compétition Interrégionale Juniors", description: "Championnat interrégional - Catégorie Juniors", type: 'competition' },
-    { date: new Date(2025, 3, 26), title: "Stage Arbitrage", description: "Formation arbitrage régional", type: 'training' },
-    
-    // Mai 2025
-    { date: new Date(2025, 4, 3), title: "Championnat de France Minimes", description: "Championnat de France - Catégorie Minimes", type: 'competition' },
-    { date: new Date(2025, 4, 10), title: "Championnat de France Cadets", description: "Championnat de France - Catégorie Cadets", type: 'competition' },
-    { date: new Date(2025, 4, 17), title: "Championnat de France Juniors", description: "Championnat de France - Catégorie Juniors", type: 'competition' },
-    { date: new Date(2025, 4, 24), title: "Championnat de France Seniors", description: "Championnat de France - Catégorie Seniors", type: 'competition' },
-    { date: new Date(2025, 4, 31), title: "Fête du Club", description: "Journée festive et remise des ceintures", type: 'event' },
-    
-    // Juin 2025
-    { date: new Date(2025, 5, 7), title: "Tournoi de fin de saison", description: "Tournoi amical toutes catégories", type: 'competition' },
-    { date: new Date(2025, 5, 14), title: "Stage d'été", description: "Stage technique intensif", type: 'training' },
-    { date: new Date(2025, 5, 21), title: "Démonstration publique", description: "Démonstration de judo en centre-ville", type: 'event' },
-    
-    // Septembre 2025 (nouvelle saison)
-    { date: new Date(2025, 8, 6), title: "Reprise des entraînements", description: "Début de la nouvelle saison sportive", type: 'event' },
-    { date: new Date(2025, 8, 13), title: "Journée Portes Ouvertes", description: "Découverte du judo pour tous", type: 'event' },
-    { date: new Date(2025, 8, 20), title: "Inscriptions", description: "Dernière semaine d'inscriptions", type: 'event' },
-    
-    // Octobre 2025
-    { date: new Date(2025, 9, 4), title: "Premier tournoi de la saison", description: "Compétition d'ouverture", type: 'competition' },
-    { date: new Date(2025, 9, 11), title: "Stage technique", description: "Perfectionnement des techniques de base", type: 'training' },
-    { date: new Date(2025, 9, 18), title: "Compétition départementale", description: "Premier championnat départemental", type: 'competition' },
-    
-    // Novembre 2025
-    { date: new Date(2025, 10, 8), title: "Compétition régionale", description: "Qualification pour les championnats", type: 'competition' },
-    { date: new Date(2025, 10, 15), title: "Stage arbitrage", description: "Formation des jeunes arbitres", type: 'training' },
-    { date: new Date(2025, 10, 22), title: "Téléthon", description: "Participation du club au Téléthon", type: 'event' },
-    
-    // Décembre 2025
-    { date: new Date(2025, 11, 6), title: "Compétition de Noël", description: "Tournoi festif de fin d'année", type: 'competition' },
-    { date: new Date(2025, 11, 13), title: "Remise des grades", description: "Passage de ceintures", type: 'event' },
-    { date: new Date(2025, 11, 20), title: "Fête de Noël du club", description: "Goûter de Noël pour tous les licenciés", type: 'event' }
-  ];
 
   const monthNames = [
     "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
@@ -240,7 +176,7 @@ const Calendar = () => {
         </div>
         
         {/* Légende */}
-        <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+        <div className="mt-8 p-4 bg-gray-50 rounded-lg">
           <h4 className="font-semibold text-gray-900 mb-2">Légende</h4>
           <div className="flex flex-wrap gap-4 text-sm">
             <div className="flex items-center gap-2">
@@ -255,6 +191,12 @@ const Calendar = () => {
               <div className="w-3 h-3 bg-yellow-600 rounded-full"></div>
               <span>Événements</span>
             </div>
+          </div>
+          <div className="mt-4 p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+            <p className="text-sm text-blue-800">
+              <strong>📝 Note :</strong> Les événements sont basés sur le calendrier prévisionnel. 
+              Les dates et lieux peuvent être modifiés. Consultez régulièrement cette page pour les mises à jour.
+            </p>
           </div>
         </div>
       </div>
