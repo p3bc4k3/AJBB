@@ -4,6 +4,7 @@ import { events, Event } from '../data/events';
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   const monthNames = [
     "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
@@ -59,6 +60,12 @@ const Calendar = () => {
       .sort((a, b) => a.date.getTime() - b.date.getTime());
   };
 
+  const getEventsForDate = (date: Date) => {
+    return events.filter(event => 
+      event.date.toDateString() === date.toDateString()
+    );
+  };
+
   const navigateMonth = (direction: 'prev' | 'next') => {
     setCurrentDate(prev => {
       const newDate = new Date(prev);
@@ -69,6 +76,12 @@ const Calendar = () => {
       }
       return newDate;
     });
+  };
+
+  const handleDayClick = (day: number) => {
+    if (!day) return;
+    const clickedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+    setSelectedDate(clickedDate);
   };
 
   return (
@@ -110,10 +123,14 @@ const Calendar = () => {
               {getDaysInMonth().map((day, index) => (
                 <div
                   key={index}
+                  onClick={() => handleDayClick(day || 0)}
                   className={`aspect-square flex items-center justify-center border border-gray-200 relative cursor-pointer hover:bg-gray-50 transition-colors duration-200 ${
                     !day ? 'text-gray-300' : ''
                   } ${
                     isToday(day || 0) ? 'bg-yellow-600 text-white font-bold' : ''
+                  } ${
+                    selectedDate && day && selectedDate.toDateString() === new Date(currentDate.getFullYear(), currentDate.getMonth(), day).toDateString() 
+                      ? 'ring-2 ring-yellow-600 bg-yellow-50' : ''
                   }`}
                 >
                   {day}
@@ -127,51 +144,118 @@ const Calendar = () => {
 
           {/* Upcoming Events */}
           <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 className="text-xl font-bold mb-6 text-gray-900">Événements à venir</h3>
+            {selectedDate ? (
+              <>
+                <h3 className="text-xl font-bold mb-6 text-gray-900">
+                  Événements du {selectedDate.getDate()} {monthNames[selectedDate.getMonth()]} {selectedDate.getFullYear()}
+                </h3>
+                
+                <div className="space-y-4 mb-8">
+                  {getEventsForDate(selectedDate).length === 0 ? (
+                    <p className="text-center text-gray-500 py-4">
+                      Aucun événement prévu ce jour.
+                    </p>
+                  ) : (
+                    getEventsForDate(selectedDate).map((event, index) => (
+                      <div key={index} className={`flex gap-4 p-4 bg-gray-50 rounded-lg border-l-4 ${
+                        event.type === 'competition' ? 'border-red-500' : 
+                        event.type === 'training' ? 'border-blue-500' : 
+                        'border-yellow-600'
+                      }`}>
+                        <div className="text-center min-w-[60px]">
+                          <div className={`text-xl font-bold ${
+                            event.type === 'competition' ? 'text-red-500' : 
+                            event.type === 'training' ? 'text-blue-500' : 
+                            'text-yellow-600'
+                          }`}>
+                            {event.date.getDate()}
+                          </div>
+                          <div className="text-xs text-gray-600 uppercase">
+                            {monthNames[event.date.getMonth()].slice(0, 3)}
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2 mb-1">
+                            <h4 className="font-semibold text-gray-900">{event.title}</h4>
+                            <span className={`px-2 py-1 text-xs rounded-full ${
+                              event.type === 'competition' ? 'bg-red-100 text-red-700' : 
+                              event.type === 'training' ? 'bg-blue-100 text-blue-700' : 
+                              'bg-yellow-100 text-yellow-700'
+                            }`}>
+                              {event.type === 'competition' ? 'Compétition' : 
+                               event.type === 'training' ? 'Stage' : 
+                               'Événement'}
+                            </span>
+                          </div>
+                          <p className="text-sm text-gray-600 mb-1">{event.description}</p>
+                          {event.category && (
+                            <p className="text-xs text-gray-500">Catégorie: {event.category}</p>
+                          )}
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+
+                <button
+                  onClick={() => setSelectedDate(null)}
+                  className="mb-6 px-4 py-2 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200"
+                >
+                  ← Retour aux événements à venir
+                </button>
+              </>
+            ) : (
+              <h3 className="text-xl font-bold mb-6 text-gray-900">Événements à venir</h3>
+            )}
             
-            <div className="space-y-4">
-              {getUpcomingEvents().length === 0 ? (
-                <p className="text-center text-gray-500 py-8">
-                  Aucun événement prévu dans les 30 prochains jours.
-                </p>
-              ) : (
-                getUpcomingEvents().map((event, index) => (
-                  <div key={index} className={`flex gap-4 p-4 bg-gray-50 rounded-lg border-l-4 ${
-                    event.type === 'competition' ? 'border-red-500' : 
-                    event.type === 'training' ? 'border-blue-500' : 
-                    'border-yellow-600'
-                  }`}>
-                    <div className="text-center min-w-[60px]">
-                      <div className={`text-xl font-bold ${
+            {!selectedDate && (
+              <div className="space-y-4">
+                {getUpcomingEvents().length === 0 ? (
+                  <p className="text-center text-gray-500 py-8">
+                    Aucun événement prévu dans les 30 prochains jours.
+                  </p>
+                ) : (
+                  getUpcomingEvents().map((event, index) => (
+                    <div key={index} className={`flex gap-4 p-4 bg-gray-50 rounded-lg border-l-4 ${
                         event.type === 'competition' ? 'text-red-500' : 
                         event.type === 'training' ? 'text-blue-500' : 
-                        'text-yellow-600'
+                        'border-yellow-600'
                       }`}>
-                        {event.date.getDate()}
-                      </div>
-                      <div className="text-xs text-gray-600 uppercase">
-                        {monthNames[event.date.getMonth()].slice(0, 3)}
-                      </div>
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <h4 className="font-semibold text-gray-900">{event.title}</h4>
-                        <span className={`px-2 py-1 text-xs rounded-full ${
-                          event.type === 'competition' ? 'bg-red-100 text-red-700' : 
-                          event.type === 'training' ? 'bg-blue-100 text-blue-700' : 
-                          'bg-yellow-100 text-yellow-700'
+                      <div className="text-center min-w-[60px]">
+                        <div className={`text-xl font-bold ${
+                          event.type === 'competition' ? 'text-red-500' : 
+                          event.type === 'training' ? 'text-blue-500' : 
+                          'text-yellow-600'
                         }`}>
-                          {event.type === 'competition' ? 'Compétition' : 
-                           event.type === 'training' ? 'Stage' : 
-                           'Événement'}
-                        </span>
+                          {event.date.getDate()}
+                        </div>
+                        <div className="text-xs text-gray-600 uppercase">
+                          {monthNames[event.date.getMonth()].slice(0, 3)}
+                        </div>
                       </div>
-                      <p className="text-sm text-gray-600">{event.description}</p>
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="font-semibold text-gray-900">{event.title}</h4>
+                          <span className={`px-2 py-1 text-xs rounded-full ${
+                            event.type === 'competition' ? 'bg-red-100 text-red-700' : 
+                            event.type === 'training' ? 'bg-blue-100 text-blue-700' : 
+                            'bg-yellow-100 text-yellow-700'
+                          }`}>
+                            {event.type === 'competition' ? 'Compétition' : 
+                             event.type === 'training' ? 'Stage' : 
+                             'Événement'}
+                          </span>
+                        </div>
+                        <p className="text-sm text-gray-600 mb-1">{event.description}</p>
+                        {event.category && (
+                          <p className="text-xs text-gray-500">Catégorie: {event.category}</p>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                ))
-              )}
-            </div>
+                  ))
+                )}
+              </div>
+            )}
           </div>
         </div>
         
@@ -195,7 +279,7 @@ const Calendar = () => {
           <div className="mt-4 p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
             <p className="text-sm text-blue-800">
               <strong>📝 Note :</strong> Les événements sont basés sur le calendrier prévisionnel. 
-              Les dates et lieux peuvent être modifiés. Consultez régulièrement cette page pour les mises à jour.
+              Les dates et lieux peuvent être modifiés. <strong>Cliquez sur un jour</strong> pour voir les événements de cette date.
             </p>
           </div>
         </div>
