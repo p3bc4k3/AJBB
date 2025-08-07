@@ -1,9 +1,24 @@
 import React from 'react';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import Planning from './components/Planning';
+import Calendar from './components/Calendar';
+import Locations from './components/Locations';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <p>Start prompting (or editing) to see magic happen :)</p>
+    <div className="min-h-screen">
+      <Header />
+      <main>
+        <Hero />
+        <Planning />
+        <Calendar />
+        <Locations />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 }
