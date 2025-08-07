@@ -80,7 +80,7 @@ const Contact = () => {
                 <div className="flex items-center justify-between">
                   <span>Jean : 06 45 88 01 84</span>
                   <a
-                    href="tel:+33645880184"
+                    href="tel:0645880184"
                     className="inline-flex items-center gap-1 px-3 py-1 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-all duration-300"
                   >
                     <Phone size={14} />
@@ -90,7 +90,7 @@ const Contact = () => {
                 <div className="flex items-center justify-between">
                   <span>Lucie : 06 99 55 01 04</span>
                   <a
-                    href="tel:+33699550104"
+                    href="tel:0699550104"
                     className="inline-flex items-center gap-1 px-3 py-1 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-all duration-300"
                   >
                     <Phone size={14} />

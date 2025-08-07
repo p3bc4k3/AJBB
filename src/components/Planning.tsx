@@ -91,10 +91,6 @@ const Planning = () => {
   const locations = ['Villeneuve', 'Thézan', 'Sauvian'];
 
   const getFilteredData = () => {
-    if (activeFilter === 'all') {
-      return trainingSchedule;
-    }
-
     return trainingSchedule.map(category => ({
       ...category,
       sessions: category.sessions.filter(session => {
