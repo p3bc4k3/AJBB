@@ -20,8 +20,39 @@ const Hero = () => {
       <div className="max-w-6xl mx-auto px-5">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-100 text-yellow-700 rounded-full text-sm font-semibold mb-6">
-              🥋 <span>Club de Judo</span>
+            <div className="flex flex-wrap gap-3 mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-100 text-yellow-700 rounded-full text-sm font-semibold">
+                <img src="/img/Logo.png" alt="AJBB" className="w-4 h-4 object-contain" />
+                <span>Club de Judo</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">
+                <span>👶</span>
+                <span>De 3 à 99 ans</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
+                <span>🎯</span>
+                <span>Loisirs</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-700 rounded-full text-sm font-semibold">
+                <span>🏆</span>
+                <span>Compétitions</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">
+                <span>📍</span>
+                <span>Bassin Biterrois</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">
+                <span>👨‍🏫</span>
+                <span>Profs diplômés</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-pink-100 text-pink-700 rounded-full text-sm font-semibold">
+                <span>👨‍👩‍👧‍👦</span>
+                <span>Esprit familial</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold">
+                <span>🥋</span>
+                <span>Tous niveaux</span>
+              </div>
             </div>
             
             <h1 className="text-5xl md:text-6xl font-black leading-tight mb-6 text-gray-900">
