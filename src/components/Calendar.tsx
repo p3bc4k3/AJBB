@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { events, Event } from '../data/events';
+import { events, Event } from '../../events';
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
