@@ -77,26 +77,8 @@ const Contact = () => {
               </div>
               <h3 className="text-xl font-bold mb-4 text-gray-900">Téléphone</h3>
               <div className="space-y-2 text-gray-600">
-                <div className="flex items-center justify-between">
-                  <span>Jean : 06 45 88 01 84</span>
-                  <a
-                    href="tel:0645880184"
-                    className="inline-flex items-center gap-1 px-3 py-1 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-all duration-300"
-                  >
-                    <Phone size={14} />
-                    J'appelle
-                  </a>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span>Lucie : 06 99 55 01 04</span>
-                  <a
-                    href="tel:0699550104"
-                    className="inline-flex items-center gap-1 px-3 py-1 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-all duration-300"
-                  >
-                    <Phone size={14} />
-                    J'appelle
-                  </a>
-                </div>
+                <p>Jean : 06 45 88 01 84</p>
+                <p>Lucie : 06 99 55 01 04</p>
               </div>
             </div>
 
@@ -105,13 +87,13 @@ const Contact = () => {
                 <Mail size={24} className="text-white" />
               </div>
               <h3 className="text-xl font-bold mb-4 text-gray-900">Email</h3>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-600">alliancejudobassinbiterrois@gmail.com</span>
+              <div className="text-center">
+                <p className="text-gray-600 mb-4 break-all">alliancejudobassinbiterrois@gmail.com</p>
                 <a
                   href="mailto:alliancejudobassinbiterrois@gmail.com"
-                  className="inline-flex items-center gap-1 px-3 py-1 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-600 text-white font-medium rounded-lg hover:bg-black transition-all duration-300"
                 >
-                  <Mail size={14} />
+                  <Mail size={16} />
                   J'envoie un mail
                 </a>
               </div>
