@@ -3,322 +3,372 @@ export interface Event {
   title: string;
   description: string;
   type: 'competition' | 'training' | 'event';
+  category?: string;
 }
 
 export const events: Event[] = [
   // Octobre 2024
   {
-    date: new Date(2024, 9, 5), // 5 octobre 2024
+    date: new Date(2024, 9, 5),
     title: "Stages arbitrage et commissaires sportifs",
     description: "Formation à Narbonne",
-    type: 'training'
+    type: 'training',
+    category: "Formation"
   },
   {
-    date: new Date(2024, 9, 12), // 12 octobre 2024
+    date: new Date(2024, 9, 12),
     title: "Stages arbitrage et commissaires sportifs",
     description: "Formation à Mèze",
-    type: 'training'
+    type: 'training',
+    category: "Formation"
   },
   {
-    date: new Date(2024, 9, 13), // 13 octobre 2024
+    date: new Date(2024, 9, 13),
     title: "Stage Benjamins-Minimes",
     description: "Stage à Thézan-lès-Béziers",
-    type: 'training'
+    type: 'training',
+    category: "Benjamins-Minimes"
   },
 
   // Novembre 2024
   {
-    date: new Date(2024, 10, 2), // 2 novembre 2024
+    date: new Date(2024, 10, 2),
     title: "Tournoi Régional Minimes du Gers",
     description: "Compétition à Auch",
-    type: 'competition'
+    type: 'competition',
+    category: "Minimes"
   },
   {
-    date: new Date(2024, 10, 9), // 9 novembre 2024
+    date: new Date(2024, 10, 9),
     title: "UV1 KATA ET UV2 TECHNIQUE 1D & 2D",
     description: "Examens au Dojo de Narbonne",
-    type: 'event'
+    type: 'event',
+    category: "Examens"
   },
   {
-    date: new Date(2024, 10, 10), // 10 novembre 2024
+    date: new Date(2024, 10, 10),
     title: "UV3 1D, 2D, 3D & 4D et UV4 3D & 4D",
     description: "Examens au Dojo de Narbonne",
-    type: 'event'
+    type: 'event',
+    category: "Examens"
   },
   {
-    date: new Date(2024, 10, 16), // 16 novembre 2024
+    date: new Date(2024, 10, 16),
     title: "Tournoi label Régional Benjamins de l'Aude",
     description: "Compétition au Dojo de Narbonne",
-    type: 'competition'
+    type: 'competition',
+    category: "Benjamins"
   },
   {
-    date: new Date(2024, 10, 17), // 17 novembre 2024
+    date: new Date(2024, 10, 17),
     title: "Stage Occitanie de jujitsu",
     description: "Formation à Mèze",
-    type: 'training'
+    type: 'training',
+    category: "Jujitsu"
   },
   {
-    date: new Date(2024, 10, 24), // 24 novembre 2024
+    date: new Date(2024, 10, 24),
     title: "Compétitions Benjamins Minimes",
     description: "Compétition à Lavelanet",
-    type: 'competition'
+    type: 'competition',
+    category: "Benjamins-Minimes"
   },
 
   // Décembre 2024
   {
-    date: new Date(2024, 11, 1), // 1er décembre 2024
+    date: new Date(2024, 11, 1),
     title: "Tournoi label A Minimes Moissac",
     description: "Compétition à Moissac",
-    type: 'competition'
+    type: 'competition',
+    category: "Minimes"
   },
   {
-    date: new Date(2024, 11, 14), // 14 décembre 2024
+    date: new Date(2024, 11, 14),
     title: "Tournoi de Noël du Club",
     description: "Compétition à Villeneuve-lès-Béziers",
-    type: 'event'
+    type: 'event',
+    category: "Club"
   },
   {
-    date: new Date(2024, 11, 14), // 14 décembre 2024
+    date: new Date(2024, 11, 14),
     title: "Passage de Grade Mi-Saison",
     description: "Examens à Villeneuve-lès-Béziers",
-    type: 'event'
+    type: 'event',
+    category: "Examens"
   },
   {
-    date: new Date(2024, 11, 15), // 15 décembre 2024
+    date: new Date(2024, 11, 15),
     title: "Papa Noël pour les Baby",
     description: "Événement à Thézan-lès-Béziers",
-    type: 'event'
+    type: 'event',
+    category: "Baby"
   },
   {
-    date: new Date(2024, 11, 15), // 15 décembre 2024
+    date: new Date(2024, 11, 15),
     title: "Championnat Occitanie ju jitsu - Ne waza",
     description: "Championnat au Dojo de Narbonne",
-    type: 'competition'
+    type: 'competition',
+    category: "Jujitsu"
   },
   {
-    date: new Date(2024, 11, 21), // 21 décembre 2024
+    date: new Date(2024, 11, 21),
     title: "Tournoi label A Minimes de Toulouse",
     description: "Compétition à la Maison du judo Toulouse",
-    type: 'competition'
+    type: 'competition',
+    category: "Minimes"
   },
   {
-    date: new Date(2024, 11, 22), // 22 décembre 2024
+    date: new Date(2024, 11, 22),
     title: "Stage Minimes de Toulouse (3 jours)",
     description: "Stage au CREPS Toulouse",
-    type: 'training'
+    type: 'training',
+    category: "Minimes"
   },
 
   // Janvier 2025
   {
-    date: new Date(2025, 0, 18), // 18 janvier 2025
+    date: new Date(2025, 0, 18),
     title: "Coupe Occitanie kata",
     description: "Compétition - lieu à préciser",
-    type: 'competition'
+    type: 'competition',
+    category: "Kata"
   },
   {
-    date: new Date(2025, 0, 19), // 19 janvier 2025
+    date: new Date(2025, 0, 19),
     title: "Raclette, Photos Club et Tombola",
     description: "Événement à Villeneuve-lès-Béziers",
-    type: 'event'
+    type: 'event',
+    category: "Club"
   },
   {
-    date: new Date(2025, 0, 25), // 25 janvier 2025
+    date: new Date(2025, 0, 25),
     title: "Coupe de zone Minimes et Coupe de zone jeunes officiels Cadets",
     description: "Compétition dans 3 lieux (zones)",
-    type: 'competition'
+    type: 'competition',
+    category: "Minimes-Cadets"
   },
   {
-    date: new Date(2025, 0, 25), // 25 janvier 2025
+    date: new Date(2025, 0, 25),
     title: "Tournoi qualificatif championnat de France Ju jitsu- Ne waza",
     description: "Qualification au Dojo de Narbonne (à confirmer)",
-    type: 'competition'
+    type: 'competition',
+    category: "Jujitsu"
   },
   {
-    date: new Date(2025, 0, 26), // 26 janvier 2025
+    date: new Date(2025, 0, 26),
     title: "Kagami Biraki",
     description: "Cérémonie traditionnelle - lieu à préciser",
-    type: 'event'
+    type: 'event',
+    category: "Tradition"
   },
   {
-    date: new Date(2025, 0, 26), // 26 janvier 2025
+    date: new Date(2025, 0, 26),
     title: "Tournoi qualificatif championnat de France Ju jitsu- Ne waza",
     description: "Qualification au Dojo de Narbonne (à confirmer)",
-    type: 'competition'
+    type: 'competition',
+    category: "Jujitsu"
   },
 
   // Février 2025
   {
-    date: new Date(2025, 1, 9), // 9 février 2025
+    date: new Date(2025, 1, 9),
     title: "Stage Occitanie de jujitsu",
     description: "Formation - lieu à préciser",
-    type: 'training'
+    type: 'training',
+    category: "Jujitsu"
   },
   {
-    date: new Date(2025, 1, 16), // 16 février 2025
+    date: new Date(2025, 1, 16),
     title: "Coupe Occitanie minimes et Coupe Occitanie jeunes officiels cadets",
     description: "Compétition à la Maison du judo Toulouse",
-    type: 'competition'
+    type: 'competition',
+    category: "Minimes-Cadets"
   },
 
   // Mars 2025
   {
-    date: new Date(2025, 2, 15), // 15 mars 2025
+    date: new Date(2025, 2, 15),
     title: "Championnat de France seniors Jujitsu et Ne Waza",
     description: "Championnat national - lieu à préciser",
-    type: 'competition'
+    type: 'competition',
+    category: "Seniors"
   },
   {
-    date: new Date(2025, 2, 16), // 16 mars 2025
+    date: new Date(2025, 2, 16),
     title: "Championnat de France seniors Jujitsu et Ne Waza",
     description: "Championnat national - lieu à préciser",
-    type: 'competition'
+    type: 'competition',
+    category: "Seniors"
   },
   {
-    date: new Date(2025, 2, 22), // 22 mars 2025
+    date: new Date(2025, 2, 22),
     title: "UV1 KATA ET UV2 TECHNIQUE 1D, 2D, 3D & 4D",
     description: "Examens CD30",
-    type: 'event'
+    type: 'event',
+    category: "Examens"
   },
   {
-    date: new Date(2025, 2, 22), // 22 mars 2025
+    date: new Date(2025, 2, 22),
     title: "Coupe de France minimes",
     description: "Compétition nationale - lieu à préciser",
-    type: 'competition'
+    type: 'competition',
+    category: "Minimes"
   },
   {
-    date: new Date(2025, 2, 23), // 23 mars 2025
+    date: new Date(2025, 2, 23),
     title: "UV3 1D, 2D & 3D et UV4 3D & 4D",
     description: "Examens CD30",
-    type: 'event'
+    type: 'event',
+    category: "Examens"
   },
   {
-    date: new Date(2025, 2, 23), // 23 mars 2025
+    date: new Date(2025, 2, 23),
     title: "Coupe de France minimes",
     description: "Compétition nationale - lieu à préciser",
-    type: 'competition'
+    type: 'competition',
+    category: "Minimes"
   },
   {
-    date: new Date(2025, 2, 29), // 29 mars 2025
+    date: new Date(2025, 2, 29),
     title: "Critérium de Zone benjamins et coupe de Zone jeunes officiels minimes",
     description: "Compétition dans 3 lieux (zones)",
-    type: 'competition'
+    type: 'competition',
+    category: "Benjamins-Minimes"
   },
   {
-    date: new Date(2025, 2, 29), // 29 mars 2025
+    date: new Date(2025, 2, 29),
     title: "Championnat de France Kata",
     description: "Championnat national - lieu à préciser",
-    type: 'competition'
+    type: 'competition',
+    category: "Kata"
   },
 
   // Avril 2025
   {
-    date: new Date(2025, 3, 5), // 5 avril 2025
+    date: new Date(2025, 3, 5),
     title: "Séance Parents-Enfants",
     description: "Activité familiale à Sauvian",
-    type: 'event'
+    type: 'event',
+    category: "Famille"
   },
   {
-    date: new Date(2025, 3, 6), // 6 avril 2025
+    date: new Date(2025, 3, 6),
     title: "Séance Parents-Enfants",
     description: "Activité familiale à Villeneuve-Thézan",
-    type: 'event'
+    type: 'event',
+    category: "Famille"
   },
   {
-    date: new Date(2025, 3, 19), // 19 avril 2025
+    date: new Date(2025, 3, 19),
     title: "Critérium Occitanie benjamins et coupe jeunes officiels minimes",
     description: "Compétition à Mèze",
-    type: 'competition'
+    type: 'competition',
+    category: "Benjamins-Minimes"
   },
   {
-    date: new Date(2025, 3, 26), // 26 avril 2025
+    date: new Date(2025, 3, 26),
     title: "Passage de Grade anticipé",
     description: "Examens à Villeneuve-lès-Béziers",
-    type: 'event'
+    type: 'event',
+    category: "Examens"
   },
   {
-    date: new Date(2025, 3, 26), // 26 avril 2025
+    date: new Date(2025, 3, 26),
     title: "Stage de Pâques (2 jours)",
     description: "Stage à Villeneuve-lès-Béziers",
-    type: 'training'
+    type: 'training',
+    category: "Stage"
   },
 
   // Mai 2025
   {
-    date: new Date(2025, 4, 10), // 10 mai 2025
+    date: new Date(2025, 4, 10),
     title: "Coupe de France minimes par équipes de département",
     description: "Compétition nationale - lieu à préciser",
-    type: 'competition'
+    type: 'competition',
+    category: "Minimes"
   },
   {
-    date: new Date(2025, 4, 11), // 11 mai 2025
+    date: new Date(2025, 4, 11),
     title: "Coupe de France minimes par équipes de département",
     description: "Compétition nationale - lieu à préciser",
-    type: 'competition'
+    type: 'competition',
+    category: "Minimes"
   },
   {
-    date: new Date(2025, 4, 31), // 31 mai 2025
+    date: new Date(2025, 4, 31),
     title: "Journée Plage Ados",
     description: "Sortie à Valras",
-    type: 'event'
+    type: 'event',
+    category: "Ados"
   },
 
   // Juin 2025
   {
-    date: new Date(2025, 5, 7), // 7 juin 2025
+    date: new Date(2025, 5, 7),
     title: "Passage de Grade",
     description: "Examens à Villeneuve-lès-Béziers",
-    type: 'event'
+    type: 'event',
+    category: "Examens"
   },
   {
-    date: new Date(2025, 5, 8), // 8 juin 2025
+    date: new Date(2025, 5, 8),
     title: "Passage de Grade",
     description: "Examens à Villeneuve-lès-Béziers",
-    type: 'event'
+    type: 'event',
+    category: "Examens"
   },
   {
-    date: new Date(2025, 5, 14), // 14 juin 2025
+    date: new Date(2025, 5, 14),
     title: "Fête de fin d'année",
     description: "Célébration à Villeneuve-lès-Béziers",
-    type: 'event'
+    type: 'event',
+    category: "Club"
   },
   {
-    date: new Date(2025, 5, 14), // 14 juin 2025
+    date: new Date(2025, 5, 14),
     title: "UV1 KATA ET UV2 TECHNIQUE 1D, 2D, 3D & 4D",
     description: "Examens à la Maison du judo Toulouse",
-    type: 'event'
+    type: 'event',
+    category: "Examens"
   },
   {
-    date: new Date(2025, 5, 15), // 15 juin 2025
+    date: new Date(2025, 5, 15),
     title: "UV3 1D, 2D, 3D & 4D et UV4 3D & 4D",
     description: "Examens à la Maison du judo Toulouse",
-    type: 'event'
+    type: 'event',
+    category: "Examens"
   },
 
   // Juillet 2025
   {
-    date: new Date(2025, 6, 5), // 5 juillet 2025
+    date: new Date(2025, 6, 5),
     title: "Summer Camp",
     description: "Camp d'été à Villeneuve-lès-Béziers",
-    type: 'event'
+    type: 'event',
+    category: "Club"
   },
 
   // Septembre 2025
   {
-    date: new Date(2025, 8, 6), // 6 septembre 2025
+    date: new Date(2025, 8, 6),
     title: "Reprise des entraînements",
     description: "Début de la nouvelle saison 2025-2026",
-    type: 'event'
+    type: 'event',
+    category: "Club"
   },
   {
-    date: new Date(2025, 8, 13), // 13 septembre 2025
+    date: new Date(2025, 8, 13),
     title: "Journée Portes Ouvertes",
     description: "Découverte du judo pour tous - 10h-17h",
-    type: 'event'
+    type: 'event',
+    category: "Club"
   },
   {
-    date: new Date(2025, 8, 20), // 20 septembre 2025
+    date: new Date(2025, 8, 20),
     title: "Clôture des inscriptions",
     description: "Dernière semaine d'inscriptions",
-    type: 'event'
+    type: 'event',
+    category: "Club"
   }
 ];
