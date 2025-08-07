@@ -9,7 +9,7 @@ export interface Event {
 export const events: Event[] = [
   // Octobre 2024
   {
-    date: new Date(2024, 9, 5),
+    date: new Date(2025, 10, 4),
     title: "Stages arbitrage et commissaires sportifs",
     description: "Formation à Narbonne",
     type: 'training',
