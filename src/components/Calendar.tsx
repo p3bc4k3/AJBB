@@ -72,17 +72,15 @@ const Calendar = () => {
     if (!day) return null;
     const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
     
-    // Pour les événements multi-jours, on cherche s'il y a d'autres événements avec le même titre dans la semaine
-    const weekEvents = events.filter(e => 
-      e.title === event.title && 
-      Math.abs(e.date.getTime() - event.date.getTime()) <= 7 * 24 * 60 * 60 * 1000
-    ).sort((a, b) => a.date.getTime() - b.date.getTime());
+    // Pour les événements multi-jours avec endDate
+    if (!event.endDate) return null;
     
-    if (weekEvents.length <= 1) return null;
-    
-    const startDate = new Date(weekEvents[0].date.getFullYear(), weekEvents[0].date.getMonth(), weekEvents[0].date.getDate());
-    const endDate = new Date(weekEvents[weekEvents.length - 1].date.getFullYear(), weekEvents[weekEvents.length - 1].date.getMonth(), weekEvents[weekEvents.length - 1].date.getDate());
+    const startDate = new Date(event.date.getFullYear(), event.date.getMonth(), event.date.getDate());
+    const endDate = new Date(event.endDate.getFullYear(), event.endDate.getMonth(), event.endDate.getDate());
     const checkDate = new Date(dayDate.getFullYear(), dayDate.getMonth(), dayDate.getDate());
+    
+    // Vérifier si le jour actuel est dans la période de l'événement
+    if (checkDate < startDate || checkDate > endDate) return null;
     
     const isStart = checkDate.getTime() === startDate.getTime();
     const isEnd = checkDate.getTime() === endDate.getTime();
@@ -96,16 +94,14 @@ const Calendar = () => {
     const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
     
     return events.filter(event => {
-      const eventDate = new Date(event.date.getFullYear(), event.date.getMonth(), event.date.getDate());
-      if (eventDate.getTime() !== dayDate.getTime()) return false;
+      if (!event.endDate) return false;
       
-      // Vérifier s'il y a d'autres événements avec le même titre dans la semaine
-      const weekEvents = events.filter(e => 
-        e.title === event.title && 
-        Math.abs(e.date.getTime() - event.date.getTime()) <= 7 * 24 * 60 * 60 * 1000
-      );
+      const startDate = new Date(event.date.getFullYear(), event.date.getMonth(), event.date.getDate());
+      const endDate = new Date(event.endDate.getFullYear(), event.endDate.getMonth(), event.endDate.getDate());
+      const checkDate = new Date(dayDate.getFullYear(), dayDate.getMonth(), dayDate.getDate());
       
-      return weekEvents.length > 1;
+      // Retourner true si le jour actuel est dans la période de l'événement
+      return checkDate >= startDate && checkDate <= endDate;
     });
   };
 

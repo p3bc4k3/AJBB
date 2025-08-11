@@ -1,5 +1,6 @@
 export interface Event {
   date: Date;
+  endDate?: Date;
   title: string;
   description: string;
   type: 'competition' | 'training' | 'event';
@@ -350,6 +351,7 @@ export const events: Event[] = [
   },
   {
     date: new Date(2025, 8, 8), // 8 septembre 2025
+    endDate: new Date(2025, 8, 14), // 14 septembre 2025
     title: "Reprise des cours",
     description: "Reprise des entraînements pour toutes les catégories - Semaine du 8 au 14 septembre",
     type: "event",
