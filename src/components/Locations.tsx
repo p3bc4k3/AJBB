@@ -11,7 +11,7 @@ const Locations = () => {
     {
       name: "Thézan-lès-Béziers",
       address: "Rue Antoine de Saint-Exupéry\n34490 Thézan-lès-Béziers",
-      googleMapsUrl: "https://maps.app.goo.gl/HJgiQYH3xeQ5C1xG7"
+      googleMapsUrl: "https://maps.app.goo.gl/43a6zSveVgwm777i9"
     },
     {
       name: "Sauvian",
