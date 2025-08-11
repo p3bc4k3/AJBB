@@ -349,6 +349,13 @@ export const events: Event[] = [
     category: "Club"
   },
   {
+    date: new Date(2025, 8, 8), // 8 septembre 2025
+    title: "Reprise des cours",
+    description: "Reprise des entraînements pour toutes les catégories - Semaine du 8 au 14 septembre",
+    type: "event",
+    category: "Club"
+  },
+  {
     date: new Date(2025, 8, 6), // 6 septembre 2025
     title: "Journée des Associations",
     description: "Journée des Associations - Thézan-lès-Béziers",
