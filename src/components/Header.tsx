@@ -90,7 +90,7 @@ const Header = () => {
             
             <a
               href="/informations-pratiques"
-              className="relative font-medium transition-colors duration-300 py-2 text-gray-700 hover:text-yellow-600"
+              className="relative font-medium transition-colors duration-300 py-2 text-gray-700 hover:text-yellow-600 text-center md:text-left"
             >
               Infos pratiques
             </a>
