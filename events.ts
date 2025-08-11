@@ -112,18 +112,14 @@ export const events: Event[] = [
     title: "Tournoi label A Minimes de Toulouse",
     description: "Tournoi label A Minimes de Toulouse - Maison du judo Toulouse",
     type: "competition",
-    category: "Minimes",
-    registrationDeadline: new Date("2025-12-13"),
-    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
+    category: "Minimes"
   },
   {
     date: new Date("2025-12-21"),
     title: "Stage Minimes de Toulouse",
     description: "Stage Minimes de Toulouse (3 jours) - CREPS Toulouse",
     type: "training",
-    category: "Minimes",
-    registrationDeadline: new Date("2025-12-14"),
-    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
+    category: "Minimes"
   },
   {
     date: new Date("2026-01-17"),
