@@ -11,12 +11,12 @@ const Locations = () => {
     {
       name: "Thézan-lès-Béziers",
       address: "Rue Antoine de Saint-Exupéry\n34490 Thézan-lès-Béziers",
-      googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Rue+Antoine+de+Saint-Exupéry,+34490+Thézan-lès-Béziers"
+      googleMapsUrl: "https://maps.app.goo.gl/HJgiQYH3xeQ5C1xG7"
     },
     {
       name: "Sauvian",
       address: "26 Rue des Tulipes\n34410 Sauvian",
-      googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=26+Rue+des+Tulipes,+34410+Sauvian"
+      googleMapsUrl: "https://maps.app.goo.gl/3cPcEGXFb8XW63sVA"
     }
   ];
 
