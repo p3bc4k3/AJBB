@@ -147,9 +147,7 @@ export const events: Event[] = [
     title: "Tournoi qualificatif championnat de France Ju jitsu- Ne waza",
     description: "Tournoi qualificatif championnat de France Ju jitsu- Ne waza - Dojo de Narbonne (à confirmer)",
     type: "competition",
-    category: "Ju Jitsu",
-    registrationDeadline: new Date("2026-01-17"),
-    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
+    category: "Ju Jitsu"
   },
   {
     date: new Date("2026-01-25"),
@@ -163,18 +161,14 @@ export const events: Event[] = [
     title: "Tournoi qualificatif championnat de France Ju jitsu- Ne waza",
     description: "Tournoi qualificatif championnat de France Ju jitsu- Ne waza - Dojo de Narbonne (à confirmer)",
     type: "competition",
-    category: "Ju Jitsu",
-    registrationDeadline: new Date("2026-01-18"),
-    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
+    category: "Ju Jitsu"
   },
   {
     date: new Date("2026-02-08"),
     title: "Stage Occitanie de jujitsu",
     description: "Stage Occitanie de jujitsu - A préciser",
     type: "training",
-    category: "Ju Jitsu",
-    registrationDeadline: new Date("2026-02-01"),
-    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
+    category: "Ju Jitsu"
   },
   {
     date: new Date("2026-02-15"),
@@ -272,9 +266,7 @@ export const events: Event[] = [
     title: "Stage de paques (2 jours)",
     description: "Stage de paques (2 jours) - Villeneuve-lès-Béziers",
     type: "training",
-    category: "Club",
-    registrationDeadline: new Date("2026-04-18"),
-    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
+    category: "Club"
   },
   {
     date: new Date("2026-05-09"),
