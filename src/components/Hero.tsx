@@ -40,10 +40,6 @@ const Hero = () => {
             <span>📍</span>
             <span>Bassin Biterrois</span>
           </div>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold">
-            <span>👨‍🏫</span>
-            <span>Profs diplômés</span>
-          </div>
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-pink-100 text-pink-700 rounded-full text-xs font-semibold">
             <span>👨‍👩‍👧‍👦</span>
             <span>Esprit familial</span>
