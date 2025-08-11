@@ -77,6 +77,13 @@ const Calendar = () => {
     );
   };
 
+  const getTodayEvents = () => {
+    const today = new Date();
+    return events.filter(event => 
+      event.date.toDateString() === today.toDateString()
+    );
+  };
+
   const navigateMonth = (direction: 'prev' | 'next') => {
     setCurrentDate(prev => {
       const newDate = new Date(prev);
@@ -378,6 +385,94 @@ const Calendar = () => {
         </div>
         
         {/* Légende */}
+        {/* Événements du jour */}
+        {getTodayEvents().length > 0 && (
+          <div className="mt-8 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl p-8 shadow-lg border-l-4 border-yellow-600">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center">
+                <CalendarIcon size={24} className="text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900">Événements d'aujourd'hui</h3>
+                <p className="text-yellow-700">
+                  {new Date().toLocaleDateString('fr-FR', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                  })}
+                </p>
+              </div>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              {getTodayEvents().map((event, index) => (
+                <div key={index} className={`p-6 bg-white rounded-xl shadow-md border-l-4 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 ${
+                  event.type === 'competition' ? 'border-red-500' : 
+                  event.type === 'training' ? 'border-blue-500' : 
+                  'border-yellow-600'
+                }`}>
+                  <div className="flex items-start justify-between mb-3">
+                    <h4 className="font-bold text-gray-900 text-lg">{event.title}</h4>
+                    <span className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                      event.type === 'competition' ? 'bg-red-100 text-red-700' : 
+                      event.type === 'training' ? 'bg-blue-100 text-blue-700' : 
+                      'bg-yellow-100 text-yellow-700'
+                    }`}>
+                      {event.type === 'competition' ? '🏆 Compétition' : 
+                       event.type === 'training' ? '🥋 Stage' : 
+                       '🎉 Événement'}
+                    </span>
+                  </div>
+                  
+                  <p className="text-gray-600 mb-3">{event.description}</p>
+                  
+                  {event.category && (
+                    <div className="mb-3">
+                      <span className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                        👥 {event.category}
+                      </span>
+                    </div>
+                  )}
+                  
+                  {event.location && (
+                    <div className="mb-3">
+                      <a
+                        href={event.locationUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors duration-200 text-sm font-medium"
+                      >
+                        <MapPin size={14} />
+                        📍 {event.location}
+                      </a>
+                    </div>
+                  )}
+                  
+                  {event.registrationDeadline && (
+                    <div className="mt-4 pt-4 border-t border-gray-200">
+                      <div className="flex items-center gap-2 text-xs text-gray-500 mb-3">
+                        <Clock size={12} />
+                        <span>
+                          Inscription avant le {event.registrationDeadline.toLocaleDateString('fr-FR')}
+                        </span>
+                      </div>
+                      {renderRegistrationButton(event)}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            
+            <div className="mt-6 p-4 bg-yellow-100 rounded-lg border border-yellow-300">
+              <p className="text-sm text-yellow-800 flex items-center gap-2">
+                <span className="text-lg">⏰</span>
+                <strong>Rappel :</strong> N'oubliez pas vos événements d'aujourd'hui ! Consultez les détails ci-dessus.
+              </p>
+            </div>
+          </div>
+        )}
+        
         <div className="mt-8 p-4 bg-gray-50 rounded-lg">
           <h4 className="font-semibold text-gray-900 mb-2">Légende</h4>
           <div className="flex flex-wrap gap-4 text-sm">
