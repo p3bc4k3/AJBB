@@ -97,7 +97,7 @@ const Hero = () => {
           
           <div className="relative">
             <img
-              src="/img/judo.jpg"
+              src="/img/main/judo.jpg"
               alt="Pratique du judo - AJBB"
               className="w-full h-[500px] object-cover rounded-2xl shadow-2xl"
             />

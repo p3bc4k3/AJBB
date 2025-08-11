@@ -5,6 +5,7 @@ import Planning from './components/Planning';
 import Calendar from './components/Calendar';
 import Locations from './components/Locations';
 import Sponsors from './components/Sponsors';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Calendar />
         <Locations />
         <Sponsors />
+        <Contact />
       </main>
       <Footer />
     </div>
