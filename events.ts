@@ -395,3 +395,5 @@ Sauvian adresse
 Thezan adresse
     location: "Rue Antoine de Saint-Exupéry, 34490 Thézan-lès-Béziers", // adresse indiqué sur le site web
     locationUrl: "https://www.google.com/maps/search/?api=1&query=Rue+Antoine+de+Saint-Exupéry,+34490+Thézan-lès-Béziers" //URL du point google maps
+
+*/
