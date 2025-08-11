@@ -14,27 +14,21 @@ export const events: Event[] = [
     title: "Stages arbitrage et commissaires sportifs",
     description: "Stages arbitrage et commissaires sportifs - Narbonne",
     type: "training",
-    category: "Minimes+",
-    registrationDeadline: new Date("2025-10-05"),
-    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
+    category: "Minimes+"
   },
   {
     date: new Date("2025-10-11"),
     title: "Stages arbitrage et commissaires sportifs",
     description: "Stages arbitrage et commissaires sportifs - Mèze",
     type: "training",
-    category: "Minimes+",
-    registrationDeadline: new Date("2025-10-04"),
-    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
+    category: "Minimes+"
   },
   {
     date: new Date("2025-10-12"),
     title: "Stage Benjamins-Minimes à Thézan-lès-Béziers",
     description: "Stage Benjamins-Minimes à Thézan-lès-Béziers",
     type: "training",
-    category: "Benjamins - Minimes",
-    registrationDeadline: new Date("2025-10-05"),
-    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
+    category: "Benjamins - Minimes"
   },
   {
     date: new Date("2025-11-01"),
