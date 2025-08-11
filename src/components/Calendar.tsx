@@ -98,6 +98,7 @@ const Calendar = () => {
   const getRegistrationStatus = (event: Event) => {
     if (!event.registrationDeadline) return false;
     const now = new Date();
+    // Normaliser les dates à minuit pour une comparaison précise
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const deadline = new Date(event.registrationDeadline.getFullYear(), event.registrationDeadline.getMonth(), event.registrationDeadline.getDate());
     
@@ -119,9 +120,9 @@ const Calendar = () => {
     
     if (status === 'closed') {
       return (
-        <div className="flex items-center gap-2 text-red-500 text-sm mt-3">
+        <div className="flex items-center gap-2 text-red-600 text-sm mt-3 p-3 bg-red-50 rounded-lg border border-red-200">
           <AlertCircle size={14} />
-          <span>Inscription fermée</span>
+          <span className="font-medium">Inscriptions fermées</span>
         </div>
       );
     }
@@ -129,13 +130,13 @@ const Calendar = () => {
     if (status === 'lastDay') {
       return (
         <div className="mt-3">
-          <div className="flex items-center gap-2 text-orange-600 text-xs mb-2">
+          <div className="flex items-center gap-2 text-orange-700 text-sm mb-3 p-2 bg-orange-50 rounded-lg border border-orange-200">
             <AlertCircle size={12} />
-            <span>Dernier jour pour s'inscrire !</span>
+            <span className="font-medium">⚠️ Dernier jour pour s'inscrire !</span>
           </div>
           <button
             onClick={() => handleRegistration(event)}
-            className="inline-flex items-center gap-2 px-3 py-2 bg-orange-600 text-white text-sm font-medium rounded-lg hover:bg-orange-700 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-orange-600 text-white text-sm font-medium rounded-lg hover:bg-orange-700 transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
           >
             <ExternalLink size={14} />
             S'inscrire
@@ -147,7 +148,7 @@ const Calendar = () => {
     return (
       <button
         onClick={() => handleRegistration(event)}
-        className="inline-flex items-center gap-2 px-3 py-2 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-all duration-300 mt-3"
+        className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-all duration-300 transform hover:-translate-y-1 shadow-lg mt-3"
       >
         <ExternalLink size={14} />
         S'inscrire
