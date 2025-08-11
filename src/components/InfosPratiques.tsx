@@ -142,7 +142,7 @@ const InfosPratiques = () => {
           <div className="mt-6 p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-600">
             <p className="text-sm text-yellow-800">
               <strong>💡 Conseil :</strong> Pour les débutants, nous recommandons d'attendre quelques cours 
-              avant d'acheter l'équipement pour s'assurer de la motivation de l'enfant.
+              avant d'acheter l\'équipement pour s'assurer de la motivation de l\'enfant.
             </p>
           </div>
         </div>
