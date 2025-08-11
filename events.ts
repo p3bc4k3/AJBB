@@ -6,6 +6,8 @@ export interface Event {
   category?: string;
   registrationDeadline?: Date;
   registrationUrl?: string;
+  location?: string;
+  locationUrl?: string;
 }
 
 export const events: Event[] = [
@@ -369,11 +371,13 @@ export const events: Event[] = [
   },
   {
     date: new Date("2025-08-30"),
-    title: "Exemple",
+    title: "Vital Sports",
     description: "Vital Sports - Villeneuve-lès-Béziers",
     type: "event", // compétitions, stages ou évènements général
     category: "Club", // publics concernés
     registrationDeadline: new Date("2025-08-11"), // date limite d'inscription
-    registrationUrl: "URL inscriptions" // URL de l'inscription
+    registrationUrl: "https://forms.gle/9YLWAFgPpC72NYP29", // URL de l'inscription
+    location: "Rue Antoine de Saint-Exupéry, 34490 Thézan-lès-Béziers",
+    locationUrl: "https://www.google.com/maps/search/?api=1&query=Rue+Antoine+de+Saint-Exupéry,+34490+Thézan-lès-Béziers"
   },
 ];

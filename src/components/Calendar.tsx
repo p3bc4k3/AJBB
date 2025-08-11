@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, ExternalLink, Clock, AlertCircle, Calendar as CalendarIcon } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, Clock, AlertCircle, Calendar as CalendarIcon, MapPin } from 'lucide-react';
 import { events, Event } from '../../events';
 
 const Calendar = () => {
@@ -256,6 +256,20 @@ const Calendar = () => {
                             <p className="text-xs text-gray-500">Catégorie: {event.category}</p>
                           )}
                           
+                          {event.location && (
+                            <div className="mt-2">
+                              <a
+                                href={event.locationUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                              >
+                                <MapPin size={12} />
+                                {event.location}
+                              </a>
+                            </div>
+                          )}
+                          
                           {event.registrationDeadline && (
                             <div className="mt-3 pt-3 border-t border-gray-200">
                               <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
@@ -326,6 +340,20 @@ const Calendar = () => {
                           <p className="text-sm text-gray-600 mb-1">{event.description}</p>
                           {event.category && (
                             <p className="text-xs text-gray-500 mb-2">Catégorie: {event.category}</p>
+                          )}
+                          
+                          {event.location && (
+                            <div className="mb-2">
+                              <a
+                                href={event.locationUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                              >
+                                <MapPin size={12} />
+                                {event.location}
+                              </a>
+                            </div>
                           )}
                           
                           {event.registrationDeadline && (
