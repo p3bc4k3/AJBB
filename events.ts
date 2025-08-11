@@ -377,7 +377,7 @@ export const events: Event[] = [
     category: "Club", // publics concernés
     registrationDeadline: new Date("2025-08-11"), // date limite d'inscription
     registrationUrl: "https://forms.gle/9YLWAFgPpC72NYP29", // URL de l'inscription
-    location: "Rue Antoine de Saint-Exupéry, 34490 Thézan-lès-Béziers",
-    locationUrl: "https://www.google.com/maps/search/?api=1&query=Rue+Antoine+de+Saint-Exupéry,+34490+Thézan-lès-Béziers"
+    location: "Rue Antoine de Saint-Exupéry, 34490 Thézan-lès-Béziers", // adresse indiqué sur le site web
+    locationUrl: "https://www.google.com/maps/search/?api=1&query=Rue+Antoine+de+Saint-Exupéry,+34490+Thézan-lès-Béziers" //URL du point google maps
   },
 ];
