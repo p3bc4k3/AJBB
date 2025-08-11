@@ -338,7 +338,7 @@ export const events: Event[] = [
     description: "Vital Sports - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club",
-    registrationDeadline: new Date("2025-08-14"),
+    registrationDeadline: new Date("2025-08-07"),
     registrationUrl: "https://forms.gle/9YLWAFgPpC72NYP29"
   },
   {
