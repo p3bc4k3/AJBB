@@ -390,10 +390,10 @@ Villeneuve adresse
 
 Sauvian adresse
     location: "26 Rue des Tulipes, 34410 Sauvian", // adresse indiqué sur le site web
-    locationUrl: "https://maps.app.goo.gl/HJgiQYH3xeQ5C1xG7" //URL du point google maps
+    locationUrl: "https://maps.app.goo.gl/3cPcEGXFb8XW63sVA" //URL du point google maps
 
 Thezan adresse
     location: "Rue Antoine de Saint-Exupéry, 34490 Thézan-lès-Béziers", // adresse indiqué sur le site web
-    locationUrl: "https://www.google.com/maps/search/?api=1&query=Rue+Antoine+de+Saint-Exupéry,+34490+Thézan-lès-Béziers" //URL du point google maps
+    locationUrl: "https://maps.app.goo.gl/43a6zSveVgwm777i9" //URL du point google maps
 
 */
