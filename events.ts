@@ -337,9 +337,7 @@ export const events: Event[] = [
     title: "Vital Sports",
     description: "Vital Sports - Villeneuve-lès-Béziers",
     type: "event",
-    category: "Club",
-    registrationDeadline: new Date("2025-08-07"),
-    registrationUrl: "https://forms.gle/9YLWAFgPpC72NYP29"
+    category: "Club"
   },
   {
     date: new Date("2025-08-31"),
@@ -368,5 +366,15 @@ export const events: Event[] = [
     description: "Journée des Associations - Sauvian",
     type: "event",
     category: "Club"
+  },
+//
+  {
+    date: new Date("2025-08-30"),
+    title: "Exemple",
+    description: "Vital Sports - Villeneuve-lès-Béziers",
+    type: "event",
+    category: "Club",
+    registrationDeadline: new Date("2025-08-07"),
+    registrationUrl: "URL inscriptions"
   },
 ];
