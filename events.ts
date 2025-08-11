@@ -365,14 +365,16 @@ export const events: Event[] = [
     title: "Vital Sports",
     description: "Vital Sport - Villeneuve-lès-Béziers",
     type: "event",
-    category: "Club"
+    category: "Club",
+    registrationUrl: "https://forms.gle/9YLWAFgPpC72NYP29"
   },
   {
     date: new Date(2025, 7, 31), // 31 août 2025
     title: "Vital Sports",
     description: "Vital Sport - Villeneuve-lès-Béziers",
     type: "event",
-    category: "Club"
+    category: "Club",
+    registrationUrl: "https://forms.gle/9YLWAFgPpC72NYP29"
   },
   {
     date: new Date(2025, 8, 6), // 6 septembre 2025
