@@ -266,14 +266,16 @@ const Calendar = () => {
                       
                       {event.registrationDeadline && (
                         <div className="mt-3 pt-3 border-t border-gray-100">
-                          <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
-                            <Clock size={12} />
-                            <span>
-                              Inscription avant le {event.registrationDeadline.toLocaleDateString('fr-FR')}
-                            </span>
-                          </div>
-                          {renderRegistrationButton(event)}
-                          {renderEventStatus(event)}
+                          {getEventStatus(event) === 'future' && (
+                            <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                              <Clock size={12} />
+                              <span>
+                                Inscription avant le {event.registrationDeadline.toLocaleDateString('fr-FR')}
+                              </span>
+                            </div>
+                          )}
+                          {getEventStatus(event) === 'future' && renderRegistrationButton(event)}
+                          {getEventStatus(event) === 'past' && renderEventStatus(event)}
                         </div>
                       )}
                     </div>
@@ -392,14 +394,16 @@ const Calendar = () => {
                           
                           {event.registrationDeadline && (
                             <div className="mt-3 pt-3 border-t border-gray-200">
-                              <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
-                                <Clock size={12} />
-                                <span>
-                                  Inscription avant le {event.registrationDeadline.toLocaleDateString('fr-FR')}
-                                </span>
-                              </div>
-                              {renderRegistrationButton(event)}
-                              {renderEventStatus(event)}
+                              {getEventStatus(event) === 'future' && (
+                                <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                  <Clock size={12} />
+                                  <span>
+                                    Inscription avant le {event.registrationDeadline.toLocaleDateString('fr-FR')}
+                                  </span>
+                                </div>
+                              )}
+                              {getEventStatus(event) === 'future' && renderRegistrationButton(event)}
+                              {getEventStatus(event) === 'past' && renderEventStatus(event)}
                             </div>
                           )}
                         </div>
@@ -479,14 +483,16 @@ const Calendar = () => {
                           
                           {event.registrationDeadline && (
                             <div className="mt-3 pt-3 border-t border-gray-200">
-                              <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
-                                <Clock size={12} />
-                                <span>
-                                  Inscription avant le {event.registrationDeadline.toLocaleDateString('fr-FR')}
-                                </span>
-                              </div>
-                              {renderRegistrationButton(event)}
-                              {renderEventStatus(event)}
+                              {getEventStatus(event) === 'future' && (
+                                <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                  <Clock size={12} />
+                                  <span>
+                                    Inscription avant le {event.registrationDeadline.toLocaleDateString('fr-FR')}
+                                  </span>
+                                </div>
+                              )}
+                              {getEventStatus(event) === 'future' && renderRegistrationButton(event)}
+                              {getEventStatus(event) === 'past' && renderEventStatus(event)}
                             </div>
                           )}
                         </div>
