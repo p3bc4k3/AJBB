@@ -367,7 +367,6 @@ export const events: Event[] = [
     type: "event",
     category: "Club"
   },
-/*
   {
     date: new Date("2025-08-30"),
     title: "Exemple",
@@ -377,5 +376,4 @@ export const events: Event[] = [
     registrationDeadline: new Date("2025-08-11"), // date limite d'inscription
     registrationUrl: "URL inscriptions" // URL de l'inscription
   },
-*/
 ];
