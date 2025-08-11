@@ -369,6 +369,7 @@ export const events: Event[] = [
     type: "event",
     category: "Club"
   },
+/*
   {
     date: new Date("2025-08-11"),
     title: "Vital Sports",
@@ -380,4 +381,5 @@ export const events: Event[] = [
     location: "Rue Antoine de Saint-Exupéry, 34490 Thézan-lès-Béziers", // adresse indiqué sur le site web
     locationUrl: "https://www.google.com/maps/search/?api=1&query=Rue+Antoine+de+Saint-Exupéry,+34490+Thézan-lès-Béziers" //URL du point google maps
   },
+*/
 ];
