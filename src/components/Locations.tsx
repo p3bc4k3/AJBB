@@ -6,7 +6,7 @@ const Locations = () => {
     {
       name: "Villeneuve-lès-Béziers",
       address: "Chem. Saint-Michel\n34420 Villeneuve-lès-Béziers",
-      googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Chem.+Saint-Michel,+34420+Villeneuve-lès-Béziers"
+      googleMapsUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8"
     },
     {
       name: "Thézan-lès-Béziers",
