@@ -68,18 +68,45 @@ const Calendar = () => {
     });
   };
 
-  const getHolidayPosition = (day: number, holiday: Holiday) => {
+  const getEventPosition = (day: number, event: Event) => {
     if (!day) return null;
     const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
-    const startDate = new Date(holiday.startDate.getFullYear(), holiday.startDate.getMonth(), holiday.startDate.getDate());
-    const endDate = new Date(holiday.endDate.getFullYear(), holiday.endDate.getMonth(), holiday.endDate.getDate());
+    
+    // Pour les événements multi-jours, on cherche s'il y a d'autres événements avec le même titre dans la semaine
+    const weekEvents = events.filter(e => 
+      e.title === event.title && 
+      Math.abs(e.date.getTime() - event.date.getTime()) <= 7 * 24 * 60 * 60 * 1000
+    ).sort((a, b) => a.date.getTime() - b.date.getTime());
+    
+    if (weekEvents.length <= 1) return null;
+    
+    const startDate = new Date(weekEvents[0].date.getFullYear(), weekEvents[0].date.getMonth(), weekEvents[0].date.getDate());
+    const endDate = new Date(weekEvents[weekEvents.length - 1].date.getFullYear(), weekEvents[weekEvents.length - 1].date.getMonth(), weekEvents[weekEvents.length - 1].date.getDate());
     const checkDate = new Date(dayDate.getFullYear(), dayDate.getMonth(), dayDate.getDate());
     
     const isStart = checkDate.getTime() === startDate.getTime();
     const isEnd = checkDate.getTime() === endDate.getTime();
     const isMiddle = checkDate > startDate && checkDate < endDate;
     
-    return { isStart, isEnd, isMiddle };
+    return { isStart, isEnd, isMiddle, hasMultipleDays: true };
+  };
+
+  const getMultiDayEventsForDay = (day: number) => {
+    if (!day) return [];
+    const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+    
+    return events.filter(event => {
+      const eventDate = new Date(event.date.getFullYear(), event.date.getMonth(), event.date.getDate());
+      if (eventDate.getTime() !== dayDate.getTime()) return false;
+      
+      // Vérifier s'il y a d'autres événements avec le même titre dans la semaine
+      const weekEvents = events.filter(e => 
+        e.title === event.title && 
+        Math.abs(e.date.getTime() - event.date.getTime()) <= 7 * 24 * 60 * 60 * 1000
+      );
+      
+      return weekEvents.length > 1;
+    });
   };
 
   const getEventTypeForDay = (day: number) => {
@@ -384,41 +411,60 @@ const Calendar = () => {
                     getHolidayForDay(day || 0) ? 'bg-orange-50' : ''
                   }`}
                 >
-                  {/* Ligne de vacances */}
-                  {(() => {
-                    const holiday = getHolidayForDay(day || 0);
-                    if (holiday && day) {
-                      const position = getHolidayPosition(day, holiday);
-                      if (position) {
-                        return (
-                          <div className="absolute inset-0 pointer-events-none">
-                            {/* Ligne horizontale principale */}
-                            <div className="absolute top-1/2 transform -translate-y-1/2 h-1 bg-orange-400 opacity-60"
-                                 style={{
-                                   left: position.isStart ? '50%' : '0%',
-                                   right: position.isEnd ? '50%' : '0%'
-                                 }}>
-                            </div>
-                            
-                            {/* Cercle de début */}
-                            {position.isStart && (
-                              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-orange-500 rounded-full border-2 border-white shadow-sm"></div>
-                            )}
-                            
-                            {/* Cercle de fin */}
-                            {position.isEnd && (
-                              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-orange-500 rounded-full border-2 border-white shadow-sm"></div>
-                            )}
+                  {/* Lignes pour événements multi-jours */}
+                  {day && getMultiDayEventsForDay(day).map((event, eventIndex) => {
+                    const position = getEventPosition(day, event);
+                    if (!position || !position.hasMultipleDays) return null;
+                    
+                    const eventColor = event.type === 'competition' ? '#ef4444' : 
+                                     event.type === 'training' ? '#3b82f6' : 
+                                     '#eab308';
+                    
+                    return (
+                      <div key={eventIndex} className="absolute inset-0 pointer-events-none">
+                        {/* Ligne horizontale en haut */}
+                        <div 
+                          className="absolute top-1 h-1 opacity-80 rounded-full"
+                          style={{
+                            backgroundColor: eventColor,
+                            left: position.isStart ? '50%' : '0%',
+                            right: position.isEnd ? '50%' : '0%',
+                            top: `${4 + eventIndex * 6}px`
+                          }}>
+                        </div>
+                        
+                        {/* Cercle de début */}
+                        {position.isStart && (
+                          <div 
+                            className="absolute w-2 h-2 rounded-full border border-white shadow-sm"
+                            style={{
+                              backgroundColor: eventColor,
+                              left: '50%',
+                              transform: 'translateX(-50%)',
+                              top: `${2 + eventIndex * 6}px`
+                            }}>
                           </div>
-                        );
-                      }
-                    }
-                    return null;
-                  })()}
+                        )}
+                        
+                        {/* Cercle de fin */}
+                        {position.isEnd && (
+                          <div 
+                            className="absolute w-2 h-2 rounded-full border border-white shadow-sm"
+                            style={{
+                              backgroundColor: eventColor,
+                              left: '50%',
+                              transform: 'translateX(-50%)',
+                              top: `${2 + eventIndex * 6}px`
+                            }}>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                   
                   {day}
                   
-                  {/* Points d'événements (repositionnés pour éviter le conflit avec les lignes) */}
+                  {/* Points d'événements */}
                   {hasEvent(day || 0) && (
                     <div className="absolute bottom-1 right-1">
                       {!getHolidayForDay(day || 0) && (
@@ -428,7 +474,7 @@ const Calendar = () => {
                           'bg-yellow-600'
                         }`}></div>
                       )}
-                      {getHolidayForDay(day || 0) && events.some(event => 
+                      {getHolidayForDay(day || 0) && events.filter(event => !getMultiDayEventsForDay(day || 0).includes(event)).some(event => 
                         event.date.toDateString() === new Date(currentDate.getFullYear(), currentDate.getMonth(), day || 0).toDateString()
                       ) && (
                         <div className={`w-2 h-2 rounded-full ${
