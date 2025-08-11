@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Planning from './components/Planning';
 import Calendar from './components/Calendar';
 import Locations from './components/Locations';
+import Sponsors from './components/Sponsors';
 import Footer from './components/Footer';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Planning />
         <Calendar />
         <Locations />
+        <Sponsors />
       </main>
       <Footer />
     </div>

@@ -97,7 +97,7 @@ const Header = () => {
             
             <a
               href="/inscription.html"
-              className="relative font-medium transition-colors duration-300 py-2 text-gray-700 hover:text-yellow-600"
+              className="relative font-medium transition-all duration-300 py-2 px-4 bg-yellow-600 text-white rounded-lg hover:bg-black transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
             >
               Inscription
             </a>
