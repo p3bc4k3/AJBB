@@ -8,6 +8,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.344.0/lucide.min.css" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+            animation: scroll 20s linear infinite;
+        }
+        .animate-scroll:hover {
+            animation-play-state: paused;
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
@@ -27,18 +39,19 @@
 
     <!-- Main Content -->
     <main class="max-w-6xl mx-auto px-5 py-12">
+        <!-- Page Title -->
         <div class="text-center mb-12">
             <h1 class="text-4xl font-black mb-4 text-gray-900">Inscription</h1>
             <p class="text-lg text-gray-600">Rejoignez l'Alliance Judo Bassin Biterrois en quelques étapes simples</p>
         </div>
 
-        <!-- Étapes d'inscription -->
+        <!-- Registration Steps -->
         <section class="mb-16">
             <div class="bg-white rounded-2xl p-8 shadow-lg">
                 <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Comment s'inscrire ?</h2>
                 
                 <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Étape 1 -->
+                    <!-- Step 1 -->
                     <div class="text-center">
                         <div class="w-16 h-16 bg-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4">
                             <span class="text-white font-bold text-xl">1</span>
@@ -65,7 +78,7 @@
                         </div>
                     </div>
 
-                    <!-- Étape 2 -->
+                    <!-- Step 2 -->
                     <div class="text-center">
                         <div class="w-16 h-16 bg-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4">
                             <span class="text-white font-bold text-xl">2</span>
@@ -89,7 +102,7 @@
                         </div>
                     </div>
 
-                    <!-- Étape 3 -->
+                    <!-- Step 3 -->
                     <div class="text-center">
                         <div class="w-16 h-16 bg-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4">
                             <span class="text-white font-bold text-xl">3</span>
@@ -114,7 +127,7 @@
             </div>
         </section>
 
-        <!-- Formulaire Google -->
+        <!-- Google Form -->
         <section class="mb-16">
             <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
                 <div class="bg-yellow-600 text-white p-6">
@@ -136,14 +149,15 @@
                         marginheight="0" 
                         marginwidth="0"
                         class="w-full rounded-lg"
+                        title="Formulaire d'inscription AJBB"
                     >
-                        Chargement…
+                        Chargement du formulaire...
                     </iframe>
                 </div>
             </div>
         </section>
 
-        <!-- Informations complémentaires -->
+        <!-- Additional Information -->
         <section>
             <div class="grid lg:grid-cols-2 gap-8">
                 <!-- Contact -->
@@ -156,6 +170,7 @@
                     </div>
                     
                     <div class="space-y-4">
+                        <!-- Jean -->
                         <div class="p-4 bg-gray-50 rounded-lg">
                             <div class="flex items-center justify-between">
                                 <div>
@@ -170,6 +185,8 @@
                                 </a>
                             </div>
                         </div>
+
+                        <!-- Lucie -->
                         <div class="p-4 bg-gray-50 rounded-lg">
                             <div class="flex items-center justify-between">
                                 <div>
@@ -184,6 +201,8 @@
                                 </a>
                             </div>
                         </div>
+
+                        <!-- Email -->
                         <div class="p-4 bg-gray-50 rounded-lg">
                             <h4 class="font-semibold text-gray-900 mb-2">Email</h4>
                             <div class="flex items-center gap-2">
@@ -199,14 +218,14 @@
                     </div>
 
                     <div class="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
-                        <p class="text-sm text-green-800">
+                        <p class="text-sm text-blue-800">
                             <strong>📍 Rendez-vous :</strong> Venez nous rencontrer directement sur les lieux d'entraînement 
                             pour découvrir notre club et poser vos questions !
                         </p>
                     </div>
                 </div>
 
-                <!-- Informations pratiques -->
+                <!-- Practical Information -->
                 <div class="bg-white rounded-2xl p-8 shadow-lg">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center">
@@ -228,7 +247,7 @@
                             <h4 class="font-semibold text-purple-900 mb-2">🥋 Matériel pour débuter</h4>
                             <p class="text-sm text-purple-800">
                                 Pour les cours d'essai, une tenue de sport suffit. Le kimono peut être acheté 
-                                au club après confirmation de l'inscription.
+                                avec nos partenaires après confirmation de l'inscription.
                             </p>
                         </div>
 
@@ -255,7 +274,7 @@
         </section>
     </main>
 
-    <!-- Partenaires -->
+    <!-- Partners Section -->
     <section class="py-16 bg-white border-t border-gray-200">
         <div class="max-w-6xl mx-auto px-5">
             <div class="text-center mb-12">
@@ -265,32 +284,32 @@
 
             <div class="overflow-hidden">
                 <div class="flex animate-scroll space-x-8">
-                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg">
+                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                         <img src="/img/sponsor/sponsor1.png" alt="Partenaire 1" class="max-h-16 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300" onerror="this.parentElement.innerHTML='<div class=\'text-gray-500 text-sm\'>Partenaire 1</div>'">
                     </div>
-                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg">
+                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                         <img src="/img/sponsor/sponsor2.png" alt="Partenaire 2" class="max-h-16 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300" onerror="this.parentElement.innerHTML='<div class=\'text-gray-500 text-sm\'>Partenaire 2</div>'">
                     </div>
-                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg">
+                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                         <img src="/img/sponsor/sponsor3.png" alt="Partenaire 3" class="max-h-16 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300" onerror="this.parentElement.innerHTML='<div class=\'text-gray-500 text-sm\'>Partenaire 3</div>'">
                     </div>
-                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg">
+                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                         <img src="/img/sponsor/sponsor4.png" alt="Partenaire 4" class="max-h-16 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300" onerror="this.parentElement.innerHTML='<div class=\'text-gray-500 text-sm\'>Partenaire 4</div>'">
                     </div>
-                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg">
+                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                         <img src="/img/sponsor/sponsor5.png" alt="Partenaire 5" class="max-h-16 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300" onerror="this.parentElement.innerHTML='<div class=\'text-gray-500 text-sm\'>Partenaire 5</div>'">
                     </div>
-                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg">
+                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                         <img src="/img/sponsor/sponsor6.png" alt="Partenaire 6" class="max-h-16 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300" onerror="this.parentElement.innerHTML='<div class=\'text-gray-500 text-sm\'>Partenaire 6</div>'">
                     </div>
                     <!-- Duplication pour effet continu -->
-                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg">
+                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                         <img src="/img/sponsor/sponsor1.png" alt="Partenaire 1" class="max-h-16 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300" onerror="this.parentElement.innerHTML='<div class=\'text-gray-500 text-sm\'>Partenaire 1</div>'">
                     </div>
-                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg">
+                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                         <img src="/img/sponsor/sponsor2.png" alt="Partenaire 2" class="max-h-16 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300" onerror="this.parentElement.innerHTML='<div class=\'text-gray-500 text-sm\'>Partenaire 2</div>'">
                     </div>
-                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg">
+                    <div class="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                         <img src="/img/sponsor/sponsor3.png" alt="Partenaire 3" class="max-h-16 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300" onerror="this.parentElement.innerHTML='<div class=\'text-gray-500 text-sm\'>Partenaire 3</div>'">
                     </div>
                 </div>
@@ -310,21 +329,8 @@
         </div>
     </section>
 
-    <style>
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-scroll {
-            animation: scroll 20s linear infinite;
-        }
-        .animate-scroll:hover {
-            animation-play-state: paused;
-        }
-    </style>
-
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8 mt-16">
+    <footer class="bg-gray-900 text-white py-8">
         <div class="max-w-6xl mx-auto px-5 text-center">
             <div class="flex items-center justify-center gap-2 text-yellow-600 font-bold text-xl mb-4">
                 <img src="/img/Logo.png" alt="AJBB Logo" class="w-8 h-8 object-contain">
@@ -342,6 +348,7 @@
     </footer>
 
     <script>
+        // Initialize Lucide icons
         lucide.createIcons();
     </script>
 </body>
