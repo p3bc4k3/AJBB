@@ -5,6 +5,7 @@ export interface Event {
   type: 'competition' | 'training' | 'event';
   category?: string;
   registrationDeadline?: Date;
+  registrationUrl?: string;
 }
 
 export const events: Event[] = [
@@ -14,7 +15,8 @@ export const events: Event[] = [
     description: "Stages arbitrage et commissaires sportifs - Narbonne",
     type: "training",
     category: "Minimes+",
-    registrationDeadline: new Date("2025-10-05")
+    registrationDeadline: new Date("2025-10-05"),
+    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
   },
   {
     date: new Date("2025-10-11"),
@@ -22,7 +24,8 @@ export const events: Event[] = [
     description: "Stages arbitrage et commissaires sportifs - Mèze",
     type: "training",
     category: "Minimes+",
-    registrationDeadline: new Date("2025-10-04")
+    registrationDeadline: new Date("2025-10-04"),
+    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
   },
   {
     date: new Date("2025-10-12"),
@@ -30,7 +33,8 @@ export const events: Event[] = [
     description: "Stage Benjamins-Minimes à Thézan-lès-Béziers",
     type: "training",
     category: "Benjamins - Minimes",
-    registrationDeadline: new Date("2025-10-05")
+    registrationDeadline: new Date("2025-10-05"),
+    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
   },
   {
     date: new Date("2025-11-01"),
@@ -38,7 +42,8 @@ export const events: Event[] = [
     description: "Tournoi Régional Minimes du Gers - Auch",
     type: "competition",
     category: "Minimes",
-    registrationDeadline: new Date("2025-10-25")
+    registrationDeadline: new Date("2025-10-25"),
+    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
   },
   {
     date: new Date("2025-11-08"),
@@ -60,7 +65,8 @@ export const events: Event[] = [
     description: "Tournoi label Régional Benjamins de l'Aude - Dojo de Narbonne",
     type: "competition",
     category: "Benjamins",
-    registrationDeadline: new Date("2025-11-08")
+    registrationDeadline: new Date("2025-11-08"),
+    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
   },
   {
     date: new Date("2025-11-16"),
@@ -68,7 +74,8 @@ export const events: Event[] = [
     description: "Stage Occitanie de jujitsu - Mèze",
     type: "training",
     category: "Ju Jitsu",
-    registrationDeadline: new Date("2025-11-09")
+    registrationDeadline: new Date("2025-11-09"),
+    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
   },
   {
     date: new Date("2025-11-23"),
@@ -76,7 +83,8 @@ export const events: Event[] = [
     description: "Compétitions Benjamins Minimes - Lavelanet",
     type: "competition",
     category: "Benjamins - Minimes",
-    registrationDeadline: new Date("2025-11-16")
+    registrationDeadline: new Date("2025-11-16"),
+    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
   },
   {
     date: new Date("2025-11-30"),
@@ -84,7 +92,8 @@ export const events: Event[] = [
     description: "Tournoi label A Minimes Moissac - Moissac",
     type: "competition",
     category: "Minimes",
-    registrationDeadline: new Date("2025-11-23")
+    registrationDeadline: new Date("2025-11-23"),
+    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
   },
   {
     date: new Date("2025-12-13"),
@@ -120,7 +129,8 @@ export const events: Event[] = [
     description: "Tournoi label A Minimes de Toulouse - Maison du judo Toulouse",
     type: "competition",
     category: "Minimes",
-    registrationDeadline: new Date("2025-12-13")
+    registrationDeadline: new Date("2025-12-13"),
+    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
   },
   {
     date: new Date("2025-12-21"),
@@ -128,7 +138,8 @@ export const events: Event[] = [
     description: "Stage Minimes de Toulouse (3 jours) - CREPS Toulouse",
     type: "training",
     category: "Minimes",
-    registrationDeadline: new Date("2025-12-14")
+    registrationDeadline: new Date("2025-12-14"),
+    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
   },
   {
     date: new Date("2026-01-17"),
@@ -157,7 +168,8 @@ export const events: Event[] = [
     description: "Tournoi qualificatif championnat de France Ju jitsu- Ne waza - Dojo de Narbonne (à confirmer)",
     type: "competition",
     category: "Ju Jitsu",
-    registrationDeadline: new Date("2026-01-17")
+    registrationDeadline: new Date("2026-01-17"),
+    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
   },
   {
     date: new Date("2026-01-25"),
@@ -172,7 +184,8 @@ export const events: Event[] = [
     description: "Tournoi qualificatif championnat de France Ju jitsu- Ne waza - Dojo de Narbonne (à confirmer)",
     type: "competition",
     category: "Ju Jitsu",
-    registrationDeadline: new Date("2026-01-18")
+    registrationDeadline: new Date("2026-01-18"),
+    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
   },
   {
     date: new Date("2026-02-08"),
@@ -180,7 +193,8 @@ export const events: Event[] = [
     description: "Stage Occitanie de jujitsu - A préciser",
     type: "training",
     category: "Ju Jitsu",
-    registrationDeadline: new Date("2026-02-01")
+    registrationDeadline: new Date("2026-02-01"),
+    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
   },
   {
     date: new Date("2026-02-15"),
@@ -279,7 +293,8 @@ export const events: Event[] = [
     description: "Stage de paques (2 jours) - Villeneuve-lès-Béziers",
     type: "training",
     category: "Club",
-    registrationDeadline: new Date("2026-04-18")
+    registrationDeadline: new Date("2026-04-18"),
+    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
   },
   {
     date: new Date("2026-05-09"),
@@ -344,6 +359,7 @@ export const events: Event[] = [
     type: "event",
     category: "Club"
   },
+  // Événements d'août et septembre 2025
   {
     date: new Date(2025, 7, 30), // 30 août 2025
     title: "Vital Sports",

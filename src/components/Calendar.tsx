@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, UserPlus, Clock, AlertCircle } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, Clock, AlertCircle, Calendar as CalendarIcon } from 'lucide-react';
 import { events, Event } from '../../events';
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [registrations, setRegistrations] = useState<{[key: string]: boolean}>({});
 
   const monthNames = [
     "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
@@ -96,22 +95,64 @@ const Calendar = () => {
     setSelectedDate(clickedDate);
   };
 
-  const canRegister = (event: Event) => {
+  const getRegistrationStatus = (event: Event) => {
     if (!event.registrationDeadline) return false;
     const now = new Date();
-    return now <= event.registrationDeadline;
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const deadline = new Date(event.registrationDeadline.getFullYear(), event.registrationDeadline.getMonth(), event.registrationDeadline.getDate());
+    
+    if (today > deadline) return 'closed';
+    if (today.getTime() === deadline.getTime()) return 'lastDay';
+    return 'open';
   };
 
-  const handleRegistration = (eventId: string) => {
-    setRegistrations(prev => ({
-      ...prev,
-      [eventId]: true
-    }));
-    alert('Inscription enregistrée ! Vous recevrez une confirmation par email.');
+  const handleRegistration = (event: Event) => {
+    if (event.registrationUrl) {
+      window.open(event.registrationUrl, '_blank');
+    }
   };
 
-  const getEventId = (event: Event) => {
-    return `${event.date.getTime()}-${event.title.replace(/\s+/g, '-')}`;
+  const renderRegistrationButton = (event: Event) => {
+    if (!event.registrationDeadline || !event.registrationUrl) return null;
+    
+    const status = getRegistrationStatus(event);
+    
+    if (status === 'closed') {
+      return (
+        <div className="flex items-center gap-2 text-red-500 text-sm mt-3">
+          <AlertCircle size={14} />
+          <span>Inscription fermée</span>
+        </div>
+      );
+    }
+    
+    if (status === 'lastDay') {
+      return (
+        <div className="mt-3">
+          <div className="flex items-center gap-2 text-orange-600 text-xs mb-2">
+            <AlertCircle size={12} />
+            <span>Dernier jour pour s'inscrire !</span>
+          </div>
+          <button
+            onClick={() => handleRegistration(event)}
+            className="inline-flex items-center gap-2 px-3 py-2 bg-orange-600 text-white text-sm font-medium rounded-lg hover:bg-orange-700 transition-all duration-300"
+          >
+            <ExternalLink size={14} />
+            S'inscrire
+          </button>
+        </div>
+      );
+    }
+    
+    return (
+      <button
+        onClick={() => handleRegistration(event)}
+        className="inline-flex items-center gap-2 px-3 py-2 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-all duration-300 mt-3"
+      >
+        <ExternalLink size={14} />
+        S'inscrire
+      </button>
+    );
   };
 
   return (
@@ -214,39 +255,15 @@ const Calendar = () => {
                             <p className="text-xs text-gray-500">Catégorie: {event.category}</p>
                           )}
                           
-                          {/* Inscription */}
-                          {(event.type === 'competition' || event.type === 'training') && (
-                            <div className="mt-4 pt-4 border-t border-gray-200">
-                              {event.registrationDeadline && (
-                                <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
-                                  <Clock size={12} />
-                                  <span>
-                                    Inscription avant le {event.registrationDeadline.toLocaleDateString('fr-FR')}
-                                  </span>
-                                </div>
-                              )}
-                              
-                              {canRegister(event) ? (
-                                registrations[getEventId(event)] ? (
-                                  <div className="flex items-center gap-2 text-green-600 text-sm">
-                                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                                    <span>Inscrit</span>
-                                  </div>
-                                ) : (
-                                  <button
-                                    onClick={() => handleRegistration(getEventId(event))}
-                                    className="inline-flex items-center gap-2 px-3 py-2 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-all duration-300"
-                                  >
-                                    <UserPlus size={14} />
-                                    S'inscrire
-                                  </button>
-                                )
-                              ) : event.registrationDeadline ? (
-                                <div className="flex items-center gap-2 text-red-500 text-sm">
-                                  <AlertCircle size={14} />
-                                  <span>Inscription fermée</span>
-                                </div>
-                              ) : null}
+                          {event.registrationDeadline && (
+                            <div className="mt-3 pt-3 border-t border-gray-200">
+                              <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                <Clock size={12} />
+                                <span>
+                                  Inscription avant le {event.registrationDeadline.toLocaleDateString('fr-FR')}
+                                </span>
+                              </div>
+                              {renderRegistrationButton(event)}
                             </div>
                           )}
                         </div>
@@ -310,39 +327,15 @@ const Calendar = () => {
                             <p className="text-xs text-gray-500 mb-2">Catégorie: {event.category}</p>
                           )}
                           
-                          {/* Inscription */}
-                          {(event.type === 'competition' || event.type === 'training') && (
+                          {event.registrationDeadline && (
                             <div className="mt-3 pt-3 border-t border-gray-200">
-                              {event.registrationDeadline && (
-                                <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
-                                  <Clock size={12} />
-                                  <span>
-                                    Inscription avant le {event.registrationDeadline.toLocaleDateString('fr-FR')}
-                                  </span>
-                                </div>
-                              )}
-                              
-                              {canRegister(event) ? (
-                                registrations[getEventId(event)] ? (
-                                  <div className="flex items-center gap-2 text-green-600 text-sm">
-                                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                                    <span>Inscrit</span>
-                                  </div>
-                                ) : (
-                                  <button
-                                    onClick={() => handleRegistration(getEventId(event))}
-                                    className="inline-flex items-center gap-2 px-3 py-2 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-all duration-300"
-                                  >
-                                    <UserPlus size={14} />
-                                    S'inscrire
-                                  </button>
-                                )
-                              ) : event.registrationDeadline ? (
-                                <div className="flex items-center gap-2 text-red-500 text-sm">
-                                  <AlertCircle size={14} />
-                                  <span>Inscription fermée</span>
-                                </div>
-                              ) : null}
+                              <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                <Clock size={12} />
+                                <span>
+                                  Inscription avant le {event.registrationDeadline.toLocaleDateString('fr-FR')}
+                                </span>
+                              </div>
+                              {renderRegistrationButton(event)}
                             </div>
                           )}
                         </div>
@@ -374,8 +367,9 @@ const Calendar = () => {
           </div>
           <div className="mt-4 p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
             <p className="text-sm text-blue-800">
-              <strong>📝 Note :</strong> Les événements sont basés sur le calendrier prévisionnel. 
+              <strong>📝 Notes :</strong> Les événements sont basés sur le calendrier prévisionnel. 
               Les dates et lieux peuvent être modifiés. <strong>Cliquez sur un jour</strong> pour voir les événements de cette date.
+              Les inscriptions se font via le formulaire Google du club.
             </p>
           </div>
         </div>
