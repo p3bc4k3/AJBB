@@ -369,11 +369,11 @@ export const events: Event[] = [
     {
     date: new Date("2025-10-24"), // date ou date de début
     endDate: new Date("2025-10-25"), // date de fin si plusieurs jours
+    registrationDeadline: new Date("2025-08-12"), // date limite d'inscription
     title: "Test Stage",
     description: "Vital Sports - Villeneuve-lès-Béziers",
     type: "event", // compétitions, stages ou évènements général
     category: "Club", // publics concernés
-    registrationDeadline: new Date("2025-08-12"), // date limite d'inscription
     registrationUrl: "https://forms.gle/9YLWAFgPpC72NYP29", // URL de l'inscription
     location: "Rue Antoine de Saint-Exupéry, 34490 Thézan-lès-Béziers", // adresse indiqué sur le site web
     locationUrl: "https://www.google.com/maps/search/?api=1&query=Rue+Antoine+de+Saint-Exupéry,+34490+Thézan-lès-Béziers" //URL du point google maps
