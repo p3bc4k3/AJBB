@@ -3,8 +3,9 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Planning from './components/Planning';
 import Calendar from './components/Calendar';
+import InfosPratiques from './components/InfosPratiques';
 import Locations from './components/Locations';
-import Contact from './components/Contact';
+import Inscription from './components/Inscription';
 import Footer from './components/Footer';
 
 function App() {
@@ -15,8 +16,9 @@ function App() {
         <Hero />
         <Planning />
         <Calendar />
+        <InfosPratiques />
         <Locations />
-        <Contact />
+        <Inscription />
       </main>
       <Footer />
     </div>

@@ -40,8 +40,9 @@ const Footer = () => {
                 { id: 'accueil', label: 'Accueil' },
                 { id: 'planning', label: 'Planning' },
                 { id: 'calendrier', label: 'Calendrier' },
+                { id: 'infos', label: 'Infos pratiques' },
                 { id: 'lieux', label: 'Nos lieux' },
-                { id: 'contact', label: 'Contact' }
+                { id: 'inscription', label: 'Inscription' }
               ].map(({ id, label }) => (
                 <li key={id}>
                   <button

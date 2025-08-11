@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, UserPlus, Clock, AlertCircle } from 'lucide-react';
 import { events, Event } from '../../events';
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [registrations, setRegistrations] = useState<{[key: string]: boolean}>({});
 
   const monthNames = [
     "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
@@ -95,6 +96,24 @@ const Calendar = () => {
     setSelectedDate(clickedDate);
   };
 
+  const canRegister = (event: Event) => {
+    if (!event.registrationDeadline) return false;
+    const now = new Date();
+    return now <= event.registrationDeadline;
+  };
+
+  const handleRegistration = (eventId: string) => {
+    setRegistrations(prev => ({
+      ...prev,
+      [eventId]: true
+    }));
+    alert('Inscription enregistrée ! Vous recevrez une confirmation par email.');
+  };
+
+  const getEventId = (event: Event) => {
+    return `${event.date.getTime()}-${event.title.replace(/\s+/g, '-')}`;
+  };
+
   return (
     <section id="calendrier" className="py-20">
       <div className="max-w-6xl mx-auto px-5">
@@ -172,7 +191,7 @@ const Calendar = () => {
                     </p>
                   ) : (
                     getEventsForDate(selectedDate).map((event, index) => (
-                      <div key={index} className={`p-4 bg-gray-50 rounded-lg border-l-4 ${
+                      <div key={index} className={`p-6 bg-gray-50 rounded-lg border-l-4 ${
                         event.type === 'competition' ? 'border-red-500' : 
                         event.type === 'training' ? 'border-blue-500' : 
                         'border-yellow-600'
@@ -193,6 +212,42 @@ const Calendar = () => {
                           <p className="text-sm text-gray-600 mb-1">{event.description}</p>
                           {event.category && (
                             <p className="text-xs text-gray-500">Catégorie: {event.category}</p>
+                          )}
+                          
+                          {/* Inscription */}
+                          {(event.type === 'competition' || event.type === 'training') && (
+                            <div className="mt-4 pt-4 border-t border-gray-200">
+                              {event.registrationDeadline && (
+                                <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                  <Clock size={12} />
+                                  <span>
+                                    Inscription avant le {event.registrationDeadline.toLocaleDateString('fr-FR')}
+                                  </span>
+                                </div>
+                              )}
+                              
+                              {canRegister(event) ? (
+                                registrations[getEventId(event)] ? (
+                                  <div className="flex items-center gap-2 text-green-600 text-sm">
+                                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span>Inscrit</span>
+                                  </div>
+                                ) : (
+                                  <button
+                                    onClick={() => handleRegistration(getEventId(event))}
+                                    className="inline-flex items-center gap-2 px-3 py-2 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-all duration-300"
+                                  >
+                                    <UserPlus size={14} />
+                                    S'inscrire
+                                  </button>
+                                )
+                              ) : event.registrationDeadline ? (
+                                <div className="flex items-center gap-2 text-red-500 text-sm">
+                                  <AlertCircle size={14} />
+                                  <span>Inscription fermée</span>
+                                </div>
+                              ) : null}
+                            </div>
                           )}
                         </div>
                       </div>
@@ -219,40 +274,78 @@ const Calendar = () => {
                   </p>
                 ) : (
                   getUpcomingEvents().map((event, index) => (
-                    <div key={index} className={`flex gap-4 p-4 bg-gray-50 rounded-lg border-l-4 ${
+                    <div key={index} className={`p-6 bg-gray-50 rounded-lg border-l-4 ${
                         event.type === 'competition' ? 'border-red-500' : 
                         event.type === 'training' ? 'border-blue-500' : 
                         'border-yellow-600'
                       }`}>
-                      <div className="text-center min-w-[60px]">
-                        <div className={`text-xl font-bold ${
-                          event.type === 'competition' ? 'text-red-500' : 
-                          event.type === 'training' ? 'text-blue-500' : 
-                          'text-yellow-600'
-                        }`}>
-                          {event.date.getDate()}
-                        </div>
-                        <div className="text-xs text-gray-600 uppercase">
-                          {monthNames[event.date.getMonth()].slice(0, 3)}
-                        </div>
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-2 mb-1">
-                          <h4 className="font-semibold text-gray-900">{event.title}</h4>
-                          <span className={`px-2 py-1 text-xs rounded-full ${
-                            event.type === 'competition' ? 'bg-red-100 text-red-700' : 
-                            event.type === 'training' ? 'bg-blue-100 text-blue-700' : 
-                            'bg-yellow-100 text-yellow-700'
+                      <div className="flex gap-4">
+                        <div className="text-center min-w-[60px]">
+                          <div className={`text-xl font-bold ${
+                            event.type === 'competition' ? 'text-red-500' : 
+                            event.type === 'training' ? 'text-blue-500' : 
+                            'text-yellow-600'
                           }`}>
-                            {event.type === 'competition' ? 'Compétition' : 
-                             event.type === 'training' ? 'Stage' : 
-                             'Événement'}
-                          </span>
+                            {event.date.getDate()}
+                          </div>
+                          <div className="text-xs text-gray-600 uppercase">
+                            {monthNames[event.date.getMonth()].slice(0, 3)}
+                          </div>
                         </div>
-                        <p className="text-sm text-gray-600 mb-1">{event.description}</p>
-                        {event.category && (
-                          <p className="text-xs text-gray-500">Catégorie: {event.category}</p>
-                        )}
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h4 className="font-semibold text-gray-900">{event.title}</h4>
+                            <span className={`px-2 py-1 text-xs rounded-full ${
+                              event.type === 'competition' ? 'bg-red-100 text-red-700' : 
+                              event.type === 'training' ? 'bg-blue-100 text-blue-700' : 
+                              'bg-yellow-100 text-yellow-700'
+                            }`}>
+                              {event.type === 'competition' ? 'Compétition' : 
+                               event.type === 'training' ? 'Stage' : 
+                               'Événement'}
+                            </span>
+                          </div>
+                          <p className="text-sm text-gray-600 mb-1">{event.description}</p>
+                          {event.category && (
+                            <p className="text-xs text-gray-500 mb-2">Catégorie: {event.category}</p>
+                          )}
+                          
+                          {/* Inscription */}
+                          {(event.type === 'competition' || event.type === 'training') && (
+                            <div className="mt-3 pt-3 border-t border-gray-200">
+                              {event.registrationDeadline && (
+                                <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                  <Clock size={12} />
+                                  <span>
+                                    Inscription avant le {event.registrationDeadline.toLocaleDateString('fr-FR')}
+                                  </span>
+                                </div>
+                              )}
+                              
+                              {canRegister(event) ? (
+                                registrations[getEventId(event)] ? (
+                                  <div className="flex items-center gap-2 text-green-600 text-sm">
+                                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span>Inscrit</span>
+                                  </div>
+                                ) : (
+                                  <button
+                                    onClick={() => handleRegistration(getEventId(event))}
+                                    className="inline-flex items-center gap-2 px-3 py-2 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-all duration-300"
+                                  >
+                                    <UserPlus size={14} />
+                                    S'inscrire
+                                  </button>
+                                )
+                              ) : event.registrationDeadline ? (
+                                <div className="flex items-center gap-2 text-red-500 text-sm">
+                                  <AlertCircle size={14} />
+                                  <span>Inscription fermée</span>
+                                </div>
+                              ) : null}
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   ))

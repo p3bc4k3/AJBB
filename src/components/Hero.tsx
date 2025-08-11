@@ -86,11 +86,11 @@ const Hero = () => {
                 Voir le planning
               </button>
               <button
-                onClick={() => scrollToSection('contact')}
+                onClick={() => scrollToSection('inscription')}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-yellow-600 font-semibold rounded-xl border-2 border-yellow-600 hover:bg-yellow-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1"
               >
                 <Phone size={20} />
-                Nous contacter
+                S'inscrire
               </button>
             </div>
           </div>
