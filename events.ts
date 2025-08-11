@@ -147,6 +147,7 @@ export const events: Event[] = [
   },
   {
     date: new Date("2026-01-24"),
+    endDate: new Date(2026, 1, 25),
     title: "Tournoi qualificatif championnat de France Ju jitsu- Ne waza",
     description: "Tournoi qualificatif championnat de France Ju jitsu- Ne waza - Dojo de Narbonne (à confirmer)",
     type: "competition",
@@ -158,13 +159,6 @@ export const events: Event[] = [
     description: "Kagami Biraki - A préciser",
     type: "event",
     category: "Autre"
-  },
-  {
-    date: new Date("2026-01-25"),
-    title: "Tournoi qualificatif championnat de France Ju jitsu- Ne waza",
-    description: "Tournoi qualificatif championnat de France Ju jitsu- Ne waza - Dojo de Narbonne (à confirmer)",
-    type: "competition",
-    category: "Ju Jitsu"
   },
   {
     date: new Date("2026-02-08"),
