@@ -41,9 +41,7 @@ export const events: Event[] = [
     title: "Tournoi Régional Minimes du Gers",
     description: "Tournoi Régional Minimes du Gers - Auch",
     type: "competition",
-    category: "Minimes",
-    registrationDeadline: new Date("2025-10-25"),
-    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
+    category: "Minimes"
   },
   {
     date: new Date("2025-11-08"),
@@ -64,36 +62,28 @@ export const events: Event[] = [
     title: "Tournoi label Régional Benjamins de l'Aude",
     description: "Tournoi label Régional Benjamins de l'Aude - Dojo de Narbonne",
     type: "competition",
-    category: "Benjamins",
-    registrationDeadline: new Date("2025-11-08"),
-    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
+    category: "Benjamins"
   },
   {
     date: new Date("2025-11-16"),
     title: "Stage Occitanie de jujitsu",
     description: "Stage Occitanie de jujitsu - Mèze",
     type: "training",
-    category: "Ju Jitsu",
-    registrationDeadline: new Date("2025-11-09"),
-    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
+    category: "Ju Jitsu"
   },
   {
     date: new Date("2025-11-23"),
     title: "Compétitions Benjamins Minimes",
     description: "Compétitions Benjamins Minimes - Lavelanet",
     type: "competition",
-    category: "Benjamins - Minimes",
-    registrationDeadline: new Date("2025-11-16"),
-    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
+    category: "Benjamins - Minimes"
   },
   {
     date: new Date("2025-11-30"),
     title: "Tournoi label A Minimes Moissac",
     description: "Tournoi label A Minimes Moissac - Moissac",
     type: "competition",
-    category: "Minimes",
-    registrationDeadline: new Date("2025-11-23"),
-    registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform"
+    category: "Minimes"
   },
   {
     date: new Date("2025-12-13"),
