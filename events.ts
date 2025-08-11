@@ -370,7 +370,7 @@ export const events: Event[] = [
     category: "Club"
   },
   {
-    date: new Date("2025-08-11"),
+    date: new Date("2025-08-10"),
     title: "Vital Sports",
     description: "Vital Sports - Villeneuve-lès-Béziers",
     type: "event", // compétitions, stages ou évènements général
