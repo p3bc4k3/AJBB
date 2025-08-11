@@ -361,19 +361,21 @@ export const events: Event[] = [
   },
   // Événements d'août et septembre 2025
   {
-    date: new Date(2025, 7, 30), // 30 août 2025
+    date: new Date("2025-08-30"),
     title: "Vital Sports",
-    description: "Vital Sport - Villeneuve-lès-Béziers",
+    description: "Vital Sports - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club",
+    registrationDeadline: new Date("2025-08-29"),
     registrationUrl: "https://forms.gle/9YLWAFgPpC72NYP29"
   },
   {
-    date: new Date(2025, 7, 31), // 31 août 2025
+    date: new Date("2025-08-31"),
     title: "Vital Sports",
-    description: "Vital Sport - Villeneuve-lès-Béziers",
+    description: "Vital Sports - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club",
+    registrationDeadline: new Date("2025-08-30"),
     registrationUrl: "https://forms.gle/9YLWAFgPpC72NYP29"
   },
   {
