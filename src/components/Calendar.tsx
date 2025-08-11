@@ -156,7 +156,6 @@ const Calendar = () => {
       
       return checkDate >= startDate && checkDate <= endDate;
     });
-    );
     
     // Ajouter les vacances comme "événements" pour l'affichage
     const holiday = isHoliday(date);
@@ -186,7 +185,6 @@ const Calendar = () => {
       
       return checkDate >= startDate && checkDate <= endDate;
     });
-    );
   };
 
   const navigateMonth = (direction: 'prev' | 'next') => {
