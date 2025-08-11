@@ -70,9 +70,7 @@ const Header = () => {
               { id: 'accueil', label: 'Accueil' },
               { id: 'planning', label: 'Planning' },
               { id: 'calendrier', label: 'Calendrier' },
-              { id: 'infos', label: 'Infos pratiques' },
               { id: 'lieux', label: 'Lieux' },
-              { id: 'inscription', label: 'Inscription' }
             ].map(({ id, label }) => (
               <button
                 key={id}
@@ -89,6 +87,20 @@ const Header = () => {
                 )}
               </button>
             ))}
+            
+            <a
+              href="/informations-pratiques.html"
+              className="relative font-medium transition-colors duration-300 py-2 text-gray-700 hover:text-yellow-600"
+            >
+              Infos pratiques
+            </a>
+            
+            <a
+              href="/inscription.html"
+              className="relative font-medium transition-colors duration-300 py-2 text-gray-700 hover:text-yellow-600"
+            >
+              Inscription
+            </a>
           </div>
         </div>
       </nav>

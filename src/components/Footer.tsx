@@ -40,9 +40,7 @@ const Footer = () => {
                 { id: 'accueil', label: 'Accueil' },
                 { id: 'planning', label: 'Planning' },
                 { id: 'calendrier', label: 'Calendrier' },
-                { id: 'infos', label: 'Infos pratiques' },
                 { id: 'lieux', label: 'Nos lieux' },
-                { id: 'inscription', label: 'Inscription' }
               ].map(({ id, label }) => (
                 <li key={id}>
                   <button
@@ -53,6 +51,22 @@ const Footer = () => {
                   </button>
                 </li>
               ))}
+              <li>
+                <a
+                  href="/informations-pratiques.html"
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  Infos pratiques
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/inscription.html"
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  Inscription
+                </a>
+              </li>
             </ul>
           </div>
 
