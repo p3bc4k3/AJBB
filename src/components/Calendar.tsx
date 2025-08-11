@@ -132,14 +132,30 @@ const Calendar = () => {
     const now = new Date();
     const thirtyDaysFromNow = new Date(now.getTime() + (30 * 24 * 60 * 60 * 1000));
     
-    return events
-      .filter(event => event.date >= now && event.date <= thirtyDaysFromNow)
-      .sort((a, b) => a.date.getTime() - b.date.getTime());
+    return events.filter(event => {
+      // Pour les événements multi-jours, utiliser la date de fin pour la comparaison
+      const eventEndDate = event.endDate || event.date;
+      const eventStartDate = event.date;
+      
+      // L'événement est à venir s'il commence avant 30 jours et se termine après maintenant
+      return eventStartDate <= thirtyDaysFromNow && eventEndDate >= now;
+    }).sort((a, b) => a.date.getTime() - b.date.getTime());
   };
 
   const getEventsForDate = (date: Date) => {
-    const dayEvents = events.filter(event => 
-      event.date.toDateString() === date.toDateString()
+    const dayEvents = events.filter(event => {
+      // Événements d'un seul jour
+      if (!event.endDate) {
+        return event.date.toDateString() === date.toDateString();
+      }
+      
+      // Événements multi-jours : vérifier si la date est dans la période
+      const startDate = new Date(event.date.getFullYear(), event.date.getMonth(), event.date.getDate());
+      const endDate = new Date(event.endDate.getFullYear(), event.endDate.getMonth(), event.endDate.getDate());
+      const checkDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      
+      return checkDate >= startDate && checkDate <= endDate;
+    });
     );
     
     // Ajouter les vacances comme "événements" pour l'affichage
@@ -157,8 +173,19 @@ const Calendar = () => {
 
   const getTodayEvents = () => {
     const today = new Date();
-    return events.filter(event => 
-      event.date.toDateString() === today.toDateString()
+    return events.filter(event => {
+      // Événements d'un seul jour
+      if (!event.endDate) {
+        return event.date.toDateString() === today.toDateString();
+      }
+      
+      // Événements multi-jours : vérifier si aujourd'hui est dans la période
+      const startDate = new Date(event.date.getFullYear(), event.date.getMonth(), event.date.getDate());
+      const endDate = new Date(event.endDate.getFullYear(), event.endDate.getMonth(), event.endDate.getDate());
+      const checkDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+      
+      return checkDate >= startDate && checkDate <= endDate;
+    });
     );
   };
 
