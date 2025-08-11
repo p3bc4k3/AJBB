@@ -374,7 +374,8 @@ export const events: Event[] = [
   },
 /*
   {
-    date: new Date("2025-08-11"),
+    date: new Date("2026-01-24"), // date ou date de début
+    endDate: new Date("2026-01-25"), // date de fin si plusieurs jours
     title: "Vital Sports",
     description: "Vital Sports - Villeneuve-lès-Béziers",
     type: "event", // compétitions, stages ou évènements général
