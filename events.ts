@@ -330,35 +330,35 @@ export const events: Event[] = [
     category: "Club"
   },
   {
-    date: new Date(2025, 7, 30),
+    date: new Date(2025, 7, 30), // 30 août 2025
     title: "Vital Sports",
     description: "Vital Sport - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club"
   },
   {
-    date: new Date(2025, 7, 31),
+    date: new Date(2025, 7, 31), // 31 août 2025
     title: "Vital Sports",
     description: "Vital Sport - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club"
   },
   {
-    date: new Date(2025, 8, 6),
+    date: new Date(2025, 8, 6), // 6 septembre 2025
     title: "Journée des Associations",
     description: "Journée des Associations - Thézan-lès-Béziers",
     type: "event",
     category: "Club"
   },
    {
-    date: new Date(2025, 8, 7),
+    date: new Date(2025, 8, 7), // 7 septembre 2025
     title: "Journée des Associations",
     description: "Journée des Associations - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club"
   },
   {
-    date: new Date(2025, 8, 7),
+    date: new Date(2025, 8, 7), // 7 septembre 2025
     title: "Journée des Associations",
     description: "Journée des Associations - Sauvian",
     type: "event",

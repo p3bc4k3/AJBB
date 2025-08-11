@@ -221,7 +221,7 @@ const Calendar = () => {
                   getUpcomingEvents().map((event, index) => (
                     <div key={index} className={`flex gap-4 p-4 bg-gray-50 rounded-lg border-l-4 ${
                         event.type === 'competition' ? 'border-red-500' : 
-                        event.type === 'training' ? 'text-blue-500' : 
+                        event.type === 'training' ? 'border-blue-500' : 
                         'border-yellow-600'
                       }`}>
                       <div className="text-center min-w-[60px]">
