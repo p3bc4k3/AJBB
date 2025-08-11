@@ -44,7 +44,42 @@ const Calendar = () => {
       event.date.toDateString() === dayDate.toDateString()
     );
     const isHolidayDay = isHoliday(dayDate) !== null;
-    return hasEventOnDay || isHolidayDay;
+    const isInHolidayPeriod = isInHolidayRange(dayDate);
+    return hasEventOnDay || isHolidayDay || isInHolidayPeriod;
+  };
+
+  const isInHolidayRange = (date: Date) => {
+    return holidays.some(holiday => {
+      const startDate = new Date(holiday.startDate.getFullYear(), holiday.startDate.getMonth(), holiday.startDate.getDate());
+      const endDate = new Date(holiday.endDate.getFullYear(), holiday.endDate.getMonth(), holiday.endDate.getDate());
+      const checkDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      return checkDate >= startDate && checkDate <= endDate;
+    });
+  };
+
+  const getHolidayForDay = (day: number) => {
+    if (!day) return null;
+    const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+    return holidays.find(holiday => {
+      const startDate = new Date(holiday.startDate.getFullYear(), holiday.startDate.getMonth(), holiday.startDate.getDate());
+      const endDate = new Date(holiday.endDate.getFullYear(), holiday.endDate.getMonth(), holiday.endDate.getDate());
+      const checkDate = new Date(dayDate.getFullYear(), dayDate.getMonth(), dayDate.getDate());
+      return checkDate >= startDate && checkDate <= endDate;
+    });
+  };
+
+  const getHolidayPosition = (day: number, holiday: Holiday) => {
+    if (!day) return null;
+    const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+    const startDate = new Date(holiday.startDate.getFullYear(), holiday.startDate.getMonth(), holiday.startDate.getDate());
+    const endDate = new Date(holiday.endDate.getFullYear(), holiday.endDate.getMonth(), holiday.endDate.getDate());
+    const checkDate = new Date(dayDate.getFullYear(), dayDate.getMonth(), dayDate.getDate());
+    
+    const isStart = checkDate.getTime() === startDate.getTime();
+    const isEnd = checkDate.getTime() === endDate.getTime();
+    const isMiddle = checkDate > startDate && checkDate < endDate;
+    
+    return { isStart, isEnd, isMiddle };
   };
 
   const getEventTypeForDay = (day: number) => {
@@ -52,7 +87,7 @@ const Calendar = () => {
     const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
     
     // Vérifier d'abord les vacances
-    const holiday = isHoliday(dayDate);
+    const holiday = getHolidayForDay(day);
     if (holiday) return 'holiday';
     
     // Puis les événements
@@ -338,23 +373,71 @@ const Calendar = () => {
                 <div
                   key={index}
                   onClick={() => handleDayClick(day || 0)}
-                  className={`aspect-square flex items-center justify-center border border-gray-200 relative cursor-pointer hover:bg-gray-50 transition-colors duration-200 ${
+                  className={`aspect-square flex items-center justify-center border border-gray-200 relative cursor-pointer hover:bg-gray-50 transition-colors duration-200 overflow-hidden ${
                     !day ? 'text-gray-300' : ''
                   } ${
                     isToday(day || 0) ? 'bg-yellow-600 text-white font-bold' : ''
                   } ${
                     selectedDate && day && selectedDate.toDateString() === new Date(currentDate.getFullYear(), currentDate.getMonth(), day).toDateString() 
                       ? 'ring-2 ring-yellow-600 bg-yellow-50' : ''
+                  } ${
+                    getHolidayForDay(day || 0) ? 'bg-orange-50' : ''
                   }`}
                 >
+                  {/* Ligne de vacances */}
+                  {(() => {
+                    const holiday = getHolidayForDay(day || 0);
+                    if (holiday && day) {
+                      const position = getHolidayPosition(day, holiday);
+                      if (position) {
+                        return (
+                          <div className="absolute inset-0 pointer-events-none">
+                            {/* Ligne horizontale principale */}
+                            <div className="absolute top-1/2 transform -translate-y-1/2 h-1 bg-orange-400 opacity-60"
+                                 style={{
+                                   left: position.isStart ? '50%' : '0%',
+                                   right: position.isEnd ? '50%' : '0%'
+                                 }}>
+                            </div>
+                            
+                            {/* Cercle de début */}
+                            {position.isStart && (
+                              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-orange-500 rounded-full border-2 border-white shadow-sm"></div>
+                            )}
+                            
+                            {/* Cercle de fin */}
+                            {position.isEnd && (
+                              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-orange-500 rounded-full border-2 border-white shadow-sm"></div>
+                            )}
+                          </div>
+                        );
+                      }
+                    }
+                    return null;
+                  })()}
+                  
                   {day}
+                  
+                  {/* Points d'événements (repositionnés pour éviter le conflit avec les lignes) */}
                   {hasEvent(day || 0) && (
-                    <div className={`absolute bottom-1 right-1 w-2 h-2 rounded-full ${
-                      getEventTypeForDay(day || 0) === 'holiday' ? 'bg-orange-500' :
-                      getEventTypeForDay(day || 0) === 'competition' ? 'bg-red-500' : 
-                      getEventTypeForDay(day || 0) === 'training' ? 'bg-blue-500' : 
-                      'bg-yellow-600'
-                    }`}></div>
+                    <div className="absolute bottom-1 right-1">
+                      {!getHolidayForDay(day || 0) && (
+                        <div className={`w-2 h-2 rounded-full ${
+                          getEventTypeForDay(day || 0) === 'competition' ? 'bg-red-500' : 
+                          getEventTypeForDay(day || 0) === 'training' ? 'bg-blue-500' : 
+                          'bg-yellow-600'
+                        }`}></div>
+                      )}
+                      {getHolidayForDay(day || 0) && events.some(event => 
+                        event.date.toDateString() === new Date(currentDate.getFullYear(), currentDate.getMonth(), day || 0).toDateString()
+                      ) && (
+                        <div className={`w-2 h-2 rounded-full ${
+                          getEventTypeForDay(day || 0) === 'competition' ? 'bg-red-500' : 
+                          getEventTypeForDay(day || 0) === 'training' ? 'bg-blue-500' : 
+                          'bg-yellow-600'
+                        }`}></div>
+                      )}
+                    </div>
                   )}
                 </div>
               ))}

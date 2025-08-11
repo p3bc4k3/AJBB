@@ -6,53 +6,8 @@ export interface Holiday {
   type: 'vacation' | 'break';
 }
 
-// Vacances scolaires 2024-2025 et 2025-2026 - Zone C (Académie de Montpellier - Béziers)
+// Vacances scolaires 2025-2026 - Zone C (Académie de Montpellier - Béziers)
 export const holidays: Holiday[] = [
-  // Vacances de la Toussaint 2024
-  {
-    name: "Vacances de la Toussaint",
-    startDate: new Date("2024-10-19"),
-    endDate: new Date("2024-11-04"),
-    zone: "C",
-    type: "vacation"
-  },
-  
-  // Vacances de Noël 2024-2025
-  {
-    name: "Vacances de Noël",
-    startDate: new Date("2024-12-21"),
-    endDate: new Date("2025-01-06"),
-    zone: "C",
-    type: "vacation"
-  },
-  
-  // Vacances d'hiver 2025
-  {
-    name: "Vacances d'hiver",
-    startDate: new Date("2025-02-15"),
-    endDate: new Date("2025-03-03"),
-    zone: "C",
-    type: "vacation"
-  },
-  
-  // Vacances de printemps 2025
-  {
-    name: "Vacances de printemps",
-    startDate: new Date("2025-04-12"),
-    endDate: new Date("2025-04-28"),
-    zone: "C",
-    type: "vacation"
-  },
-  
-  // Vacances d'été 2025
-  {
-    name: "Vacances d'été",
-    startDate: new Date("2025-07-05"),
-    endDate: new Date("2025-09-01"),
-    zone: "C",
-    type: "vacation"
-  },
-  
   // Vacances de la Toussaint 2025
   {
     name: "Vacances de la Toussaint",
