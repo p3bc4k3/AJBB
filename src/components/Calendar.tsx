@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, ExternalLink, Clock, AlertCircle, Calendar as CalendarIcon, MapPin } from 'lucide-react';
 import { events, Event } from '../../events';
+import { holidays, isHoliday, Holiday } from '../../holidays';
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -39,19 +40,26 @@ const Calendar = () => {
   const hasEvent = (day: number) => {
     if (!day) return false;
     const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
-    return events.some(event => 
+    const hasEventOnDay = events.some(event => 
       event.date.toDateString() === dayDate.toDateString()
     );
+    const isHolidayDay = isHoliday(dayDate) !== null;
+    return hasEventOnDay || isHolidayDay;
   };
 
   const getEventTypeForDay = (day: number) => {
     if (!day) return null;
     const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+    
+    // Vérifier d'abord les vacances
+    const holiday = isHoliday(dayDate);
+    if (holiday) return 'holiday';
+    
+    // Puis les événements
     const dayEvents = events.filter(event => 
       event.date.toDateString() === dayDate.toDateString()
     );
     if (dayEvents.length === 0) return null;
-    // Retourne le type du premier événement (ou on pourrait prioriser)
     return dayEvents[0].type;
   };
 
@@ -72,9 +80,21 @@ const Calendar = () => {
   };
 
   const getEventsForDate = (date: Date) => {
-    return events.filter(event => 
+    const dayEvents = events.filter(event => 
       event.date.toDateString() === date.toDateString()
     );
+    
+    // Ajouter les vacances comme "événements" pour l'affichage
+    const holiday = isHoliday(date);
+    const holidayEvents = holiday ? [{
+      date: date,
+      title: holiday.name,
+      description: `Vacances scolaires - Zone ${holiday.zone}`,
+      type: 'holiday' as const,
+      category: 'Vacances scolaires'
+    }] : [];
+    
+    return [...dayEvents, ...holidayEvents];
   };
 
   const getTodayEvents = () => {
@@ -330,6 +350,7 @@ const Calendar = () => {
                   {day}
                   {hasEvent(day || 0) && (
                     <div className={`absolute bottom-1 right-1 w-2 h-2 rounded-full ${
+                      getEventTypeForDay(day || 0) === 'holiday' ? 'bg-orange-500' :
                       getEventTypeForDay(day || 0) === 'competition' ? 'bg-red-500' : 
                       getEventTypeForDay(day || 0) === 'training' ? 'bg-blue-500' : 
                       'bg-yellow-600'
@@ -356,6 +377,7 @@ const Calendar = () => {
                   ) : (
                     getEventsForDate(selectedDate).map((event, index) => (
                       <div key={index} className={`p-6 bg-gray-50 rounded-lg border-l-4 ${
+                        event.type === 'holiday' ? 'border-orange-500' :
                         event.type === 'competition' ? 'border-red-500' : 
                         event.type === 'training' ? 'border-blue-500' : 
                         'border-yellow-600'
@@ -364,11 +386,13 @@ const Calendar = () => {
                           <div className="flex items-center gap-2 mb-1">
                             <h4 className="font-semibold text-gray-900">{event.title}</h4>
                             <span className={`px-2 py-1 text-xs rounded-full ${
+                              event.type === 'holiday' ? 'bg-orange-100 text-orange-700' :
                               event.type === 'competition' ? 'bg-red-100 text-red-700' : 
                               event.type === 'training' ? 'bg-blue-100 text-blue-700' : 
                               'bg-yellow-100 text-yellow-700'
                             }`}>
-                              {event.type === 'competition' ? 'Compétition' : 
+                              {event.type === 'holiday' ? 'Vacances' :
+                              event.type === 'competition' ? 'Compétition' : 
                                event.type === 'training' ? 'Stage' : 
                                'Événement'}
                             </span>
@@ -392,7 +416,7 @@ const Calendar = () => {
                             </div>
                           )}
                           
-                          {event.registrationDeadline && (
+                          {event.type !== 'holiday' && event.registrationDeadline && (
                             <div className="mt-3 pt-3 border-t border-gray-200">
                               {getEventStatus(event) === 'future' && (
                                 <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
@@ -432,6 +456,7 @@ const Calendar = () => {
                 ) : (
                   getUpcomingEvents().map((event, index) => (
                     <div key={index} className={`p-6 bg-gray-50 rounded-lg border-l-4 ${
+                        event.type === 'holiday' ? 'border-orange-500' :
                         event.type === 'competition' ? 'border-red-500' : 
                         event.type === 'training' ? 'border-blue-500' : 
                         'border-yellow-600'
@@ -439,6 +464,7 @@ const Calendar = () => {
                       <div className="flex gap-4">
                         <div className="text-center min-w-[60px]">
                           <div className={`text-xl font-bold ${
+                            event.type === 'holiday' ? 'text-orange-500' :
                             event.type === 'competition' ? 'text-red-500' : 
                             event.type === 'training' ? 'text-blue-500' : 
                             'text-yellow-600'
@@ -453,11 +479,13 @@ const Calendar = () => {
                           <div className="flex items-center gap-2 mb-1">
                             <h4 className="font-semibold text-gray-900">{event.title}</h4>
                             <span className={`px-2 py-1 text-xs rounded-full ${
+                              event.type === 'holiday' ? 'bg-orange-100 text-orange-700' :
                               event.type === 'competition' ? 'bg-red-100 text-red-700' : 
                               event.type === 'training' ? 'bg-blue-100 text-blue-700' : 
                               'bg-yellow-100 text-yellow-700'
                             }`}>
-                              {event.type === 'competition' ? 'Compétition' : 
+                              {event.type === 'holiday' ? 'Vacances' :
+                              event.type === 'competition' ? 'Compétition' : 
                                event.type === 'training' ? 'Stage' : 
                                'Événement'}
                             </span>
@@ -481,7 +509,7 @@ const Calendar = () => {
                             </div>
                           )}
                           
-                          {event.registrationDeadline && (
+                          {event.type !== 'holiday' && event.registrationDeadline && (
                             <div className="mt-3 pt-3 border-t border-gray-200">
                               {getEventStatus(event) === 'future' && (
                                 <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
@@ -510,6 +538,10 @@ const Calendar = () => {
           <h4 className="font-semibold text-gray-900 mb-2">Légende</h4>
           <div className="flex flex-wrap gap-4 text-sm">
             <div className="flex items-center gap-2">
+              <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+              <span>Vacances scolaires</span>
+            </div>
+            <div className="flex items-center gap-2">
               <div className="w-3 h-3 bg-red-500 rounded-full"></div>
               <span>Compétitions</span>
             </div>
@@ -525,8 +557,8 @@ const Calendar = () => {
           <div className="mt-4 p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
             <p className="text-sm text-blue-800">
               <strong>📝 Notes :</strong> Les événements sont basés sur le calendrier prévisionnel. 
-              Les dates et lieux peuvent être modifiés. <strong>Cliquez sur un jour</strong> pour voir les événements de cette date.
-              Les inscriptions se font via le formulaire Google du club.
+              Les dates et lieux peuvent être modifiés. Les vacances scolaires correspondent à la zone C (Académie de Montpellier).
+              <strong>Cliquez sur un jour</strong> pour voir les événements de cette date. Les inscriptions se font via le formulaire Google du club.
             </p>
           </div>
         </div>
