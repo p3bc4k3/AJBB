@@ -114,6 +114,16 @@ const Calendar = () => {
     return 'open';
   };
 
+  const getEventStatus = (event: Event) => {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const eventDate = new Date(event.date.getFullYear(), event.date.getMonth(), event.date.getDate());
+    
+    if (eventDate < today) return 'past';
+    if (eventDate.getTime() === today.getTime()) return 'today';
+    return 'future';
+  };
+
   const handleRegistration = (event: Event) => {
     if (event.registrationUrl) {
       window.open(event.registrationUrl, '_blank');
@@ -122,6 +132,11 @@ const Calendar = () => {
 
   const renderRegistrationButton = (event: Event) => {
     if (!event.registrationDeadline || !event.registrationUrl) return null;
+    
+    const eventStatus = getEventStatus(event);
+    
+    // Masquer les inscriptions pour les événements d'aujourd'hui ou passés
+    if (eventStatus === 'today' || eventStatus === 'past') return null;
     
     const status = getRegistrationStatus(event);
     
@@ -161,6 +176,21 @@ const Calendar = () => {
         S'inscrire
       </button>
     );
+  };
+
+  const renderEventStatus = (event: Event) => {
+    const eventStatus = getEventStatus(event);
+    
+    if (eventStatus === 'past') {
+      return (
+        <div className="flex items-center gap-2 text-gray-500 text-sm mt-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <Clock size={14} />
+          <span className="font-medium">Événement terminé</span>
+        </div>
+      );
+    }
+    
+    return null;
   };
 
   return (
@@ -243,6 +273,7 @@ const Calendar = () => {
                             </span>
                           </div>
                           {renderRegistrationButton(event)}
+                          {renderEventStatus(event)}
                         </div>
                       )}
                     </div>
@@ -368,6 +399,7 @@ const Calendar = () => {
                                 </span>
                               </div>
                               {renderRegistrationButton(event)}
+                              {renderEventStatus(event)}
                             </div>
                           )}
                         </div>
@@ -454,6 +486,7 @@ const Calendar = () => {
                                 </span>
                               </div>
                               {renderRegistrationButton(event)}
+                              {renderEventStatus(event)}
                             </div>
                           )}
                         </div>
