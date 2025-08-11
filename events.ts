@@ -331,7 +331,7 @@ export const events: Event[] = [
   // Événements d'août et septembre 2025
   {
     date: new Date("2025-08-30"),
-    endDate: new Date("2026-08-31"),
+    endDate: new Date("2025-08-31"),
     title: "Vital Sports",
     description: "Vital Sports - Villeneuve-lès-Béziers",
     type: "event",
