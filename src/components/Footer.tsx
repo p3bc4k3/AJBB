@@ -54,7 +54,7 @@ const Footer = () => {
               ))}
               <li>
                 <a
-                  href="/informations-pratiques.html"
+                  href="/informations-pratiques"
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Infos pratiques
@@ -62,7 +62,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/inscription.html"
+                  href="/inscription"
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Inscription
