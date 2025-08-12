@@ -2,12 +2,7 @@ import React from 'react';
 
 const Sponsors = () => {
   const sponsors = [
-    { name: 'Partenaire 1', logo: '/img/sponsor/sponsor1.png' },
-    { name: 'Partenaire 2', logo: '/img/sponsor/sponsor2.png' },
-    { name: 'Partenaire 3', logo: '/img/sponsor/sponsor3.png' },
-    { name: 'Partenaire 4', logo: '/img/sponsor/sponsor4.png' },
-    { name: 'Partenaire 5', logo: '/img/sponsor/sponsor5.png' },
-    { name: 'Partenaire 6', logo: '/img/sponsor/sponsor6.png' },
+    { name: 'Partenaire 1', logo: '/img/sponsor/sponsor1.png' }
   ];
 
   return (
