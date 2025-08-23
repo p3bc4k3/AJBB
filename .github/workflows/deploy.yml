@@ -1,0 +1,14 @@
+name: deploy-ajbb
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    # ⚠️ adapte ces labels à ceux de TON runner self-hosted vus dans GitHub
+    runs-on: [ self-hosted, linux, ajbb ]
+    steps:
+      - name: Build & deploy on server
+        run: /usr/local/bin/deploy-ajbb.sh
