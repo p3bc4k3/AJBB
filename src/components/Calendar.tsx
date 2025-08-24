@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, ExternalLink, Clock, AlertCircle, Calendar as CalendarIcon, MapPin } from 'lucide-react';
 import { events, Event } from '../../events';
 import { holidays, isHoliday, Holiday } from '../../holidays';
+import CalendarButton from './CalendarButton';
+import { CalendarEvent } from '../utils/calendar';
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -281,6 +283,27 @@ const Calendar = () => {
     );
   };
 
+  const convertToCalendarEvent = (event: Event): CalendarEvent => {
+    // Définir une heure par défaut si pas spécifiée
+    const startDate = new Date(event.date);
+    startDate.setHours(9, 0, 0, 0); // 9h00 par défaut
+    
+    const endDate = event.endDate ? new Date(event.endDate) : new Date(startDate);
+    if (!event.endDate) {
+      // Si pas de date de fin, ajouter 2h par défaut
+      endDate.setHours(startDate.getHours() + 2);
+    } else {
+      endDate.setHours(18, 0, 0, 0); // 18h00 par défaut pour la fin
+    }
+
+    return {
+      title: event.title,
+      description: `${event.description}${event.category ? `\n\nCatégorie: ${event.category}` : ''}${event.registrationDeadline ? `\n\nInscription avant le ${event.registrationDeadline.toLocaleDateString('fr-FR')}` : ''}`,
+      startDate,
+      endDate,
+      location: event.location
+    };
+  };
   const renderEventStatus = (event: Event) => {
     const eventStatus = getEventStatus(event);
     
@@ -390,6 +413,13 @@ const Calendar = () => {
         )}
 
         <div className="grid lg:grid-cols-2 gap-12">
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            <CalendarButton 
+                              event={convertToCalendarEvent(event)} 
+                              size="sm"
+                            />
+                          </div>
+                          
           {/* Calendar */}
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
             <div className="bg-yellow-600 text-white p-6 flex items-center justify-between">
@@ -566,6 +596,13 @@ const Calendar = () => {
                             </div>
                           )}
                           
+                          <div className="mt-3">
+                            <CalendarButton 
+                              event={convertToCalendarEvent(event)} 
+                              size="sm"
+                            />
+                          </div>
+                          
                           {event.type !== 'holiday' && event.registrationDeadline && (
                             <div className="mt-3 pt-3 border-t border-gray-200">
                               {getEventStatus(event) === 'future' && (
@@ -658,6 +695,13 @@ const Calendar = () => {
                               </a>
                             </div>
                           )}
+                          
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            <CalendarButton 
+                              event={convertToCalendarEvent(event)} 
+                              size="sm"
+                            />
+                          </div>
                           
                           {event.type !== 'holiday' && event.registrationDeadline && (
                             <div className="mt-3 pt-3 border-t border-gray-200">
