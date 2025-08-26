@@ -5,10 +5,22 @@ on:
     branches: [ "main" ]
   workflow_dispatch: {}
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy:
-    # ⚠️ adapte ces labels à ceux de TON runner self-hosted vus dans GitHub
-    runs-on: [ self-hosted, linux, ajbb ]
+    runs-on: self-hosted
+    timeout-minutes: 30
     steps:
+      - name: Debug runner
+        run: |
+          echo "Runner hostname: $(hostname)"
+          echo "Kernel: $(uname -a)"
+          echo "Whoami: $(whoami)"
+          echo "Working dir: $(pwd)"
+          echo "Date: $(date)"
+
       - name: Build & deploy on server
         run: /usr/local/bin/deploy-ajbb.sh
