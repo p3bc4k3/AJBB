@@ -16,11 +16,36 @@ jobs:
     steps:
       - name: Debug runner
         run: |
-          echo "Runner hostname: $(hostname)"
+          echo "Runner: $(whoami) @ $(hostname)"
           echo "Kernel: $(uname -a)"
-          echo "Whoami: $(whoami)"
-          echo "Working dir: $(pwd)"
           echo "Date: $(date)"
+          echo "Checking target dir:"
+          ls -la /var/www/ajbb/app || true
 
-      - name: Build & deploy on server
-        run: /usr/local/bin/deploy-ajbb.sh
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+
+      - name: Build
+        run: npm run build
+
+      # ⚠️ Si Nginx sert /var/www/ajbb/app (racine)
+      - name: Deploy build (rsync to /var/www/ajbb/app)
+        run: |
+          TARGET_DIR="/var/www/ajbb/app"
+          BUILD_DIR="dist"
+          sudo mkdir -p "$TARGET_DIR"
+          sudo rsync -az --delete "${BUILD_DIR}/" "${TARGET_DIR}/"
+          sudo chown -R www-data:www-data "$TARGET_DIR" || true
+
+      - name: Reload Nginx
+        run: sudo systemctl reload nginx || true
