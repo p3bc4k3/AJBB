@@ -16,9 +16,11 @@ jobs:
     steps:
       - name: Debug runner
         run: |
+          set -euo pipefail
           echo "Runner: $(whoami) @ $(hostname)"
           echo "Kernel: $(uname -a)"
           echo "Date: $(date)"
+          echo "Checking target dir:"
           ls -la /var/www/ajbb/app || true
 
       - name: Checkout repo
@@ -32,15 +34,29 @@ jobs:
 
       - name: Install deps
         run: |
+          set -euo pipefail
           if [ -f package-lock.json ]; then npm ci; else npm install; fi
 
       - name: Build
         run: npm run build
 
-      - name: Deploy build (rsync to /var/www/ajbb/app)
+      - name: Deploy build to /var/www/ajbb/app (no rsync, no sudo)
         run: |
+          set -euo pipefail
           TARGET_DIR="/var/www/ajbb/app"
           BUILD_DIR="dist"
+
+          # créer le dossier cible si absent
           mkdir -p "$TARGET_DIR"
-          rsync -az --delete "${BUILD_DIR}/" "${TARGET_DIR}/"
-          # pas de sudo ici; les droits ont été donnés en amont
+
+          # vider proprement le contenu existant (y compris fichiers cachés)
+          # (utilise find pour éviter dépendances shell)
+          if [ -d "$TARGET_DIR" ]; then
+            find "$TARGET_DIR" -mindepth 1 -exec rm -rf {} +
+          fi
+
+          # copier le build (conserve droits/horodatages)
+          cp -a "${BUILD_DIR}/." "${TARGET_DIR}/"
+
+          # garantir lecture/exécution pour nginx sur des fichiers statiques
+          chmod -R a+rX "$TARGET_DIR"
