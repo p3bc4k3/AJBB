@@ -19,7 +19,6 @@ jobs:
           echo "Runner: $(whoami) @ $(hostname)"
           echo "Kernel: $(uname -a)"
           echo "Date: $(date)"
-          echo "Checking target dir:"
           ls -la /var/www/ajbb/app || true
 
       - name: Checkout repo
@@ -38,14 +37,10 @@ jobs:
       - name: Build
         run: npm run build
 
-      # ⚠️ Si Nginx sert /var/www/ajbb/app (racine)
       - name: Deploy build (rsync to /var/www/ajbb/app)
         run: |
           TARGET_DIR="/var/www/ajbb/app"
           BUILD_DIR="dist"
-          sudo mkdir -p "$TARGET_DIR"
-          sudo rsync -az --delete "${BUILD_DIR}/" "${TARGET_DIR}/"
-          sudo chown -R www-data:www-data "$TARGET_DIR" || true
-
-      - name: Reload Nginx
-        run: sudo systemctl reload nginx || true
+          mkdir -p "$TARGET_DIR"
+          rsync -az --delete "${BUILD_DIR}/" "${TARGET_DIR}/"
+          # pas de sudo ici; les droits ont été donnés en amont
