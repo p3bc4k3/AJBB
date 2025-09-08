@@ -15,29 +15,56 @@ export const events: Event[] = [
   {
     date: new Date("2025-10-12"),
     title: "Stages arbitrage et commissaires sportifs",
-    description: "Stages arbitrage et commissaires sportifs - Narbonne",
-    type: "training",
-    category: "Minimes+",
-    location: "R1 Av. de la Naiade, 11100 Narbonne",
-    locationUrl: "https://maps.app.goo.gl/VhC3ozm9KMM5nRrk9" //URL du point google maps
-  },
-  {
-    date: new Date("2025-10-11"),
-    title: "Stages arbitrage et commissaires sportifs",
     description: "Stages arbitrage et commissaires sportifs - Mèze",
     type: "training",
     category: "Minimes+",
-    location: "18B Rue de la Méditerranée, 34140 Mèze",
-    locationUrl: "https://maps.app.goo.gl/RRADUKUoXfEDa7Ko9"
+    location: "9 Rue de la Méditerranée, 34140 Mèze",
+    locationUrl: "https://maps.app.goo.gl/zWyY26x6sba5BWqK6",
+    registrationUrl: "https://forms.gle/csvt92TntrqzGhQu7", // URL de l'inscription
+    registrationDeadline: new Date("2025-09-30"), // date limite d'inscription
   },
   {
-    date: new Date("2025-10-12"),
+    date: new Date("2025-10-11"),
     title: "Stage Benjamins-Minimes à Thézan-lès-Béziers",
     description: "Stage Benjamins-Minimes à Thézan-lès-Béziers",
     type: "training",
     category: "Benjamins - Minimes",
     location: "Rue Antoine de Saint-Exupéry, 34490 Thézan-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/43a6zSveVgwm777i9"
+    locationUrl: "https://maps.app.goo.gl/43a6zSveVgwm777i9",
+    registrationUrl: "https://forms.gle/gpExLiTAdMQ8dy1u8", // URL de l'inscription
+    registrationDeadline: new Date("2025-09-30"), // date limite d'inscription
+  },
+  {
+    title: "Stage Benjamins",
+    date: new Date("2025-10-18"), // date ou date de début
+    endDate: new Date("2025-10-20"), // date de fin si plusieurs jours
+    // registrationDeadline: new Date("2025-08-12"), // date limite d'inscription
+    description: "Stage départemental compétiteurs",
+    type: "training", // compétitions, stages ou évènements général
+    category: "Benjamins", // publics concernés
+    location: "9 Rue de la Méditerranée, 34140 Mèze",
+    locationUrl: "https://maps.app.goo.gl/zWyY26x6sba5BWqK6",
+  },
+  {
+    title: "Stage Minimes Cadets Juniors",
+    date: new Date("2025-10-20"), // date ou date de début
+    endDate: new Date("2025-10-22"), // date de fin si plusieurs jours
+    // registrationDeadline: new Date("2025-08-12"), // date limite d'inscription
+    description: "Stage départemental compétiteurs",
+    type: "training", // compétitions, stages ou évènements général
+    category: "Minimes+", // publics concernés
+    location: "9 Rue de la Méditerranée, 34140 Mèze",
+    locationUrl: "https://maps.app.goo.gl/zWyY26x6sba5BWqK6",
+  },
+  {
+    title: "Stage Toussaint",
+    date: new Date("2025-10-25"), // date ou date de début
+    endDate: new Date("2025-10-26"), // date de fin si plusieurs jours
+    description: "Stage Toussaint pour les enfants né entre 2017 et 2013",
+    type: "training", // compétitions, stages ou évènements général
+    category: "Minimes+", // publics concernés
+    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
+    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8" 
   },
   {
     date: new Date("2025-11-01"),
@@ -46,6 +73,15 @@ export const events: Event[] = [
     type: "competition",
     category: "Minimes",
     location: "Auch"
+  },
+  {
+    date: new Date("2025-11-0S"),
+    title: "Stage départemental kata et Ju Jitsu",
+    description: "Journée de stage départementale de Kata",
+    type: "training",
+    category: "Minimes+",
+    location: "9 Rue de la Méditerranée, 34140 Mèze",
+    locationUrl: "https://maps.app.goo.gl/zWyY26x6sba5BWqK6",
   },
   {
     date: new Date("2025-11-08"),
@@ -67,12 +103,12 @@ export const events: Event[] = [
   },
   {
     date: new Date("2025-11-15"),
-    title: "Tournoi label Régional Benjamins de l'Aude",
-    description: "Tournoi label Régional Benjamins de l'Aude",
+    title: "Critérium 1er district Hérault benjamins",
+    description: "Championnat pour les benjamins qui font beaucoup de compétitions (niveau indispensable)",
     type: "competition",
     category: "Benjamins",
-    location: "R1 Av. de la Naiade, 11100 Narbonne",
-    locationUrl: "https://maps.app.goo.gl/VhC3ozm9KMM5nRrk9"
+    location: "18B Rue de la Méditerranée, 34140 Mèze",
+    locationUrl: "https://maps.app.goo.gl/RRADUKUoXfEDa7Ko9"
   },
   {
     date: new Date("2025-11-16"),
@@ -80,16 +116,8 @@ export const events: Event[] = [
     description: "Stage Occitanie de jujitsu - Mèze",
     type: "training",
     category: "Ju Jitsu",
-    location: "18B Rue de la Méditerranée, 34140 Mèze",
-    locationUrl: "https://maps.app.goo.gl/RRADUKUoXfEDa7Ko9"
-  },
-  {
-    date: new Date("2025-11-23"),
-    title: "Compétitions Benjamins Minimes",
-    description: "Compétitions Benjamins Minimes - Lavelanet",
-    type: "competition",
-    category: "Benjamins - Minimes",
-    location: "Lavelanet"
+    location: "9 Rue de la Méditerranée, 34140 Mèze",
+    locationUrl: "https://maps.app.goo.gl/zWyY26x6sba5BWqK6",
   },
   {
     date: new Date("2025-11-30"),
@@ -100,37 +128,51 @@ export const events: Event[] = [
     location: "Moissac"
   },
   {
-    date: new Date("2025-12-13"),
+    date: new Date("2025-12-06"),
     title: "Tournoi de Noël du Club",
     description: "Tournoi de Noël du Club - Villeneuve-lès-Béziers",
     type: "competition",
     category: "Club",location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8"
+    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
+    registrationUrl: "https://forms.gle/K8U7c7xA6WpYAds28", // URL de l'inscription
+    registrationDeadline: new Date("2025-11-23"), // date limite d'inscription
   },
   {
     date: new Date("2025-12-13"),
+    title: "Critérium 2ème  district Hérault benjamins",
+    description: "Championnat pour les benjamins qui font beaucoup de compétitions (niveau indispensable)",
+    type: "competition",
+    category: "Benjamins",
+    location: "18B Rue de la Méditerranée, 34140 Mèze",
+    locationUrl: "https://maps.app.goo.gl/RRADUKUoXfEDa7Ko9"
+  },
+  {
+    date: new Date("2025-12-06"),
     title: "Passage de Grade Mi-Saison",
     description: "Passage de Grade Mi-Saison - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club",
     location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8"
+    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
+    registrationUrl: "https://forms.gle/j2ef7i6py2jPiLRY7", // URL de l'inscription
+    registrationDeadline: new Date("2025-11-23"), // date limite d'inscription
   },
   {
-    date: new Date("2025-12-14"),
+    date: new Date("2025-12-06"),
     title: "Papa Noël pour les Baby",
-    description: "Papa Noël pour les Baby - Thézan-lès-Béziers",
+    description: "Papa Noël pour les Baby - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club",
-    location: "Rue Antoine de Saint-Exupéry, 34490 Thézan-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/43a6zSveVgwm777i9"
-
+    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
+    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
+    registrationUrl: "https://forms.gle/trdWjpw5cyy9ovtg7", // URL de l'inscription
+    registrationDeadline: new Date("2025-11-23"), // date limite d'inscription
   },
   {
     date: new Date("2025-12-14"),
     title: "Championnat Occitanie ju jitsu - Ne waza",
     description: "Championnat Occitanie ju jitsu - Ne waza - Dojo de Narbonne",
-    type: "event",
+    type: "competition",
     category: "Ju Jitsu",
     location: "R1 Av. de la Naiade, 11100 Narbonne",
     locationUrl: "https://maps.app.goo.gl/VhC3ozm9KMM5nRrk9"
@@ -158,9 +200,10 @@ export const events: Event[] = [
     date: new Date("2026-01-17"),
     title: "Coupe Occitanie kata",
     description: "Coupe Occitanie kata",
-    type: "event",
+    type: "competition",
     category: "Minimes",
-    location: "à préciser"
+    location: "Chem. Cassaing, 31500 Toulouse",
+    locationUrl: "https://maps.app.goo.gl/YZSwbWm7g3esaqbu6"
   },
   {
     date: new Date("2026-01-18"),
@@ -174,9 +217,11 @@ export const events: Event[] = [
   {
     date: new Date("2026-01-24"),
     title: "Coupe de zone Minimes et Coupe de zone jeunes officiels Cadets",
-    description: "Coupe de zone Minimes et Coupe de zone jeunes officiels Cadets - 3 lieux (zones)",
-    type: "event",
-    category: "Minimes et Arbitrage Cadets"
+    description: "Coupe de zone Minimes et Coupe de zone jeunes officiels Cadets",
+    type: "competition",
+    category: "Minimes et Arbitrage Cadets",
+    location: "Palais Des Sports Beziers Méditerranée", 
+    locationUrl: "https://maps.app.goo.gl/vW1CRsQ4YifQsczT6"
   },
   {
     date: new Date("2026-01-24"),
@@ -189,29 +234,53 @@ export const events: Event[] = [
 
   },
   {
-    date: new Date("2026-01-25"),
+    date: new Date("2026-01-24"),
     title: "Kagami Biraki",
     description: "Kagami Biraki",
     type: "event",
     category: "Autre",
-    location: " à préciser"
+    location: "Palais Des Sports Beziers Méditerranée", 
+    locationUrl: "https://maps.app.goo.gl/vW1CRsQ4YifQsczT6"
   },
   {
-    date: new Date("2026-02-08"),
-    title: "Stage Occitanie de jujitsu",
-    description: "Stage Occitanie de jujitsu ",
-    type: "training",
-    category: "Ju Jitsu",
-    location: "à préciser"
+    date: new Date("2026-01-24"),
+    title: " Critériums benjamins et coupe jeunes officiels minimes",
+    description: "Zones Méditerranée benjamins et coupe jeunes officiels minimes - Mèze",
+    type: "competition",
+    category: "Minimes",
+    location: "Palais Des Sports Beziers Méditerranée", 
+    locationUrl: "https://maps.app.goo.gl/vW1CRsQ4YifQsczT6"
   },
   {
     date: new Date("2026-02-15"),
     title: "Coupe Occitanie minimes et Coupe Occitanie jeunes officiels cadets",
     description: "Coupe Occitanie minimes et Coupe Occitanie jeunes officiels cadets - Maison du judo Toulouse",
-    type: "event",
+    type: "competition",
     category: "Minimes - Arbitrage Cadet",
     location: "Chem. Cassaing, 31500 Toulouse",
     locationUrl: "https://maps.app.goo.gl/YZSwbWm7g3esaqbu6"
+  },
+  {
+    title: "Stage Benjamins",
+    date: new Date("2026-02-21"), // date ou date de début
+    endDate: new Date("2026-02-23"), // date de fin si plusieurs jours
+    // registrationDeadline: new Date("2025-08-12"), // date limite d'inscription
+    description: "Stage départemental compétiteurs",
+    type: "training", // compétitions, stages ou évènements général
+    category: "Benjamins", // publics concernés
+    location: "9 Rue de la Méditerranée, 34140 Mèze",
+    locationUrl: "https://maps.app.goo.gl/zWyY26x6sba5BWqK6",
+  },
+  {
+    title: "Stage Minimes Cadets Juniors",
+    date: new Date("2026-02-23"), // date ou date de début
+    endDate: new Date("2026-02-25"), // date de fin si plusieurs jours
+    // registrationDeadline: new Date("2025-08-12"), // date limite d'inscription
+    description: "Stage départemental compétiteurs",
+    type: "training", // compétitions, stages ou évènements général
+    category: "Minimes+", // publics concernés
+    location: "9 Rue de la Méditerranée, 34140 Mèze",
+    locationUrl: "https://maps.app.goo.gl/zWyY26x6sba5BWqK6",
   },
   {
     date: new Date("2026-03-14"),
@@ -220,46 +289,41 @@ export const events: Event[] = [
     description: "Championnnat de France seniors Jjitsu et Ne Waza",
     type: "event",
     category: "Ju Jitsu",
-    location: "à préciser"
+    location: "Lormont (à préciser)"
   },
   {
     date: new Date("2026-03-21"),
     title: "UV1 KATA ET UV2 TECHNIQUE 1D, 2D, 3D & 4D",
     description: "UV1 KATA ET UV2 TECHNIQUE 1D, 2D, 3D & 4D - CD30",
     type: "event",
-    category: "Autre"
+    category: "Autre",
+    location: "Vauvert"
+  },
+  {
+    date: new Date("2026-03-22"),
+    title: "UV3 1D au 3eme Dans",
+    description: "Shiai - CD30",
+    type: "event",
+    category: "Autre",
+    location: "Vauvert"
   },
   {
     date: new Date("2026-03-21"),
     endDate: new Date("2026-03-22"),
     title: "Coupe de France minimes",
     description: "Coupe de France minimes",
-    type: "event",
+    type: "competition",
     category: "Minimes",
-    location: "à préciser"
-  },
-  {
-    date: new Date("2026-03-22"),
-    title: "UV3 1D, 2D & 3D et UV4 3D & 4D",
-    description: "UV3 1D, 2D & 3D et UV4 3D & 4D - CD30",
-    type: "event",
-    category: "Autre"
+    location: "Villebon-sur-Yvette",
+    locationUrl: "https://maps.app.goo.gl/zMFWc7k84ghmWgjQ8"
   },
   {
     date: new Date("2026-03-28"),
-    title: "Critérium de Zone benjamins et coupe de Zone jeunes officiels minimes",
-    description: "Critérium de Zone benjamins et coupe de Zone jeunes officiels minimes - 3 lieux (zones)",
-    type: "event",
+    title: "Zone Méditerranée Benjamins",
+    description: "Zone benjamins et coupe de Zone jeunes officiels minimes",
+    type: "competition",
     category: "Benjamins - Arbitrage Minimes",
-    location: "à préciser"
-  },
-  {
-    date: new Date("2026-03-28"),
-    title: "Championnat de France Kata",
-    description: "Championnat de France Kata",
-    type: "event",
-    category: "Autre",
-    location: "à préciser"
+    location: "Marvejols"
   },
   {
     date: new Date("2026-04-03"),
@@ -279,17 +343,26 @@ export const events: Event[] = [
     category: "Club"
   },
   {
-    date: new Date("2026-04-18"),
-    title: "Critérium Occitanie benjamins et coupe jeunes officiels minimes",
-    description: "Critérium Occitanie benjamins et coupe jeunes officiels minimes - Mèze",
+    date: new Date("2026-04-12"),
+    title: "Open Kata",
+    description: "Tournoi de Kata",
     type: "event",
+    category: "Benjamins et +",
+    location: "9 Rue de la Méditerranée, 34140 Mèze",
+    locationUrl: "https://maps.app.goo.gl/zWyY26x6sba5BWqK6",
+  },
+  {
+    date: new Date("2026-04-18"),
+    title: " Occitanie benjamins et coupe jeunes officiels minimes",
+    description: "Région Occitanie benjamins et coupe jeunes officiels minimes - Mèze",
+    type: "competition",
     category: "Minimes",
     location: "18B Rue de la Méditerranée, 34140 Mèze",
     locationUrl: "https://maps.app.goo.gl/RRADUKUoXfEDa7Ko9"
   },
   {
     date: new Date("2026-04-25"),
-    title: "Passage de Grade anticipé",
+    title: "Passage de Grade anticipé - DATE A CONFIRMER",
     description: "Passage de Grade anticipé - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club",
@@ -298,7 +371,7 @@ export const events: Event[] = [
   },
   {
     date: new Date("2026-04-25"),
-    title: "Stage de paques (2 jours)",
+    title: "Stage de paques (2 jours) DATE A CONFIRMER",
     description: "Stage de paques (2 jours) - Villeneuve-lès-Béziers",
     type: "training",
     category: "Club",
@@ -310,34 +383,32 @@ export const events: Event[] = [
     endDate: new Date("2026-05-10"),
     title: "Coupe de France minimes par équipes de département",
     description: "Coupe de France minimes par équipes de département - A préciser",
-    type: "event",
+    type: "competition",
     category: "Minimes",
-    location: "à préciser"
+    location: "Villebon sur Yvette"
   },
   {
     date: new Date("2026-05-30"),
     title: "Journée Plage Ados",
     description: "Journée Plage Ados - Valras",
     type: "event",
-    category: "Club"
+    category: "Club",
+    location: "2 Bd Jean Moulin, 34350 Valras-Plage", 
+    locationUrl: "https://maps.app.goo.gl/fb15FKAJu2sJUjwc6",
+    registrationUrl: "https://forms.gle/gCCvsHEpjwvF7Kku8", // URL de l'inscription
+    registrationDeadline: new Date("2026-05-16"), // date limite d'inscription
   },
   {
     date: new Date("2026-06-06"),
+    endDate: new Date("2026-06-07"),
     title: "Passage de Grade",
     description: "Passage de Grade - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club",
     location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8"
-  },
-  {
-    date: new Date("2026-06-07"),
-    title: "Passage de Grade",
-    description: "Passage de Grade - Villeneuve-lès-Béziers",
-    type: "event",
-    category: "Club",
-    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8"
+    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
+    registrationUrl: "https://forms.gle/W7iMMvLckgqyxCXm7", // URL de l'inscription
+    registrationDeadline: new Date("2026-05-23"), // date limite d'inscription
   },
   {
     date: new Date("2026-06-13"),
@@ -346,16 +417,9 @@ export const events: Event[] = [
     type: "event",
     category: "Club",
     location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8"
-  },
-  {
-    date: new Date("2026-06-13"),
-    title: "UV1 KATA ET UV2 TECHNIQUE 1D, 2D, 3D & 4D",
-    description: "UV1 KATA ET UV2 TECHNIQUE 1D, 2D, 3D & 4D - Maison du judo Toulouse",
-    type: "event",
-    category: "Autre",
-    location: "Chem. Cassaing, 31500 Toulouse",
-    locationUrl: "https://maps.app.goo.gl/YZSwbWm7g3esaqbu6"
+    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
+    registrationUrl: "https://forms.gle/hiydtkeMiqYYgWcq6", // URL de l'inscription
+    registrationDeadline: new Date("2026-05-31"), // date limite d'inscription
   },
   {
     date: new Date("2026-06-14"),
@@ -368,7 +432,8 @@ export const events: Event[] = [
   },
   {
     date: new Date("2026-07-04"),
-    title: "Summer Camp",
+    endDate: new Date("2026-07-05"),
+    title: "Summer Camp - DATE A CONFIRMER",
     description: "Summer Camp - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club",
@@ -377,41 +442,10 @@ export const events: Event[] = [
   },
   // Événements d'août et septembre 2025
   {
-    date: new Date("2025-08-30"),
-    endDate: new Date("2025-08-31"),
-    title: "Vital Sports",
-    description: "Vital Sports - Villeneuve-lès-Béziers",
-    type: "event",
-    category: "Club",
-    location: "Avenue Jean Monnet, La Méridienne ZAC de, 34420 Villeneuve-lès-Béziers",
-    locationUrl: "https://maps.app.goo.gl/r1vuXMisfmmaEAe96"
-  },
-  {
     date: new Date(2025, 8, 8), // 8 septembre 2025
     endDate: new Date(2025, 8, 14), // 14 septembre 2025
     title: "Reprise des cours",
     description: "Reprise des entraînements pour toutes les catégories - Semaine du 8 au 14 septembre",
-    type: "event",
-    category: "Club"
-  },
-  {
-    date: new Date(2025, 8, 6), // 6 septembre 2025
-    title: "Journée des Associations",
-    description: "Journée des Associations - Thézan-lès-Béziers",
-    type: "event",
-    category: "Club"
-  },
-   {
-    date: new Date(2025, 8, 7), // 7 septembre 2025
-    title: "Journée des Associations",
-    description: "Journée des Associations - Villeneuve-lès-Béziers",
-    type: "event",
-    category: "Club"
-  },
-  {
-    date: new Date(2025, 8, 7), // 7 septembre 2025
-    title: "Journée des Associations",
-    description: "Journée des Associations - Sauvian",
     type: "event",
     category: "Club"
   },
@@ -437,6 +471,10 @@ Mèze adresse
     location: "18B Rue de la Méditerranée, 34140 Mèze",
     locationUrl: "https://maps.app.goo.gl/RRADUKUoXfEDa7Ko9"
 
+Mèze Dojo Taurus
+    location: "9 Rue de la Méditerranée, 34140 Mèze",
+    locationUrl: "https://maps.app.goo.gl/zWyY26x6sba5BWqK6",
+
 Narbonne Adresse
     location: "R1 Av. de la Naiade, 11100 Narbonne",
     locationUrl: "https://maps.app.goo.gl/VhC3ozm9KMM5nRrk9" //URL du point google maps
@@ -453,8 +491,11 @@ Thezan adresse
     location: "Rue Antoine de Saint-Exupéry, 34490 Thézan-lès-Béziers", 
     locationUrl: "https://maps.app.goo.gl/43a6zSveVgwm777i9"
 
-  Toulouse adresse 
+Toulouse adresse 
     location: "Chem. Cassaing, 31500 Toulouse",
     locationUrl: "https://maps.app.goo.gl/YZSwbWm7g3esaqbu6"
 
+Villebon-sur-Yvette
+    location: "Le Grand Dôme, Villebon-sur-Yvette",
+    locationUrl: "https://maps.app.goo.gl/zMFWc7k84ghmWgjQ8
 */
