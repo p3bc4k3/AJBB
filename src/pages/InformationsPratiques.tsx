@@ -1,5 +1,7 @@
 import React from 'react';
 import { Users, Shirt, Clock, Phone, Mail, Lightbulb } from 'lucide-react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const InformationsPratiques = () => {
   const sponsors = [
@@ -8,23 +10,10 @@ const InformationsPratiques = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <nav className="max-w-6xl mx-auto px-5 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <img src="/img/Logo.png" alt="AJBB Logo" className="w-8 h-8 object-contain" />
-              <span className="text-yellow-600 font-bold text-xl">AJBB</span>
-            </div>
-            <a href="/" className="text-gray-600 hover:text-yellow-600 transition-colors duration-200">
-              ← Retour au site
-            </a>
-          </div>
-        </nav>
-      </header>
+      <Header />
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-5 py-12">
+      <main className="max-w-6xl mx-auto px-5 py-12 pt-32">
         {/* Page Title */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-black mb-4 text-gray-900">Informations pratiques</h1>
@@ -391,22 +380,7 @@ const InformationsPratiques = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="max-w-6xl mx-auto px-5 text-center">
-          <div className="flex items-center justify-center gap-2 text-yellow-600 font-bold text-xl mb-4">
-            <img src="/img/Logo.png" alt="AJBB Logo" className="w-8 h-8 object-contain" />
-            <span>AJBB</span>
-          </div>
-          <div className="mb-4">
-            <a href="/#contact" className="text-gray-400 hover:text-white transition-colors duration-200">
-              Contact
-            </a>
-          </div>
-          <p className="text-gray-400">
-            &copy; 2025 Alliance Judo Bassin Biterrois. Tous droits réservés.
-          </p>
-        </div>
-      </footer>
+      <Footer />
 
       <style jsx>{`
         @keyframes scroll {
