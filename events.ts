@@ -64,7 +64,9 @@ export const events: Event[] = [
     type: "training", // compétitions, stages ou évènements général
     category: "Minimes+", // publics concernés
     location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8" 
+    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
+    registrationUrl: "https://www.helloasso.com/associations/harmonie-sport/evenements/stage-de-toussaint-2025-judo-ajbb", // URL de l'inscription
+    registrationDeadline: new Date("2025-10-22"), // date limite d'inscription
   },
   {
     date: new Date("2025-11-01"),
@@ -367,16 +369,22 @@ export const events: Event[] = [
     type: "event",
     category: "Club",
     location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8"
+    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
+    registrationDeadline: new Date("2026-04-22"),
+    registrationUrl: "https://forms.gle/6BEwRAzCKSUUyxDL7"
   },
   {
     date: new Date("2026-04-25"),
+    endDate: new Date("2026-04-26"), // date de fin si plusieurs jours
     title: "Stage de paques (2 jours) DATE A CONFIRMER",
     description: "Stage de paques (2 jours) - Villeneuve-lès-Béziers",
     type: "training",
     category: "Club",
     location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8"
+    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
+    registrationUrl: "https://www.helloasso.com/associations/harmonie-sport/evenements/stage-de-paques-2025-judo-ajbb", // URL de l'inscription
+    registrationDeadline: new Date("2026-04-22"),
+    
   },
   {
     date: new Date("2026-05-09"),
@@ -438,7 +446,9 @@ export const events: Event[] = [
     type: "event",
     category: "Club",
     location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8"
+    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
+    registrationUrl: "https://www.helloasso.com/associations/harmonie-sport/evenements/summer-camp-judo-2026-ajbb",
+    registrationDeadline: new Date("2026-06-29")
   },
   // Événements d'août et septembre 2025
   {
