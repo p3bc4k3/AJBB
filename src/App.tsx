@@ -10,6 +10,7 @@ import Inscription from './pages/Inscription';
 import InformationsPratiques from './pages/InformationsPratiques';
 import Planning from './pages/Planning';
 import Calendrier from './pages/Calendrier';
+import Photos from './pages/Photos';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/informations-pratiques" element={<InformationsPratiques />} />
           <Route path="/planning" element={<Planning />} />
           <Route path="/calendrier" element={<Calendrier />} />
+          <Route path="/photos" element={<Photos />} />
           <Route path="/" element={
             <>
               <Header />

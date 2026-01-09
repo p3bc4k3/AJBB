@@ -8,13 +8,16 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Définir la section active selon la page courante
     if (location.pathname === '/planning') {
       setActiveSection('planning');
       return;
     }
     if (location.pathname === '/calendrier') {
       setActiveSection('calendrier');
+      return;
+    }
+    if (location.pathname === '/photos') {
+      setActiveSection('photos');
       return;
     }
     if (location.pathname === '/informations-pratiques') {
@@ -137,8 +140,8 @@ const Header = () => {
             <a
               href="/calendrier"
               className={`relative font-medium transition-colors duration-300 py-2 text-center md:text-left ${
-                activeSection === 'calendrier' 
-                  ? 'text-yellow-600' 
+                activeSection === 'calendrier'
+                  ? 'text-yellow-600'
                   : 'text-gray-700 hover:text-yellow-600'
               }`}
             >
@@ -147,7 +150,21 @@ const Header = () => {
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-600 rounded-full" />
               )}
             </a>
-            
+
+            <a
+              href="/photos"
+              className={`relative font-medium transition-colors duration-300 py-2 text-center md:text-left ${
+                activeSection === 'photos'
+                  ? 'text-yellow-600'
+                  : 'text-gray-700 hover:text-yellow-600'
+              }`}
+            >
+              Photos
+              {activeSection === 'photos' && (
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-600 rounded-full" />
+              )}
+            </a>
+
             <a
               href="/informations-pratiques"
               className="relative font-medium transition-colors duration-300 py-2 text-gray-700 hover:text-yellow-600 text-center md:text-left"

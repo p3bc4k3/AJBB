@@ -155,6 +155,14 @@ const Footer = () => {
               </li>
               <li>
                 <a
+                  href="/photos"
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  Photos
+                </a>
+              </li>
+              <li>
+                <a
                   href="/informations-pratiques"
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
@@ -216,6 +224,14 @@ const Footer = () => {
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Calendrier
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/photos"
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  Photos
                 </a>
               </li>
               <li>
