@@ -13,192 +13,6 @@ export interface Event {
 
 export const events: Event[] = [
   {
-    date: new Date("2025-10-12"),
-    title: "Stages arbitrage et commissaires sportifs",
-    description: "Stages arbitrage et commissaires sportifs - Mèze",
-    type: "training",
-    category: "Minimes+",
-    location: "9 Rue de la Méditerranée, 34140 Mèze",
-    locationUrl: "https://maps.app.goo.gl/zWyY26x6sba5BWqK6",
-    registrationUrl: "https://forms.gle/csvt92TntrqzGhQu7", // URL de l'inscription
-    registrationDeadline: new Date("2025-09-30"), // date limite d'inscription
-  },
-  {
-    date: new Date("2025-10-11"),
-    title: "Stage Benjamins-Minimes à Thézan-lès-Béziers",
-    description: "Stage Benjamins-Minimes à Thézan-lès-Béziers",
-    type: "training",
-    category: "Benjamins - Minimes",
-    location: "Rue Antoine de Saint-Exupéry, 34490 Thézan-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/43a6zSveVgwm777i9",
-    registrationUrl: "https://forms.gle/gpExLiTAdMQ8dy1u8", // URL de l'inscription
-    registrationDeadline: new Date("2025-09-30"), // date limite d'inscription
-  },
-  {
-    title: "Stage Benjamins",
-    date: new Date("2025-10-18"), // date ou date de début
-    endDate: new Date("2025-10-20"), // date de fin si plusieurs jours
-    // registrationDeadline: new Date("2025-08-12"), // date limite d'inscription
-    description: "Stage départemental compétiteurs",
-    type: "training", // compétitions, stages ou évènements général
-    category: "Benjamins", // publics concernés
-    location: "9 Rue de la Méditerranée, 34140 Mèze",
-    locationUrl: "https://maps.app.goo.gl/zWyY26x6sba5BWqK6",
-  },
-  {
-    title: "Stage Minimes Cadets Juniors",
-    date: new Date("2025-10-20"), // date ou date de début
-    endDate: new Date("2025-10-22"), // date de fin si plusieurs jours
-    // registrationDeadline: new Date("2025-08-12"), // date limite d'inscription
-    description: "Stage départemental compétiteurs",
-    type: "training", // compétitions, stages ou évènements général
-    category: "Minimes+", // publics concernés
-    location: "9 Rue de la Méditerranée, 34140 Mèze",
-    locationUrl: "https://maps.app.goo.gl/zWyY26x6sba5BWqK6",
-  },
-  {
-    title: "Stage Toussaint",
-    date: new Date("2025-10-25"), // date ou date de début
-    endDate: new Date("2025-10-26"), // date de fin si plusieurs jours
-    description: "Stage Toussaint pour les enfants né entre 2017 et 2013",
-    type: "training", // compétitions, stages ou évènements général
-    category: "Minimes+", // publics concernés
-    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
-    registrationUrl: "https://www.helloasso.com/associations/harmonie-sport/evenements/stage-de-toussaint-2025-judo-ajbb", // URL de l'inscription
-    registrationDeadline: new Date("2025-10-22"), // date limite d'inscription
-  },
-  {
-    date: new Date("2025-11-01"),
-    title: "Tournoi Régional Minimes du Gers",
-    description: "Tournoi Régional Minimes du Gers",
-    type: "competition",
-    category: "Minimes",
-    location: "Auch"
-  },
-  {
-    date: new Date("2025-11-0S"),
-    title: "Stage départemental kata et Ju Jitsu",
-    description: "Journée de stage départementale de Kata",
-    type: "training",
-    category: "Minimes+",
-    location: "9 Rue de la Méditerranée, 34140 Mèze",
-    locationUrl: "https://maps.app.goo.gl/zWyY26x6sba5BWqK6",
-  },
-  {
-    date: new Date("2025-11-08"),
-    title: "UV1 KATA ET UV2 TECHNIQUE 1D & 2D",
-    description: "UV1 KATA ET UV2 TECHNIQUE 1D & 2D - Dojo de Narbonne",
-    type: "event",
-    category: "Autre",
-    location: "R1 Av. de la Naiade, 11100 Narbonne",
-    locationUrl: "https://maps.app.goo.gl/VhC3ozm9KMM5nRrk9"
-  },
-  {
-    date: new Date("2025-11-09"),
-    title: "SHO DAN",
-    description: "UV3 1D, 2D, 3D & 4D et UV4 3D & 4D ",
-    type: "event",
-    category: "Autre",
-    location: "R1 Av. de la Naiade, 11100 Narbonne",
-    locationUrl: "https://maps.app.goo.gl/VhC3ozm9KMM5nRrk9"
-  },
-  {
-    date: new Date("2025-11-15"),
-    title: "Critérium 1er district Hérault benjamins",
-    description: "Championnat pour les benjamins qui font beaucoup de compétitions (niveau indispensable)",
-    type: "competition",
-    category: "Benjamins",
-    location: "18B Rue de la Méditerranée, 34140 Mèze",
-    locationUrl: "https://maps.app.goo.gl/RRADUKUoXfEDa7Ko9"
-  },
-  {
-    date: new Date("2025-11-16"),
-    title: "Stage Occitanie de jujitsu",
-    description: "Stage Occitanie de jujitsu - Mèze",
-    type: "training",
-    category: "Ju Jitsu",
-    location: "9 Rue de la Méditerranée, 34140 Mèze",
-    locationUrl: "https://maps.app.goo.gl/zWyY26x6sba5BWqK6",
-  },
-  {
-    date: new Date("2025-11-30"),
-    title: "Tournoi label A Minimes Moissac",
-    description: "Tournoi label A Minimes Moissac - Moissac",
-    type: "competition",
-    category: "Minimes",
-    location: "Moissac"
-  },
-  {
-    date: new Date("2025-12-06"),
-    title: "Tournoi de Noël du Club",
-    description: "Tournoi de Noël du Club - Villeneuve-lès-Béziers",
-    type: "competition",
-    category: "Club",location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
-    registrationUrl: "https://forms.gle/K8U7c7xA6WpYAds28", // URL de l'inscription
-    registrationDeadline: new Date("2025-11-23"), // date limite d'inscription
-  },
-  {
-    date: new Date("2025-12-13"),
-    title: "Critérium 2ème  district Hérault benjamins",
-    description: "Championnat pour les benjamins qui font beaucoup de compétitions (niveau indispensable)",
-    type: "competition",
-    category: "Benjamins",
-    location: "18B Rue de la Méditerranée, 34140 Mèze",
-    locationUrl: "https://maps.app.goo.gl/RRADUKUoXfEDa7Ko9"
-  },
-  {
-    date: new Date("2025-12-06"),
-    title: "Passage de Grade Mi-Saison",
-    description: "Passage de Grade Mi-Saison - Villeneuve-lès-Béziers",
-    type: "event",
-    category: "Club",
-    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
-    registrationUrl: "https://forms.gle/j2ef7i6py2jPiLRY7", // URL de l'inscription
-    registrationDeadline: new Date("2025-11-23"), // date limite d'inscription
-  },
-  {
-    date: new Date("2025-12-06"),
-    title: "Papa Noël pour les Baby",
-    description: "Papa Noël pour les Baby - Villeneuve-lès-Béziers",
-    type: "event",
-    category: "Club",
-    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
-    registrationUrl: "https://forms.gle/trdWjpw5cyy9ovtg7", // URL de l'inscription
-    registrationDeadline: new Date("2025-11-23"), // date limite d'inscription
-  },
-  {
-    date: new Date("2025-12-14"),
-    title: "Championnat Occitanie ju jitsu - Ne waza",
-    description: "Championnat Occitanie ju jitsu - Ne waza - Dojo de Narbonne",
-    type: "competition",
-    category: "Ju Jitsu",
-    location: "R1 Av. de la Naiade, 11100 Narbonne",
-    locationUrl: "https://maps.app.goo.gl/VhC3ozm9KMM5nRrk9"
-  },
-  {
-    date: new Date("2025-12-20"),
-    title: "Tournoi label A Minimes de Toulouse",
-    description: "Tournoi label A Minimes de Toulouse - Maison du judo Toulouse",
-    type: "competition",
-    category: "Minimes",
-    location: "Chem. Cassaing, 31500 Toulouse",
-    locationUrl: "https://maps.app.goo.gl/YZSwbWm7g3esaqbu6"
-  },
-  {
-    date: new Date("2025-12-21"),
-    endDate: new Date("2025-12-23"),
-    title: "Stage Minimes de Toulouse",
-    description: "Stage Minimes de Toulouse (3 jours) - CREPS Toulouse",
-    type: "training",
-    category: "Minimes",
-    location: "Chem. Cassaing, 31500 Toulouse",
-    locationUrl: "https://maps.app.goo.gl/YZSwbWm7g3esaqbu6"
-  },
-  {
     date: new Date("2026-01-17"),
     title: "Coupe Occitanie kata",
     description: "Coupe Occitanie kata",
@@ -254,6 +68,15 @@ export const events: Event[] = [
     locationUrl: "https://maps.app.goo.gl/vW1CRsQ4YifQsczT6"
   },
   {
+    date: new Date("2026-02-07"),
+    title: "Crêpe party",
+    description: "séance groupé puis crêpe popour les courageux",
+    type: "event",
+    category: "Baby, Prépoussins, Poussins, Benjamins",
+    location: "Rue Antoine de Saint-Exupéry, 34490 Thézan-lès-Béziers", 
+    locationUrl: "https://maps.app.goo.gl/43a6zSveVgwm777i9"
+  },
+  {
     date: new Date("2026-02-15"),
     title: "Coupe Occitanie minimes et Coupe Occitanie jeunes officiels cadets",
     description: "Coupe Occitanie minimes et Coupe Occitanie jeunes officiels cadets - Maison du judo Toulouse",
@@ -284,9 +107,39 @@ export const events: Event[] = [
     location: "9 Rue de la Méditerranée, 34140 Mèze",
     locationUrl: "https://maps.app.goo.gl/zWyY26x6sba5BWqK6",
   },
+    {
+    title: "Stage Préparation de grade",
+    date: new Date("2026-02-28"), // date ou date de début
+    endDate: new Date("2026-03-01"), // date de fin si plusieurs jours
+    // registrationDeadline: new Date("2025-08-12"), // date limite d'inscription
+    description: "Stage afin de préparer les enfants au passage grade",
+    type: "training", // compétitions, stages ou évènements général
+    category: "Prépoussins, Poussins, Benjamins", // publics concernés
+    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
+    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
+  },
+      {
+    title: "Judo Labs",
+    date: new Date("2026-03-02"), // date ou date de début
+    // registrationDeadline: new Date("2025-08-12"), // date limite d'inscription
+    description: "Stage afin de préparer les enfants au passage grade",
+    type: "training", // compétitions, stages ou évènements général
+    category: "Prépoussins, Poussins, Benjamins", // publics concernés
+    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
+    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
+  },
+      {
+    title: "Coupe de l'Hérault Gignac",
+    date: new Date("2026-03-08"), // date ou date de début
+    // registrationDeadline: new Date("2025-08-12"), // date limite d'inscription
+    description: "Tournoi amical",
+    type: "event", // compétitions, stages ou évènements général
+    category: "Prépoussins, Poussins, Benjamins, Minimes", // publics concernés
+    location: "Espaco Culturel et Sportif, 34150 Gignac", 
+    locationUrl: "https://maps.app.goo.gl/gUcL5zL2Zd9kPGEF9",
+  },
   {
     date: new Date("2026-03-14"),
-    endDate: new Date("2026-03-15"),
     title: "Championnnat de France seniors Jjitsu et Ne Waza",
     description: "Championnnat de France seniors Jjitsu et Ne Waza",
     type: "event",
@@ -294,20 +147,13 @@ export const events: Event[] = [
     location: "Lormont (à préciser)"
   },
   {
-    date: new Date("2026-03-21"),
-    title: "UV1 KATA ET UV2 TECHNIQUE 1D, 2D, 3D & 4D",
-    description: "UV1 KATA ET UV2 TECHNIQUE 1D, 2D, 3D & 4D - CD30",
-    type: "event",
-    category: "Autre",
-    location: "Vauvert"
-  },
-  {
     date: new Date("2026-03-22"),
-    title: "UV3 1D au 3eme Dans",
+    title: "UV3 1D au 3eme Dan - JONQUIERES SAINT VINCENT",
     description: "Shiai - CD30",
     type: "event",
     category: "Autre",
-    location: "Vauvert"
+    location: "42 Rue de Bellegarde, 30300 Jonquières-Saint-Vincent",
+    locationUrl: "https://maps.app.goo.gl/TAueLNBudSzBMBC38",
   },
   {
     date: new Date("2026-03-21"),
@@ -318,6 +164,15 @@ export const events: Event[] = [
     category: "Minimes",
     location: "Villebon-sur-Yvette",
     locationUrl: "https://maps.app.goo.gl/zMFWc7k84ghmWgjQ8"
+  },
+    {
+    date: new Date("2026-03-21"),
+    title: "Tournoi de l'étang de Thau",
+    description: "Tournoi amical",
+    type: "event", // compétitions, stages ou évènements général
+    category: "Prépoussins, Poussins, Benjamins, Minimes", // publics concernés
+    location: "9 Rue de la Méditerranée, 34140 Mèze",
+    locationUrl: "https://maps.app.goo.gl/zWyY26x6sba5BWqK6",
   },
   {
     date: new Date("2026-03-28"),
@@ -363,7 +218,8 @@ export const events: Event[] = [
     locationUrl: "https://maps.app.goo.gl/RRADUKUoXfEDa7Ko9"
   },
   {
-    date: new Date("2026-04-25"),
+    date: new Date("2026-05-01"),
+    endDate: new Date("2026-05-02"),
     title: "Passage de Grade anticipé - DATE A CONFIRMER",
     description: "Passage de Grade anticipé - Villeneuve-lès-Béziers",
     type: "event",
@@ -372,19 +228,6 @@ export const events: Event[] = [
     locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
     registrationDeadline: new Date("2026-04-22"),
     registrationUrl: "https://forms.gle/6BEwRAzCKSUUyxDL7"
-  },
-  {
-    date: new Date("2026-04-25"),
-    endDate: new Date("2026-04-26"), // date de fin si plusieurs jours
-    title: "Stage de paques (2 jours) DATE A CONFIRMER",
-    description: "Stage de paques (2 jours) - Villeneuve-lès-Béziers",
-    type: "training",
-    category: "Club",
-    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
-    registrationUrl: "https://www.helloasso.com/associations/harmonie-sport/evenements/stage-de-paques-2025-judo-ajbb", // URL de l'inscription
-    registrationDeadline: new Date("2026-04-22"),
-    
   },
   {
     date: new Date("2026-05-09"),
