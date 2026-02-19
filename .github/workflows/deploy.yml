@@ -13,50 +13,35 @@ jobs:
   deploy:
     runs-on: self-hosted
     timeout-minutes: 30
+
     steps:
       - name: Debug runner
         run: |
           set -euo pipefail
           echo "Runner: $(whoami) @ $(hostname)"
-          echo "Kernel: $(uname -a)"
           echo "Date: $(date)"
-          echo "Checking target dir:"
-          ls -la /var/www/ajbb/app || true
+          docker --version
+          docker compose version
 
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - name: Install deps
+      - name: Build image Docker
         run: |
           set -euo pipefail
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+          docker compose build --no-cache
 
-      - name: Build
-        run: npm run build
-
-      - name: Deploy build to /var/www/ajbb/app (no rsync, no sudo)
+      - name: Démarrer / redémarrer le container
         run: |
           set -euo pipefail
-          TARGET_DIR="/var/www/ajbb/app"
-          BUILD_DIR="dist"
+          docker compose up -d --force-recreate
 
-          # créer le dossier cible si absent
-          mkdir -p "$TARGET_DIR"
+      - name: Vérification santé
+        run: |
+          set -euo pipefail
+          sleep 5
+          docker compose ps
+          curl -sf http://localhost:8080 > /dev/null && echo "✅ Site OK" || (echo "❌ Site KO" && docker compose logs && exit 1)
 
-          # vider proprement le contenu existant (y compris fichiers cachés)
-          # (utilise find pour éviter dépendances shell)
-          if [ -d "$TARGET_DIR" ]; then
-            find "$TARGET_DIR" -mindepth 1 -exec rm -rf {} +
-          fi
-
-          # copier le build (conserve droits/horodatages)
-          cp -a "${BUILD_DIR}/." "${TARGET_DIR}/"
-
-          # garantir lecture/exécution pour nginx sur des fichiers statiques
-          chmod -R a+rX "$TARGET_DIR"
+      - name: Nettoyage images obsolètes
+        run: docker image prune -f
