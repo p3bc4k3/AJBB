@@ -14,7 +14,7 @@ import Photos from './pages/Photos';
 
 function App() {
   return (
-    <Router basename={import.meta.env.BASE_URL}>
+    <Router>
       <div className="min-h-screen">
         <Routes>
           <Route path="/inscription" element={<Inscription />} />
