@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -123,11 +123,11 @@ const Header = () => {
               </button>
             ))}
             
-            <a
-              href="/planning"
+            <Link
+              to="/planning"
               className={`relative font-medium transition-colors duration-300 py-2 text-center md:text-left ${
-                activeSection === 'planning' 
-                  ? 'text-yellow-600' 
+                activeSection === 'planning'
+                  ? 'text-yellow-600'
                   : 'text-gray-700 hover:text-yellow-600'
               }`}
             >
@@ -135,10 +135,10 @@ const Header = () => {
               {activeSection === 'planning' && (
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-600 rounded-full" />
               )}
-            </a>
-            
-            <a
-              href="/calendrier"
+            </Link>
+
+            <Link
+              to="/calendrier"
               className={`relative font-medium transition-colors duration-300 py-2 text-center md:text-left ${
                 activeSection === 'calendrier'
                   ? 'text-yellow-600'
@@ -149,10 +149,10 @@ const Header = () => {
               {activeSection === 'calendrier' && (
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-600 rounded-full" />
               )}
-            </a>
+            </Link>
 
-            <a
-              href="/photos"
+            <Link
+              to="/photos"
               className={`relative font-medium transition-colors duration-300 py-2 text-center md:text-left ${
                 activeSection === 'photos'
                   ? 'text-yellow-600'
@@ -163,21 +163,21 @@ const Header = () => {
               {activeSection === 'photos' && (
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-600 rounded-full" />
               )}
-            </a>
+            </Link>
 
-            <a
-              href="/informations-pratiques"
+            <Link
+              to="/informations-pratiques"
               className="relative font-medium transition-colors duration-300 py-2 text-gray-700 hover:text-yellow-600 text-center md:text-left"
             >
               Infos pratiques
-            </a>
-            
-            <a
-              href="/inscription"
+            </Link>
+
+            <Link
+              to="/inscription"
               className="relative font-medium transition-all duration-300 py-2 px-4 bg-yellow-600 text-white rounded-lg hover:bg-black transform hover:-translate-y-1 shadow-lg hover:shadow-xl text-center"
             >
               Inscription
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
