@@ -2,7 +2,7 @@ name: deploy-github-pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "fix"]
   workflow_dispatch: {}
 
 permissions:
@@ -32,8 +32,6 @@ jobs:
 
       - name: Build
         run: npm run build
-        env:
-          BASE_PATH: /AJBB/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
