@@ -140,6 +140,24 @@ export const events: Event[] = [
   },
   {
     date: new Date("2026-03-14"),
+    title: "« Se défendre, se respecter, protéger les autres »",
+    description: "Action de sensibilisation « Se défendre, se respecter, protéger les autres » - après-midi",
+    type: "event",
+    category: "Club",
+    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers",
+    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8"
+  },
+  {
+    date: new Date("2026-03-15"),
+    title: "Stage d'arbitrage",
+    description: "Stage d'arbitrage de 10h à 16h - Benjamins et plus âgés",
+    type: "training",
+    category: "Benjamins et +",
+    location: "Rue Antoine de Saint-Exupéry, 34490 Thézan-lès-Béziers",
+    locationUrl: "https://maps.app.goo.gl/43a6zSveVgwm777i9"
+  },
+  {
+    date: new Date("2026-03-14"),
     title: "Championnnat de France seniors Jjitsu et Ne Waza",
     description: "Championnnat de France seniors Jjitsu et Ne Waza",
     type: "event",
