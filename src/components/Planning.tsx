@@ -79,7 +79,6 @@ const Planning = () => {
       category: "Minimes +",
       year: "2013 et avant",
       sessions: [
-        { day: "Lundi", time: "19h30-20h30", location: "Thézan-lès-Béziers" },
         { day: "Mardi", time: "19h00-20h30", location: "Villeneuve-lès-Béziers" },
         { day: "Jeudi", time: "19h00-20h30", location: "Villeneuve-lès-Béziers" }
       ],

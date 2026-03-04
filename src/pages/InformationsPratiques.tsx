@@ -229,7 +229,7 @@ const InformationsPratiques = () => {
                 <div className="p-4 bg-gray-50 rounded-lg">
                   <h4 className="font-semibold text-gray-900 mb-2">Thézan-lès-Béziers</h4>
                   <div className="text-sm text-gray-600 space-y-1">
-                    <p>Lundi : 18h30 - 20h30</p>
+                    <p>Lundi : 18h30 - 19h30</p>
                     <p>Samedi : 09h00 - 09h45</p>
                   </div>
                 </div>
