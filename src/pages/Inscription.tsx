@@ -100,6 +100,15 @@ const Inscription = () => {
                           <Download className="w-3 h-3" />
                           Attestation QS
                         </a>
+                        <a
+                          href="https://forms.gle/CommXuNH1c7CRvg76"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 px-2 py-1 bg-orange-600 text-white text-xs rounded hover:bg-orange-700 transition-colors duration-200"
+                        >
+                          <ExternalLink className="w-3 h-3" />
+                          Déposer mon certificat
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -145,12 +154,12 @@ const Inscription = () => {
             </div>
             
             <div className="p-2">
-              <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform?embedded=true" 
-                width="100%" 
-                height="2369" 
-                frameBorder="0" 
-                marginHeight="0" 
+              <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSe3ejz0FISN1J5opwlvy9gJX8VSNuc-sAB6Vock195AmvTpQQ/viewform?embedded=true"
+                width="100%"
+                height="2791"
+                frameBorder="0"
+                marginHeight="0"
                 marginWidth="0"
                 className="w-full rounded-lg"
                 title="Formulaire d'inscription AJBB"
