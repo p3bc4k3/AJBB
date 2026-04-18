@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, Gift, FileText, Users, Download, Info, ArrowRight, ExternalLink } from 'lucide-react';
+import { Gift, FileText, Users, Download, ExternalLink } from 'lucide-react';
 
 const Inscription = () => {
   const scrollToTop = () => {
@@ -100,6 +100,15 @@ const Inscription = () => {
                           <Download className="w-3 h-3" />
                           Attestation QS
                         </a>
+                        <a
+                          href="https://forms.gle/CommXuNH1c7CRvg76"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 px-2 py-1 bg-orange-600 text-white text-xs rounded hover:bg-orange-700 transition-colors duration-200"
+                        >
+                          <ExternalLink className="w-3 h-3" />
+                          Déposer mon certificat
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -131,6 +140,23 @@ const Inscription = () => {
           </div>
         </section>
 
+        {/* Certificate Upload Banner */}
+        <div className="mb-8 flex flex-col sm:flex-row items-center gap-4 p-4 bg-orange-50 border-l-4 border-orange-400 rounded-r-xl">
+          <div className="flex-1">
+            <p className="font-bold text-orange-900">🏥 Dépôt du certificat médical</p>
+            <p className="text-sm text-orange-700">Certificat déjà signé par votre médecin ? Déposez-le en ligne avant de remplir le formulaire.</p>
+          </div>
+          <a
+            href="https://forms.gle/CommXuNH1c7CRvg76"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors"
+          >
+            <ExternalLink className="w-4 h-4" />
+            Déposer mon certificat
+          </a>
+        </div>
+
         {/* Google Form */}
         <section className="mb-16">
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
@@ -145,12 +171,12 @@ const Inscription = () => {
             </div>
             
             <div className="p-2">
-              <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSfIQn1ekKqykoY0OJdVMF2XBmDnMinGi_SNDwplyneKZScYEA/viewform?embedded=true" 
-                width="100%" 
-                height="2369" 
-                frameBorder="0" 
-                marginHeight="0" 
+              <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSe3ejz0FISN1J5opwlvy9gJX8VSNuc-sAB6Vock195AmvTpQQ/viewform?embedded=true"
+                width="100%"
+                height="2791"
+                frameBorder="0"
+                marginHeight="0"
                 marginWidth="0"
                 className="w-full rounded-lg"
                 title="Formulaire d'inscription AJBB"
@@ -161,121 +187,6 @@ const Inscription = () => {
           </div>
         </section>
 
-        {/* Additional Information */}
-        <section>
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Contact */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center">
-                  <Phone className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900">Nous contacter</h3>
-              </div>
-              
-              <div className="space-y-4">
-                {/* Jean */}
-                <div className="p-4 bg-gray-50 rounded-lg">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">Jean</h4>
-                      <p className="text-gray-600">Enseignant</p>
-                    </div>
-                    <a
-                      href="tel:0645880184"
-                      className="px-3 py-2 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-colors duration-200"
-                    >
-                      06 45 88 01 84
-                    </a>
-                  </div>
-                </div>
-
-                {/* Lucie */}
-                <div className="p-4 bg-gray-50 rounded-lg">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">Lucie</h4>
-                      <p className="text-gray-600">Enseignante</p>
-                    </div>
-                    <a
-                      href="tel:0699550104"
-                      className="px-3 py-2 bg-yellow-600 text-white text-sm font-medium rounded-lg hover:bg-black transition-colors duration-200"
-                    >
-                      06 99 55 01 04
-                    </a>
-                  </div>
-                </div>
-
-                {/* Email */}
-                <div className="p-4 bg-gray-50 rounded-lg">
-                  <h4 className="font-semibold text-gray-900 mb-2">Email</h4>
-                  <div className="flex items-center gap-2">
-                    <p className="text-gray-600 text-sm break-all">alliancejudobassinbiterrois@gmail.com</p>
-                    <button
-                      onClick={() => window.location.href = 'mailto:alliancejudobassinbiterrois@gmail.com?subject=Inscription AJBB&body=Bonjour,%0D%0A%0D%0AJe souhaite obtenir des informations sur l\'inscription au club de judo AJBB.%0D%0A%0D%0ACordialement'}
-                      className="px-3 py-1 bg-yellow-600 text-white text-xs rounded hover:bg-black transition-colors duration-200"
-                    >
-                      Écrire
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
-                <p className="text-sm text-blue-800">
-                  <strong>📍 Rendez-vous :</strong> Venez nous rencontrer directement sur les lieux d'entraînements 
-                  pour découvrir notre club et poser vos questions !
-                </p>
-              </div>
-            </div>
-
-            {/* Practical Information */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center">
-                  <Info className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900">Bon à savoir</h3>
-              </div>
-
-              <div className="space-y-4">
-                <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
-                  <h4 className="font-semibold text-blue-900 mb-2">📅 Quand s'inscrire ?</h4>
-                  <p className="text-sm text-blue-800">
-                    Les inscriptions sont ouvertes toute l'année, mais nous recommandons de commencer 
-                    au plus tôt pour suivre la progression du groupe.
-                  </p>
-                </div>
-
-                <div className="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-500">
-                  <h4 className="font-semibold text-purple-900 mb-2">🥋 Matériel pour débuter</h4>
-                  <p className="text-sm text-purple-800">
-                    Pour les cours d'essai, une tenue de sport ample, bouteille d'eau suffit. Le judogi peut être acheté 
-                    avec nos partenaires après confirmation de l'inscription.
-                  </p>
-                </div>
-
-                <div className="p-4 bg-orange-50 rounded-lg border-l-4 border-orange-500">
-                  <h4 className="font-semibold text-orange-900 mb-2">🏥 Certificat médical</h4>
-                  <p className="text-sm text-orange-800">
-                    Le certificat médical doit mentionner "l'absence de contre-indication à la pratique du judo en compétition". 
-                    Votre médecin traitant peut l'établir.
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <a 
-                  href="/informations-pratiques" 
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-600 text-white font-semibold rounded-lg hover:bg-black transition-all duration-300"
-                >
-                  <ArrowRight className="w-4 h-4" />
-                  Voir toutes les infos pratiques
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
       {/* Footer */}

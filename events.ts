@@ -236,16 +236,56 @@ export const events: Event[] = [
     locationUrl: "https://maps.app.goo.gl/RRADUKUoXfEDa7Ko9"
   },
   {
+    date: new Date("2026-04-30"),
+    title: "Cours de judo",
+    description: "Cours de judo - 19h00 à 20h30",
+    type: "training",
+    category: "Club",
+    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers",
+    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8"
+  },
+  {
     date: new Date("2026-05-01"),
-    endDate: new Date("2026-05-02"),
-    title: "Passage de Grade anticipé - DATE A CONFIRMER",
+    title: "Passage de Grade anticipé",
     description: "Passage de Grade anticipé - Villeneuve-lès-Béziers",
     type: "event",
     category: "Club",
-    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
+    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers",
     locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
     registrationDeadline: new Date("2026-04-22"),
     registrationUrl: "https://forms.gle/6BEwRAzCKSUUyxDL7"
+  },
+  {
+    date: new Date("2026-05-02"),
+    title: "Cours Baby Judo",
+    description: "Cours Baby Judo - Thézan-lès-Béziers",
+    type: "training",
+    category: "Baby",
+    location: "Rue Antoine de Saint-Exupéry, 34490 Thézan-lès-Béziers",
+    locationUrl: "https://maps.app.goo.gl/43a6zSveVgwm777i9"
+  },
+  {
+    date: new Date("2026-05-02"),
+    title: "Cours groupé Judo",
+    description: "Cours groupé de Baby à Poussins - Villeneuve-lès-Béziers - 10h30 à 11h30",
+    type: "training",
+    category: "Baby, Prépoussins, Poussins",
+    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers",
+    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8"
+  },
+  {
+    date: new Date("2026-05-08"),
+    title: "Pas de cours",
+    description: "Pas de cours - Victoire 1945 (jour férié)",
+    type: "event",
+    category: "Club"
+  },
+  {
+    date: new Date("2026-05-09"),
+    title: "Pas de cours",
+    description: "Pas de cours",
+    type: "event",
+    category: "Club"
   },
   {
     date: new Date("2026-05-09"),
@@ -255,6 +295,34 @@ export const events: Event[] = [
     type: "competition",
     category: "Minimes",
     location: "Villebon sur Yvette"
+  },
+  {
+    date: new Date("2026-05-14"),
+    title: "Pas de cours",
+    description: "Pas de cours - Ascension (jour férié)",
+    type: "event",
+    category: "Club"
+  },
+  {
+    date: new Date("2026-05-15"),
+    title: "Pas de cours",
+    description: "Pas de cours",
+    type: "event",
+    category: "Club"
+  },
+  {
+    date: new Date("2026-05-16"),
+    title: "Pas de cours",
+    description: "Pas de cours",
+    type: "event",
+    category: "Club"
+  },
+  {
+    date: new Date("2026-05-23"),
+    title: "Grand Prix de Cahors",
+    description: "Grand Prix de Cahors - Minimes et plus - Horaires à préciser",
+    type: "competition",
+    category: "Minimes et +"
   },
   {
     date: new Date("2026-05-30"),
@@ -269,15 +337,22 @@ export const events: Event[] = [
   },
   {
     date: new Date("2026-06-06"),
-    endDate: new Date("2026-06-07"),
     title: "Passage de Grade",
-    description: "Passage de Grade - Villeneuve-lès-Béziers",
+    description: "Passage de Grade - Villeneuve-lès-Béziers - Le matin, horaires en fonction des inscriptions. Cours Baby habituel maintenu.",
     type: "event",
     category: "Club",
-    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
+    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers",
     locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
-    registrationUrl: "https://forms.gle/W7iMMvLckgqyxCXm7", // URL de l'inscription
-    registrationDeadline: new Date("2026-05-23"), // date limite d'inscription
+    registrationUrl: "https://forms.gle/W7iMMvLckgqyxCXm7",
+    registrationDeadline: new Date("2026-05-23"),
+  },
+  {
+    date: new Date("2026-06-07"),
+    title: "Tournoi des 5 Continents",
+    description: "Tournoi des 5 Continents - Fronton",
+    type: "competition",
+    category: "Club",
+    location: "Halle des Sports - 3 Avenue du Stage, 31620 Fronton"
   },
   {
     date: new Date("2026-06-13"),
@@ -298,18 +373,6 @@ export const events: Event[] = [
     category: "Autre",
     location: "Chem. Cassaing, 31500 Toulouse",
     locationUrl: "https://maps.app.goo.gl/YZSwbWm7g3esaqbu6"
-  },
-  {
-    date: new Date("2026-07-04"),
-    endDate: new Date("2026-07-05"),
-    title: "Summer Camp - DATE A CONFIRMER",
-    description: "Summer Camp - Villeneuve-lès-Béziers",
-    type: "event",
-    category: "Club",
-    location: "Chem. Saint-Michel, 34420 Villeneuve-lès-Béziers", 
-    locationUrl: "https://maps.app.goo.gl/P5oGn9KirN87yKZW8",
-    registrationUrl: "https://www.helloasso.com/associations/harmonie-sport/evenements/summer-camp-judo-2026-ajbb",
-    registrationDeadline: new Date("2026-06-29")
   },
   // Événements d'août et septembre 2025
   {
