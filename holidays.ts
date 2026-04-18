@@ -29,17 +29,17 @@ export const holidays: Holiday[] = [
   // Vacances d'hiver 2026
   {
     name: "Vacances d'hiver",
-    startDate: new Date("2026-02-14"),
-    endDate: new Date("2026-03-02"),
+    startDate: new Date("2026-02-21"),
+    endDate: new Date("2026-03-09"),
     zone: "C",
     type: "vacation"
   },
-  
+
   // Vacances de printemps 2026
   {
     name: "Vacances de printemps",
-    startDate: new Date("2026-04-11"),
-    endDate: new Date("2026-04-27"),
+    startDate: new Date("2026-04-18"),
+    endDate: new Date("2026-05-04"),
     zone: "C",
     type: "vacation"
   },
