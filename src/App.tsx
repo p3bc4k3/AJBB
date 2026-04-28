@@ -11,6 +11,7 @@ import InformationsPratiques from './pages/InformationsPratiques';
 import Planning from './pages/Planning';
 import Calendrier from './pages/Calendrier';
 import Photos from './pages/Photos';
+import Quiz from './pages/Quiz';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/planning" element={<Planning />} />
           <Route path="/calendrier" element={<Calendrier />} />
           <Route path="/photos" element={<Photos />} />
+          <Route path="/quiz" element={<Quiz />} />
           <Route path="/" element={
             <>
               <Header />
