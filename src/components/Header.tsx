@@ -24,6 +24,10 @@ const Header = () => {
       setActiveSection('informations-pratiques');
       return;
     }
+    if (location.pathname === '/quiz') {
+      setActiveSection('quiz');
+      return;
+    }
     if (location.pathname === '/') {
       setActiveSection('accueil');
     }
@@ -168,16 +172,30 @@ const Header = () => {
             <Link
               to="/quiz"
               onClick={() => setIsMenuOpen(false)}
-              className="relative font-medium transition-colors duration-300 py-2 text-gray-700 hover:text-yellow-600 text-center md:text-left"
+              className={`relative font-medium transition-colors duration-300 py-2 text-center md:text-left ${
+                activeSection === 'quiz'
+                  ? 'text-yellow-600'
+                  : 'text-gray-700 hover:text-yellow-600'
+              }`}
             >
               <span style={{ color: '#D4831A' }}>🥋</span> Quiz Judo
+              {activeSection === 'quiz' && (
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-600 rounded-full" />
+              )}
             </Link>
 
             <Link
               to="/informations-pratiques"
-              className="relative font-medium transition-colors duration-300 py-2 text-gray-700 hover:text-yellow-600 text-center md:text-left"
+              className={`relative font-medium transition-colors duration-300 py-2 text-center md:text-left ${
+                activeSection === 'informations-pratiques'
+                  ? 'text-yellow-600'
+                  : 'text-gray-700 hover:text-yellow-600'
+              }`}
             >
               Infos pratiques
+              {activeSection === 'informations-pratiques' && (
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-600 rounded-full" />
+              )}
             </Link>
 
             <Link
