@@ -2,9 +2,52 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useLocation, Link } from 'react-router-dom';
 
+function QuizModal({ onClose }: { onClose: () => void }) {
+  return (
+    <div
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      style={{
+        position: 'fixed', inset: 0, zIndex: 9999,
+        background: 'rgba(0,0,0,0.7)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: '0',
+      }}
+    >
+      <div style={{
+        position: 'relative',
+        width: '100%', maxWidth: 430,
+        height: '100dvh',
+        background: '#fff',
+        borderRadius: 0,
+        overflow: 'hidden',
+        display: 'flex', flexDirection: 'column',
+      }}>
+        <button
+          onClick={onClose}
+          style={{
+            position: 'absolute', top: 10, right: 12, zIndex: 10,
+            background: 'rgba(0,0,0,0.5)', color: '#fff',
+            border: 'none', borderRadius: '50%',
+            width: 32, height: 32, fontSize: '1rem',
+            cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
+          aria-label="Fermer"
+        >×</button>
+        <iframe
+          src="https://quizz.sharejudo.com"
+          style={{ flex: 1, border: 'none', width: '100%' }}
+          title="Quiz Culture Judo"
+          allow="clipboard-write"
+        />
+      </div>
+    </div>
+  );
+}
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('accueil');
+  const [showQuiz, setShowQuiz] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -54,6 +97,11 @@ const Header = () => {
     }
   }, [location.pathname]);
 
+  useEffect(() => {
+    document.body.style.overflow = showQuiz ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [showQuiz]);
+
   const scrollToSection = (sectionId: string) => {
     // Si on n'est pas sur la page d'accueil, rediriger vers l'accueil
     if (location.pathname !== '/') {
@@ -79,6 +127,7 @@ const Header = () => {
   };
 
   return (
+    <>
     <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-gray-200 z-50 transition-all duration-300">
       <nav className="max-w-6xl mx-auto px-5">
         <div className="flex items-center justify-between py-4">
@@ -165,6 +214,13 @@ const Header = () => {
               )}
             </Link>
 
+            <button
+              onClick={() => { setShowQuiz(true); setIsMenuOpen(false); }}
+              className="relative font-medium transition-colors duration-300 py-2 text-gray-700 hover:text-yellow-600 text-center md:text-left"
+            >
+              <span style={{ color: '#D4831A' }}>🥋</span> Quiz Judo
+            </button>
+
             <Link
               to="/informations-pratiques"
               className="relative font-medium transition-colors duration-300 py-2 text-gray-700 hover:text-yellow-600 text-center md:text-left"
@@ -182,6 +238,8 @@ const Header = () => {
         </div>
       </nav>
     </header>
+    {showQuiz && <QuizModal onClose={() => setShowQuiz(false)} />}
+    </>
   );
 };
 
