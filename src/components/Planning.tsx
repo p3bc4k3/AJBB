@@ -10,6 +10,8 @@ interface Session {
 interface Category {
   category: string;
   year: string;
+  birthYearMin: number;
+  birthYearMax: number;
   sessions: Session[];
   color: string;
 }
@@ -19,65 +21,40 @@ const Planning = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedDay, setSelectedDay] = useState<string>('all');
   const [selectedLocation, setSelectedLocation] = useState<string>('all');
+  const [selectedBirthYear, setSelectedBirthYear] = useState<string>('all');
 
   const trainingSchedule: Category[] = [
     {
       category: "Baby",
-      year: "2020-2021",
+      year: "2021-2022 (2023 sur essai)",
+      birthYearMin: 2021,
+      birthYearMax: 2023,
       sessions: [
-        { day: "Vendredi", time: "17h30-18h15", location: "Sauvian" },
+        { day: "Vendredi", time: "17h45-18h15", location: "Sauvian" },
         { day: "Samedi", time: "09h00-09h45", location: "Thézan-lès-Béziers" },
         { day: "Samedi", time: "10h30-11h15", location: "Villeneuve-lès-Béziers" }
       ],
       color: "#f59e0b"
     },
     {
-      category: "Pré-poussins",
-      year: "2018-2019",
+      category: "Enfants",
+      year: "2015 à 2020",
+      birthYearMin: 2015,
+      birthYearMax: 2020,
       sessions: [
-        { day: "Lundi", time: "18h30-19h30", location: "Thézan-lès-Béziers" },
-        { day: "Lundi", time: "18h00-19h00", location: "Villeneuve-lès-Béziers" },
-        { day: "Vendredi", time: "18h15-19h15", location: "Sauvian" },
+        { day: "Lundi", time: "17h30-18h30", location: "Thézan-lès-Béziers" },
+        { day: "Mardi", time: "18h00-19h00", location: "Villeneuve-lès-Béziers" },
+        { day: "Jeudi", time: "18h00-19h00", location: "Villeneuve-lès-Béziers" },
+        { day: "Vendredi", time: "18h30-19h30", location: "Sauvian" },
         { day: "Samedi", time: "11h15-12h15", location: "Villeneuve-lès-Béziers" }
       ],
       color: "#10b981"
     },
     {
-      category: "Poussins 1",
-      year: "2017",
-      sessions: [
-        { day: "Lundi", time: "18h30-19h30", location: "Thézan-lès-Béziers" },
-        { day: "Lundi", time: "18h00-19h00", location: "Villeneuve-lès-Béziers" },
-        { day: "Vendredi", time: "18h15-19h15", location: "Sauvian" },
-        { day: "Samedi", time: "11h15-12h15", location: "Villeneuve-lès-Béziers" }
-      ],
-      color: "#3b82f6"
-    },
-    {
-      category: "Poussins 2",
-      year: "2016",
-      sessions: [
-        { day: "Lundi", time: "18h30-19h30", location: "Thézan-lès-Béziers" },
-        { day: "Mardi", time: "18h00-19h00", location: "Villeneuve-lès-Béziers" },
-        { day: "Jeudi", time: "18h00-19h00", location: "Villeneuve-lès-Béziers" },
-        { day: "Vendredi", time: "18h15-19h15", location: "Sauvian" }
-      ],
-      color: "#8b5cf6"
-    },
-    {
-      category: "Benjamins",
-      year: "2014-2015",
-      sessions: [
-        { day: "Lundi", time: "18h30-19h30", location: "Thézan-lès-Béziers" },
-        { day: "Mardi", time: "18h00-19h00", location: "Villeneuve-lès-Béziers" },
-        { day: "Jeudi", time: "18h00-19h00", location: "Villeneuve-lès-Béziers" },
-        { day: "Vendredi", time: "18h15-19h15", location: "Sauvian" }
-      ],
-      color: "#f97316"
-    },
-    {
-      category: "Minimes +",
-      year: "2013 et avant",
+      category: "Ados & Adultes",
+      year: "2014 et avant",
+      birthYearMin: 1990,
+      birthYearMax: 2014,
       sessions: [
         { day: "Mardi", time: "19h00-20h30", location: "Villeneuve-lès-Béziers" },
         { day: "Jeudi", time: "19h00-20h30", location: "Villeneuve-lès-Béziers" }
@@ -89,10 +66,24 @@ const Planning = () => {
   const days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
   const locations = ['Villeneuve-lès-Béziers', 'Thézan-lès-Béziers', 'Sauvian'];
 
+  // Années explicites 2015→2023 (Baby + Enfants), puis une entrée groupée pour Ados & Adultes
+  const explicitYears = Array.from(
+    { length: trainingSchedule[0].birthYearMax - trainingSchedule[1].birthYearMin + 1 },
+    (_, i) => trainingSchedule[0].birthYearMax - i
+  );
+
+  const categoryMatchesBirthYear = (category: Category) => {
+    if (selectedBirthYear === 'all') return true;
+    if (selectedBirthYear === 'lte-2014') return category.category === 'Ados & Adultes';
+    const y = parseInt(selectedBirthYear);
+    return y >= category.birthYearMin && y <= category.birthYearMax;
+  };
+
   const getFilteredData = () => {
     return trainingSchedule.map(category => ({
       ...category,
       sessions: category.sessions.filter(session => {
+        if (!categoryMatchesBirthYear(category)) return false;
         if (selectedCategory !== 'all' && category.category !== selectedCategory) return false;
         if (selectedDay !== 'all' && session.day !== selectedDay) return false;
         if (selectedLocation !== 'all' && session.location !== selectedLocation) return false;
@@ -102,17 +93,27 @@ const Planning = () => {
   };
 
   const getSessionsByFilter = () => {
-    const allSessions = trainingSchedule.flatMap(category => 
+    const allSessions = trainingSchedule.flatMap(category =>
       category.sessions.map(session => ({
         ...session,
         category: category.category,
         year: category.year,
-        color: category.color
+        color: category.color,
+        birthYearMin: category.birthYearMin,
+        birthYearMax: category.birthYearMax,
       }))
     );
 
     let filtered = allSessions;
-    
+
+    if (selectedBirthYear !== 'all') {
+      if (selectedBirthYear === 'lte-2014') {
+        filtered = filtered.filter(s => s.category === 'Ados & Adultes');
+      } else {
+        const y = parseInt(selectedBirthYear);
+        filtered = filtered.filter(s => y >= s.birthYearMin && y <= s.birthYearMax);
+      }
+    }
     if (selectedCategory !== 'all') {
       filtered = filtered.filter(session => session.category === selectedCategory);
     }
@@ -146,8 +147,11 @@ const Planning = () => {
     setSelectedCategory('all');
     setSelectedDay('all');
     setSelectedLocation('all');
+    setSelectedBirthYear('all');
     setActiveFilter('all');
   };
+
+  const hasActiveFilters = selectedCategory !== 'all' || selectedDay !== 'all' || selectedLocation !== 'all' || selectedBirthYear !== 'all';
 
   return (
     <section id="planning" className="py-20 bg-gray-50">
@@ -201,12 +205,33 @@ const Planning = () => {
           </div>
 
           {/* Filtres spécifiques */}
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Année de naissance</label>
+              <select
+                value={selectedBirthYear}
+                onChange={(e) => {
+                  setSelectedBirthYear(e.target.value);
+                  setSelectedCategory('all');
+                }}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-600 focus:border-transparent"
+              >
+                <option value="all">Toutes les années</option>
+                {explicitYears.map(y => (
+                  <option key={y} value={String(y)}>{y}</option>
+                ))}
+                <option value="lte-2014">2014 et avant</option>
+              </select>
+            </div>
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Catégorie</label>
               <select
                 value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
+                onChange={(e) => {
+                  setSelectedCategory(e.target.value);
+                  setSelectedBirthYear('all');
+                }}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-600 focus:border-transparent"
               >
                 <option value="all">Toutes les catégories</option>
@@ -247,7 +272,7 @@ const Planning = () => {
             </div>
           </div>
 
-          {(selectedCategory !== 'all' || selectedDay !== 'all' || selectedLocation !== 'all') && (
+          {hasActiveFilters && (
             <div className="mt-4">
               <button
                 onClick={resetFilters}
@@ -274,10 +299,10 @@ const Planning = () => {
                 >
                   {category.category}
                 </div>
-                
+
                 <h3 className="text-xl font-bold mb-2 text-gray-900">{category.category}</h3>
                 <p className="text-gray-600 mb-6 text-sm">Année de naissance : {category.year}</p>
-                
+
                 <div className="space-y-3">
                   {category.sessions.map((session, sessionIndex) => (
                     <div
@@ -313,9 +338,9 @@ const Planning = () => {
                       <div
                         key={index}
                         className="p-4 rounded-lg border-l-4"
-                        style={{ 
+                        style={{
                           backgroundColor: `${session.color}10`,
-                          borderLeftColor: session.color 
+                          borderLeftColor: session.color
                         }}
                       >
                         <div className="font-semibold text-gray-900 mb-1">{session.category}</div>
@@ -347,9 +372,9 @@ const Planning = () => {
                       <div
                         key={index}
                         className="p-4 rounded-lg border-l-4"
-                        style={{ 
+                        style={{
                           backgroundColor: `${session.color}10`,
-                          borderLeftColor: session.color 
+                          borderLeftColor: session.color
                         }}
                       >
                         <div className="font-semibold text-gray-900 mb-1">{session.category}</div>
@@ -363,7 +388,7 @@ const Planning = () => {
           </div>
         )}
 
-        {((activeFilter !== 'all' && Object.keys(getSessionsByFilter()).length === 0) || 
+        {((activeFilter !== 'all' && Object.keys(getSessionsByFilter()).length === 0) ||
           (activeFilter === 'all' && getFilteredData().length === 0)) && (
           <div className="text-center py-12">
             <div className="text-gray-400 text-lg mb-4">Aucun cours trouvé avec ces filtres</div>

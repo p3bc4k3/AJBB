@@ -30,14 +30,15 @@ const InformationsPratiques = () => {
               <h2 className="text-2xl font-bold text-gray-900">Catégories d'âge</h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-6">
               {/* Baby */}
               <div className="p-6 bg-orange-50 rounded-xl border-l-4 border-orange-500">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">👶</span>
                   <h3 className="text-xl font-bold text-orange-900">Baby</h3>
                 </div>
-                <p className="text-orange-800 font-semibold mb-2">Nés en 2020-2021</p>
+                <p className="text-orange-800 font-semibold mb-2">Nés en 2021-2022</p>
+                <p className="text-xs text-orange-600 italic mb-3">Nés en 2023 acceptés selon capacités, à partir de 3 ans</p>
                 <p className="text-sm text-orange-700">Éveil corporel et motricité</p>
                 <div className="mt-4 text-sm text-orange-600">
                   <p><strong>Durée :</strong> 45 minutes</p>
@@ -45,56 +46,27 @@ const InformationsPratiques = () => {
                 </div>
               </div>
 
-              {/* Pré-poussins */}
+              {/* Enfants */}
               <div className="p-6 bg-green-50 rounded-xl border-l-4 border-green-500">
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="text-2xl">🧒</span>
-                  <h3 className="text-xl font-bold text-green-900">Pré-poussins</h3>
+                  <span className="text-2xl">🥋</span>
+                  <h3 className="text-xl font-bold text-green-900">Enfants</h3>
                 </div>
-                <p className="text-green-800 font-semibold mb-2">Nés en 2018-2019</p>
-                <p className="text-sm text-green-700">Apprentissage des bases du judo</p>
+                <p className="text-green-800 font-semibold mb-2">Nés de 2015 à 2020</p>
+                <p className="text-sm text-green-700">Apprentissage des techniques, confiance en soi et esprit sportif</p>
                 <div className="mt-4 text-sm text-green-600">
                   <p><strong>Durée :</strong> 1 heure</p>
                 </div>
               </div>
 
-              {/* Poussins 1 & 2 */}
-              <div className="p-6 bg-blue-50 rounded-xl border-l-4 border-blue-500">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-2xl">👦</span>
-                  <h3 className="text-xl font-bold text-blue-900">Poussins</h3>
-                </div>
-                <div className="space-y-2 mb-2">
-                  <p className="text-blue-800 font-semibold">Poussins 1 : Nés en 2017</p>
-                  <p className="text-blue-800 font-semibold">Poussins 2 : Nés en 2016</p>
-                </div>
-                <p className="text-sm text-blue-700">Technique, confiance et perfectionnement</p>
-                <div className="mt-4 text-sm text-blue-600">
-                  <p><strong>Durée :</strong> 1 heure</p>
-                </div>
-              </div>
-
-              {/* Benjamins */}
-              <div className="p-6 bg-yellow-50 rounded-xl border-l-4 border-yellow-500">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-2xl">🥋</span>
-                  <h3 className="text-xl font-bold text-yellow-900">Benjamins</h3>
-                </div>
-                <p className="text-yellow-800 font-semibold mb-2">Nés en 2014-2015</p>
-                <p className="text-sm text-yellow-700">Techniques et compétitions officielles pour les volontaires</p>
-                <div className="mt-4 text-sm text-yellow-600">
-                  <p><strong>Durée :</strong> 1 heure</p>
-                </div>
-              </div>
-
-              {/* Minimes+ */}
-              <div className="p-6 bg-red-50 rounded-xl border-l-4 border-red-500 md:col-span-2">
+              {/* Ados & Adultes */}
+              <div className="p-6 bg-red-50 rounded-xl border-l-4 border-red-500">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">🏆</span>
-                  <h3 className="text-xl font-bold text-red-900">Minimes, Cadets, Juniors, Séniors et Vétérans</h3>
+                  <h3 className="text-xl font-bold text-red-900">Ados & Adultes</h3>
                 </div>
-                <p className="text-red-800 font-semibold mb-2">Nés en 2013 et avant</p>
-                <p className="text-sm text-red-700">Technique, loisirs mais aussi préparation aux compétitions</p>
+                <p className="text-red-800 font-semibold mb-2">Nés en 2014 et avant</p>
+                <p className="text-sm text-red-700">Technique, loisirs et préparation aux compétitions pour les volontaires</p>
                 <div className="mt-4 text-sm text-red-600">
                   <p><strong>Durée :</strong> 1h30</p>
                 </div>
