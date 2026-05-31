@@ -203,7 +203,6 @@ const InformationsPratiques = () => {
                 <div className="p-4 bg-gray-50 rounded-lg">
                   <h4 className="font-semibold text-gray-900 mb-2">Villeneuve-lès-Béziers</h4>
                   <div className="text-sm text-gray-600 space-y-1">
-                    <p>Lundi : 18h00 - 20h30</p>
                     <p>Mardi : 18h00 - 20h30</p>
                     <p>Jeudi : 18h00 - 20h30</p>
                     <p>Samedi : 10h30 - 12h15</p>
@@ -213,15 +212,15 @@ const InformationsPratiques = () => {
                 <div className="p-4 bg-gray-50 rounded-lg">
                   <h4 className="font-semibold text-gray-900 mb-2">Thézan-lès-Béziers</h4>
                   <div className="text-sm text-gray-600 space-y-1">
-                    <p>Lundi : 18h30 - 19h30</p>
+                    <p>Lundi : 17h30 - 18h30</p>
                     <p>Samedi : 09h00 - 09h45</p>
                   </div>
                 </div>
 
                 <div className="p-4 bg-gray-50 rounded-lg">
                   <h4 className="font-semibold text-gray-900 mb-2">Sauvian</h4>
-                  <div className="text-sm text-gray-600">
-                    <p>Vendredi : 17h30 - 19h15</p>
+                  <div className="text-sm text-gray-600 space-y-1">
+                    <p>Vendredi : 17h45 - 19h30</p>
                   </div>
                 </div>
               </div>
