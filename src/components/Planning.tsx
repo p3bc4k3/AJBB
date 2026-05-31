@@ -218,10 +218,11 @@ const Planning = () => {
               >
                 <option value="all">Toutes les années</option>
                 {explicitYears.map(y => (
-                  <option key={y} value={String(y)}>{y}</option>
+                  <option key={y} value={String(y)}>{y === 2023 ? '2023 *' : y}</option>
                 ))}
                 <option value="lte-2014">2014 et avant</option>
               </select>
+              <p className="mt-1 text-xs text-gray-500">* Nés en 2023 : sous réserve d'un essai concluant</p>
             </div>
 
             <div>
