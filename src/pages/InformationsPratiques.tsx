@@ -37,12 +37,16 @@ const InformationsPratiques = () => {
                   <span className="text-2xl">👶</span>
                   <h3 className="text-xl font-bold text-orange-900">Baby</h3>
                 </div>
-                <p className="text-orange-800 font-semibold mb-2">Nés en 2021-2022</p>
+                <p className="text-orange-800 font-semibold mb-1">Nés en 2021-2022</p>
                 <p className="text-xs text-orange-600 italic mb-3">Nés en 2023 acceptés selon capacités, à partir de 3 ans</p>
-                <p className="text-sm text-orange-700">Éveil corporel et motricité</p>
-                <div className="mt-4 text-sm text-orange-600">
+                <p className="text-sm text-orange-700 mb-4">Éveil corporel et motricité</p>
+                <div className="text-sm text-orange-600 space-y-1 mb-3">
                   <p><strong>Durée :</strong> 45 minutes</p>
                   <p><strong>Objectif :</strong> Développement psychomoteur</p>
+                </div>
+                <div className="pt-3 border-t border-orange-200">
+                  <p className="text-xs font-semibold text-orange-700 mb-1">Groupes fédéraux :</p>
+                  <p className="text-xs text-orange-600">Baby Judo</p>
                 </div>
               </div>
 
@@ -53,9 +57,13 @@ const InformationsPratiques = () => {
                   <h3 className="text-xl font-bold text-green-900">Enfants</h3>
                 </div>
                 <p className="text-green-800 font-semibold mb-2">Nés de 2015 à 2020</p>
-                <p className="text-sm text-green-700">Apprentissage des techniques, confiance en soi et esprit sportif</p>
-                <div className="mt-4 text-sm text-green-600">
+                <p className="text-sm text-green-700 mb-4">Apprentissage des techniques, confiance en soi et esprit sportif</p>
+                <div className="text-sm text-green-600 mb-3">
                   <p><strong>Durée :</strong> 1 heure</p>
+                </div>
+                <div className="pt-3 border-t border-green-200">
+                  <p className="text-xs font-semibold text-green-700 mb-1">Groupes fédéraux :</p>
+                  <p className="text-xs text-green-600">Mini-poussins · Pré-poussins · Poussins · Benjamins</p>
                 </div>
               </div>
 
@@ -66,9 +74,13 @@ const InformationsPratiques = () => {
                   <h3 className="text-xl font-bold text-red-900">Ados & Adultes</h3>
                 </div>
                 <p className="text-red-800 font-semibold mb-2">Nés en 2014 et avant</p>
-                <p className="text-sm text-red-700">Technique, loisirs et préparation aux compétitions pour les volontaires</p>
-                <div className="mt-4 text-sm text-red-600">
+                <p className="text-sm text-red-700 mb-4">Technique, loisirs et préparation aux compétitions pour les volontaires</p>
+                <div className="text-sm text-red-600 mb-3">
                   <p><strong>Durée :</strong> 1h30</p>
+                </div>
+                <div className="pt-3 border-t border-red-200">
+                  <p className="text-xs font-semibold text-red-700 mb-1">Groupes fédéraux :</p>
+                  <p className="text-xs text-red-600">Minimes · Cadets · Juniors · Séniors · Vétérans</p>
                 </div>
               </div>
             </div>
