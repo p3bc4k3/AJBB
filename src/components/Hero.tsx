@@ -74,13 +74,13 @@ const Hero = () => {
             </div>
             
             <div className="flex flex-wrap gap-4">
-              <button
-                onClick={() => scrollToSection('planning')}
+              <a
+                href="/planning"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-yellow-600 text-white font-semibold rounded-xl hover:bg-black transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
               >
                 <Calendar size={20} />
                 Voir le planning
-              </button>
+              </a>
               <a
                 href="/inscription"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-yellow-600 font-semibold rounded-xl border-2 border-yellow-600 hover:bg-yellow-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1"
