@@ -169,7 +169,7 @@ const Inscription = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="p-2">
               <iframe
                 src="https://docs.google.com/forms/d/e/1FAIpQLSe3ejz0FISN1J5opwlvy9gJX8VSNuc-sAB6Vock195AmvTpQQ/viewform?embedded=true"
@@ -183,6 +183,44 @@ const Inscription = () => {
               >
                 Chargement du formulaire...
               </iframe>
+            </div>
+          </div>
+        </section>
+
+        {/* Image Rights Authorization Reminder */}
+        <section className="mb-16">
+          <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-yellow-600 rounded-full flex items-center justify-center">
+                <span className="text-white text-lg">📸</span>
+              </div>
+              <h2 className="text-xl font-bold text-gray-900">
+                Autorisation droit à l'image{' '}
+                <span className="text-sm font-normal text-gray-500">(spécifique réseaux sociaux)</span>
+              </h2>
+            </div>
+            <p className="text-gray-600 mb-6">
+              Dans le cadre de nos publications sur les réseaux sociaux, merci de compléter et de nous retourner l'autorisation droit à l'image.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="https://drive.google.com/file/d/1XU1zho_r0yfQkuUz74zt6IRtTpMQiec7/view"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-yellow-600 text-white font-semibold rounded-lg hover:bg-black transition-all duration-300 transform hover:-translate-y-1"
+              >
+                <Download className="w-5 h-5" />
+                Télécharger l'autorisation (PDF)
+              </a>
+              <a
+                href="https://forms.gle/K9BencjPaYP1KWf77"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-yellow-600 text-yellow-600 font-semibold rounded-lg hover:bg-yellow-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1"
+              >
+                <ExternalLink className="w-5 h-5" />
+                Déposer le formulaire signé
+              </a>
             </div>
           </div>
         </section>
