@@ -2,7 +2,8 @@ import React from 'react';
 
 const Sponsors = () => {
   const sponsors = [
-    { name: 'Partenaire 1', logo: '/img/sponsor/sponsor1.png' }
+    { name: 'Partenaire 1', logo: '/img/sponsor/sponsor1.png', url: '' },
+    { name: 'La Galère - Bar Glacier Cocktail Valras-Plage', logo: '/img/sponsor/sponsor-la-galere.png', url: 'https://www.facebook.com/lagalereplage/?locale=fr_FR' },
   ];
 
   return (
@@ -16,11 +17,8 @@ const Sponsors = () => {
         <div className="overflow-hidden">
           <div className="flex animate-scroll space-x-8">
             {/* Première série de logos */}
-            {sponsors.map((sponsor, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
-              >
+            {sponsors.map((sponsor, index) => {
+              const card = (
                 <img
                   src={sponsor.logo}
                   alt={sponsor.name}
@@ -34,14 +32,17 @@ const Sponsors = () => {
                     }
                   }}
                 />
-              </div>
-            ))}
+              );
+              const className = "flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg";
+              return sponsor.url ? (
+                <a key={index} href={sponsor.url} target="_blank" rel="noopener noreferrer" className={className}>{card}</a>
+              ) : (
+                <div key={index} className={className}>{card}</div>
+              );
+            })}
             {/* Duplication pour effet continu */}
-            {sponsors.map((sponsor, index) => (
-              <div
-                key={`duplicate-${index}`}
-                className="flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
-              >
+            {sponsors.map((sponsor, index) => {
+              const card = (
                 <img
                   src={sponsor.logo}
                   alt={sponsor.name}
@@ -55,8 +56,14 @@ const Sponsors = () => {
                     }
                   }}
                 />
-              </div>
-            ))}
+              );
+              const className = "flex items-center justify-center min-w-[150px] h-20 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg";
+              return sponsor.url ? (
+                <a key={`duplicate-${index}`} href={sponsor.url} target="_blank" rel="noopener noreferrer" className={className}>{card}</a>
+              ) : (
+                <div key={`duplicate-${index}`} className={className}>{card}</div>
+              );
+            })}
           </div>
         </div>
 
