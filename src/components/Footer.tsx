@@ -1,6 +1,7 @@
 import React from 'react';
 import { Facebook, Instagram } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import { sponsors } from '../data/sponsors';
 
 const Footer = () => {
   const location = useLocation();
@@ -30,9 +31,6 @@ const Footer = () => {
     }
   };
 
-  const sponsors = [
-    { name: 'Partenaire 1', logo: '/img/sponsor/sponsor1.png' }
-  ];
 
   return (
     <footer className="bg-gray-900 text-white py-12">

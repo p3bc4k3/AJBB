@@ -2,11 +2,9 @@ import React from 'react';
 import { Users, Shirt, Clock, Phone, Mail, Lightbulb, Download, ExternalLink } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { sponsors } from '../data/sponsors';
 
 const InformationsPratiques = () => {
-  const sponsors = [
-    { name: 'Partenaire 1', logo: '/img/sponsor/sponsor1.png' }
-  ];
 
   return (
     <div className="min-h-screen bg-gray-50">

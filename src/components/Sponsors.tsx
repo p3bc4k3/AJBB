@@ -1,10 +1,7 @@
 import React from 'react';
+import { sponsors } from '../data/sponsors';
 
 const Sponsors = () => {
-  const sponsors = [
-    { name: 'Partenaire 1', logo: '/img/sponsor/sponsor1.png', url: '' },
-    { name: 'La Galère - Bar Glacier Cocktail Valras-Plage', logo: '/img/sponsor/sponsor-la-galere.png', url: 'https://www.facebook.com/lagalereplage/?locale=fr_FR' },
-  ];
 
   return (
     <section className="py-16 bg-white border-t border-gray-200">
