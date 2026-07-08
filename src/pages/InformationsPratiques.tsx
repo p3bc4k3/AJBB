@@ -241,6 +241,7 @@ const InformationsPratiques = () => {
                   <div className="text-sm text-gray-600 space-y-1">
                     <p>Mardi : 18h00 - 20h30</p>
                     <p>Jeudi : 18h00 - 20h30</p>
+                    <p>Vendredi : 19h30 - 21h00</p>
                     <p>Samedi : 10h30 - 12h15</p>
                   </div>
                 </div>

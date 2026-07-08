@@ -57,7 +57,8 @@ const Planning = () => {
       birthYearMax: 2014,
       sessions: [
         { day: "Mardi", time: "19h00-20h30", location: "Villeneuve-lès-Béziers" },
-        { day: "Jeudi", time: "19h00-20h30", location: "Villeneuve-lès-Béziers" }
+        { day: "Jeudi", time: "19h00-20h30", location: "Villeneuve-lès-Béziers" },
+        { day: "Vendredi", time: "19h30-21h00", location: "Villeneuve-lès-Béziers" }
       ],
       color: "#dc2626"
     }
