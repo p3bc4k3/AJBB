@@ -16,7 +16,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="accueil" className="mt-20 min-h-screen flex items-center py-8 bg-gradient-to-br from-gray-50/70 to-white/70">
+    <section id="accueil" className="mt-20 min-h-screen flex items-center py-8 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-6xl mx-auto px-5">
         {/* Tags sur toute la largeur */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">

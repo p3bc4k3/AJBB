@@ -7,7 +7,7 @@ import { sponsors } from '../data/sponsors';
 const InformationsPratiques = () => {
 
   return (
-    <div className="min-h-screen bg-gray-50/70">
+    <div className="min-h-screen bg-gray-50">
       <Header />
 
       {/* Main Content */}

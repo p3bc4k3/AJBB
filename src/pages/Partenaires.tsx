@@ -6,7 +6,7 @@ import { sponsors } from '../data/sponsors';
 
 const Partenaires = () => {
   return (
-    <div className="min-h-screen bg-gray-50/70">
+    <div className="min-h-screen bg-gray-50">
       <Header />
 
       <main className="max-w-6xl mx-auto px-5 py-12 pt-32">

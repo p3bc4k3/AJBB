@@ -7,7 +7,7 @@ const Inscription = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50/70">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white shadow-sm border-b border-gray-200">
         <nav className="max-w-6xl mx-auto px-5 py-4">

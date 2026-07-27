@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SeoManager from './components/SeoManager';
-import CherryBlossomBackground from './components/CherryBlossomBackground';
 import Inscription from './pages/Inscription';
 import InformationsPratiques from './pages/InformationsPratiques';
 import Planning from './pages/Planning';
@@ -16,7 +15,6 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen">
-        <CherryBlossomBackground />
         <SeoManager />
         <Routes>
           <Route path="/inscription" element={<Inscription />} />
