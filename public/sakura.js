@@ -1,5 +1,5 @@
 /**
- * sakura.js — Effet de pétales de fleurs de cerisier en arrière-plan.
+ * sakura.js — Effet de pétales de fleurs de cerisier en overlay.
  *
  * Fichier autonome, sans dépendance : à inclure une seule fois avec
  * <script src="/sakura.js" defer></script>
@@ -26,6 +26,8 @@
     petalsPerPx2: 1 / 50000,
 
     // Nombre maximum de pétales, quelle que soit la taille de l'écran.
+    // Le canvas étant maintenant en overlay (au-dessus du contenu), c'est
+    // le premier réglage à baisser si l'effet paraît trop chargé.
     maxPetals: 60,
 
     // En dessous de cette largeur (px), on considère qu'on est sur mobile.
@@ -38,9 +40,16 @@
     minSize: 8,
     maxSize: 18,
 
-    // Opacité globale de chaque pétale (avant dégradé interne).
-    minOpacity: 0.45,
-    maxOpacity: 0.85,
+    // Opacité de chaque pétale (avant dégradé interne). Volontairement basse
+    // car le canvas passe désormais devant le texte.
+    minOpacity: 0.3,
+    maxOpacity: 0.6,
+
+    // Multiplicateur global appliqué à TOUTES les opacités (pétales, y
+    // compris l'atténuation de profil). 1 = valeurs ci-dessus inchangées.
+    // Réglage à toucher en premier pour tout atténuer/renforcer d'un coup
+    // sans changer minOpacity/maxOpacity.
+    globalOpacity: 1,
 
     // Durée (en secondes) pour qu'une pétale traverse tout l'écran en tombant.
     // Une valeur haute = chute plus lente/apaisante.
@@ -66,20 +75,15 @@
     gustAverageInterval: 9,
     gustMaxStrength: 14,
 
-    // Active un léger flou sur les petites pétales (effet de profondeur de
-    // champ, plan lointain). Désactiver si l'effet coûte trop cher sur une
-    // machine faible.
+    // Léger flou sur les petites pétales (profondeur de champ). Maintenu actif
+    // volontairement : ça évite que les pétales au premier plan ne paraissent
+    // "collées" au texte en dessous.
     enableDepthBlur: true,
 
     // Couleur de base pour l'ombre légère derrière chaque pétale (0 = désactivée).
     // Laisser à 0 pour un rendu totalement plat/discret.
     shadowBlur: 0,
   };
-
-  // Si l'utilisateur préfère moins d'animations, on ne lance rien du tout.
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    return;
-  }
 
   // ---------------------------------------------------------------------
   // Mise en place du canvas (styles injectés, pas de fichier CSS séparé)
@@ -88,20 +92,25 @@
   canvas.id = 'sakura-canvas';
   document.body.appendChild(canvas);
 
+  // Injecté en dernier enfant de <head> (donc après le CSS de Tailwind dans
+  // l'ordre du DOM) + !important sur les 3 propriétés qui comptent, pour
+  // garantir que rien ne peut repasser par-dessus par accident.
   const style = document.createElement('style');
   style.textContent = `
     #sakura-canvas {
-      position: fixed;
+      position: fixed !important;
       inset: 0;
       width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      /* z-index négatif : juste au-dessus du fond de page (qui n'a pas de
-         contexte d'empilement propre), mais sous tout contenu normal, qui
-         se peint toujours au-dessus des éléments à z-index négatif. Un
-         z-index positif placerait au contraire le canvas AU-DESSUS du
-         contenu : à éviter. */
-      z-index: -1;
+      /* 100% (pas 100vh) : sur mobile, 100vh inclut la zone sous la barre
+         d'URL du navigateur et décale le canvas. En position fixed, 100%
+         se calcule sur le viewport visuel réel, comme window.innerHeight. */
+      height: 100%;
+      /* Le canvas est au-dessus de TOUT le contenu (header, menu, lightbox
+         compris) pour rester visible malgré les fonds opaques des sections.
+         pointer-events: none garantit qu'il n'intercepte jamais un clic :
+         voir la vérification dans la réponse qui accompagne ce fichier. */
+      pointer-events: none !important;
+      z-index: 2147483000 !important;
     }
   `;
   document.head.appendChild(style);
@@ -208,7 +217,9 @@
       ctx.translate(this.x, this.y);
       ctx.rotate(this.tilt);
       ctx.scale(scaleX, 1);
-      ctx.globalAlpha = this.opacity * (0.5 + 0.5 * absScaleX); // s'estompe légèrement de profil
+      // globalOpacity multiplie tout : c'est LE réglage à toucher pour
+      // atténuer/renforcer l'effet en un seul endroit.
+      ctx.globalAlpha = this.opacity * (0.5 + 0.5 * absScaleX) * OPTIONS.globalOpacity;
 
       if (OPTIONS.enableDepthBlur && this.depth < 0.35) {
         ctx.filter = 'blur(0.6px)';
@@ -334,6 +345,17 @@
     }
   }
 
+  // Debounce (~150ms) : une rotation d'écran mobile déclenche plusieurs
+  // événements resize rapprochés — on ne recalcule qu'une fois la taille
+  // stabilisée, pas à chaque événement.
+  let resizeTimeoutId = null;
+  function debouncedResize() {
+    if (resizeTimeoutId !== null) {
+      clearTimeout(resizeTimeoutId);
+    }
+    resizeTimeoutId = setTimeout(resize, 150);
+  }
+
   function render(timestamp) {
     if (lastTimestamp === null) lastTimestamp = timestamp;
     // Delta time en secondes, plafonné pour éviter un saut énorme si l'onglet
@@ -374,7 +396,7 @@
     }
   });
 
-  window.addEventListener('resize', resize);
+  window.addEventListener('resize', debouncedResize);
 
   // ---------------------------------------------------------------------
   // 5. INITIALISATION
@@ -385,4 +407,12 @@
   // toutes en haut) : déjà géré par `new Petal(viewport, true)` dans resize().
 
   start();
+
+  // TEMPORAIRE — diagnostic à retirer une fois le rendu confirmé dans le
+  // navigateur (demandé pour valider que le script tourne bien et que le
+  // z-index appliqué est le bon).
+  console.log(
+    '[sakura.js] pétales créées :', petals.length,
+    '| z-index effectif du canvas :', window.getComputedStyle(canvas).zIndex
+  );
 })();
