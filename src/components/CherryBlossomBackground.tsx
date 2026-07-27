@@ -5,24 +5,24 @@ interface Petal {
   y: number;
   size: number;
   baseSpeedY: number;
-  speedY: number;
   speedX: number;
   angle: number;
   spin: number;
   color: string;
 }
 
-const PETAL_COUNT = 32;
-const HEADER_HEIGHT_OFFSET = 0;
+const PETAL_COUNT = 45;
 
 const randomPetalColor = () =>
-  `rgba(255, ${Math.floor(Math.random() * 50) + 140}, ${Math.floor(Math.random() * 40) + 180}, ${(
-    Math.random() * 0.35 + 0.45
+  `rgba(255, ${Math.floor(Math.random() * 30) + 205}, ${Math.floor(Math.random() * 20) + 220}, ${(
+    Math.random() * 0.2 + 0.18
   ).toFixed(2)})`;
 
 // Fond décoratif discret (pétales de cerisier) : canvas fixe en arrière-plan,
-// n'intercepte jamais les clics et se met en pause si l'onglet est masqué ou
-// si l'utilisateur a demandé moins d'animations (prefers-reduced-motion).
+// n'intercepte jamais les clics, tombe en continu (indépendamment du scroll),
+// et se met en pause si l'onglet est masqué. Sous prefers-reduced-motion, la
+// chute lente reste (mouvement doux, non gêné par le scroll) mais l'effet de
+// parallaxe lié au scroll est désactivé.
 const CherryBlossomBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -50,14 +50,9 @@ const CherryBlossomBackground = () => {
 
     const randomPetal = (spawnAtRandomY: boolean): Petal => ({
       x: Math.random() * width,
-      y: spawnAtRandomY
-        ? Math.random() * height
-        : scrollSpeed >= 0
-          ? -20 - HEADER_HEIGHT_OFFSET
-          : height + 20,
-      size: Math.random() * 8 + 6,
-      baseSpeedY: Math.random() * 0.7 + 0.35,
-      speedY: 0,
+      y: spawnAtRandomY ? Math.random() * height : -20,
+      size: Math.random() * 5 + 4,
+      baseSpeedY: Math.random() * 0.5 + 0.3,
       speedX: Math.random() * 1 - 0.5,
       angle: Math.random() * Math.PI * 2,
       spin: Math.random() * 0.02 - 0.01,
@@ -79,67 +74,48 @@ const CherryBlossomBackground = () => {
       }
     };
 
-    const drawPetal = (petal: Petal) => {
-      ctx.save();
-      ctx.translate(petal.x, petal.y);
-      ctx.rotate(petal.angle);
-      ctx.fillStyle = petal.color;
-      ctx.beginPath();
-      ctx.ellipse(0, 0, petal.size, petal.size / 1.5, 0, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-    };
-
-    const drawStaticFrame = () => {
-      ctx.clearRect(0, 0, width, height);
-      petals.forEach(drawPetal);
-    };
-
     const animate = () => {
       if (!isTabVisible) return;
 
       ctx.clearRect(0, 0, width, height);
 
+      // Chute continue et lente en toutes circonstances ; le scroll n'ajoute
+      // qu'un léger effet de parallaxe (désactivé si l'utilisateur préfère
+      // moins d'animations).
+      const parallax = prefersReducedMotion ? 0 : scrollSpeed * 0.15;
+
       petals.forEach((petal) => {
-        petal.speedY = petal.baseSpeedY + scrollSpeed * 0.15;
-        petal.y += petal.speedY;
+        petal.y += petal.baseSpeedY + parallax;
         petal.x += petal.speedX + Math.sin(petal.angle) * 0.5;
         petal.angle += petal.spin;
 
-        if (petal.y > height + 20 || petal.y < -20 || petal.x > width + 20 || petal.x < -20) {
+        if (petal.y > height + 20 || petal.x > width + 20 || petal.x < -20) {
           Object.assign(petal, randomPetal(false));
         }
 
-        drawPetal(petal);
+        ctx.save();
+        ctx.translate(petal.x, petal.y);
+        ctx.rotate(petal.angle);
+        ctx.fillStyle = petal.color;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, petal.size, petal.size / 2, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
       });
 
       scrollSpeed *= 0.95;
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    // Sous prefers-reduced-motion, on affiche les pétales figés (pas de rAF)
-    // plutôt que de masquer totalement l'effet.
-    const handleResize = prefersReducedMotion
-      ? () => {
-          resize();
-          drawStaticFrame();
-        }
-      : resize;
-
     resize();
-    window.addEventListener('resize', handleResize);
-
-    if (prefersReducedMotion) {
-      drawStaticFrame();
-    } else {
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      document.addEventListener('visibilitychange', handleVisibilityChange);
-      animationFrameId = requestAnimationFrame(animate);
-    }
+    window.addEventListener('resize', resize);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    animationFrameId = requestAnimationFrame(animate);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', resize);
       window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
@@ -147,7 +123,7 @@ const CherryBlossomBackground = () => {
 
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none cherry-blossom-gradient" aria-hidden="true">
-      <canvas ref={canvasRef} className="w-full h-full opacity-70" />
+      <canvas ref={canvasRef} className="w-full h-full opacity-50" />
     </div>
   );
 };
