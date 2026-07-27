@@ -14,8 +14,8 @@ interface Petal {
 const PETAL_COUNT = 45;
 
 const randomPetalColor = () =>
-  `rgba(255, ${Math.floor(Math.random() * 30) + 205}, ${Math.floor(Math.random() * 20) + 220}, ${(
-    Math.random() * 0.2 + 0.18
+  `rgba(255, ${Math.floor(Math.random() * 40) + 150}, ${Math.floor(Math.random() * 40) + 190}, ${(
+    Math.random() * 0.3 + 0.6
   ).toFixed(2)})`;
 
 // Fond décoratif discret (pétales de cerisier) : canvas fixe en arrière-plan,
@@ -51,7 +51,7 @@ const CherryBlossomBackground = () => {
     const randomPetal = (spawnAtRandomY: boolean): Petal => ({
       x: Math.random() * width,
       y: spawnAtRandomY ? Math.random() * height : -20,
-      size: Math.random() * 5 + 4,
+      size: Math.random() * 6 + 5,
       baseSpeedY: Math.random() * 0.5 + 0.3,
       speedX: Math.random() * 1 - 0.5,
       angle: Math.random() * Math.PI * 2,
@@ -122,8 +122,8 @@ const CherryBlossomBackground = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10 pointer-events-none cherry-blossom-gradient" aria-hidden="true">
-      <canvas ref={canvasRef} className="w-full h-full opacity-50" />
+    <div className="fixed inset-0 -z-10 pointer-events-none" aria-hidden="true">
+      <canvas ref={canvasRef} className="w-full h-full" />
     </div>
   );
 };

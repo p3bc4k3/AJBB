@@ -155,7 +155,7 @@ const Planning = () => {
   const hasActiveFilters = selectedCategory !== 'all' || selectedDay !== 'all' || selectedLocation !== 'all' || selectedBirthYear !== 'all';
 
   return (
-    <section id="planning" className="py-20 bg-gray-50/85">
+    <section id="planning" className="py-20 bg-gray-50/70">
       <div className="max-w-6xl mx-auto px-5">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-black mb-4 text-gray-900">Planning des entraînements</h1>
