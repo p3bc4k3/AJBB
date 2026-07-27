@@ -21,7 +21,7 @@ const Locations = () => {
   ];
 
   return (
-    <section id="lieux" className="py-20 bg-gray-50">
+    <section id="lieux" className="py-20 bg-gray-50/85">
       <div className="max-w-6xl mx-auto px-5">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-black mb-4 text-gray-900">Nos lieux d'entraînement</h2>

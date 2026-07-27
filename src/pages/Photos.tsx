@@ -26,7 +26,7 @@ const Photos = () => {
 
   if (selectedAlbum) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50/85">
         <Header />
         <main className="max-w-6xl mx-auto px-5 py-12 pt-32">
           <PhotoGallery album={selectedAlbum} onBack={() => setSelectedAlbum(null)} />
@@ -37,7 +37,7 @@ const Photos = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50/85">
       <Header />
       <main className="max-w-6xl mx-auto px-5 py-12 pt-32">
         <div className="text-center mb-12">

@@ -12,12 +12,12 @@ interface Petal {
   color: string;
 }
 
-const PETAL_COUNT = 20;
+const PETAL_COUNT = 32;
 const HEADER_HEIGHT_OFFSET = 0;
 
 const randomPetalColor = () =>
-  `rgba(255, ${Math.floor(Math.random() * 40) + 180}, ${Math.floor(Math.random() * 30) + 205}, ${(
-    Math.random() * 0.3 + 0.25
+  `rgba(255, ${Math.floor(Math.random() * 50) + 140}, ${Math.floor(Math.random() * 40) + 180}, ${(
+    Math.random() * 0.35 + 0.45
   ).toFixed(2)})`;
 
 // Fond décoratif discret (pétales de cerisier) : canvas fixe en arrière-plan,
@@ -32,8 +32,7 @@ const CherryBlossomBackground = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (reducedMotionQuery.matches) return;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     let width = window.innerWidth;
     let height = window.innerHeight;
@@ -56,7 +55,7 @@ const CherryBlossomBackground = () => {
         : scrollSpeed >= 0
           ? -20 - HEADER_HEIGHT_OFFSET
           : height + 20,
-      size: Math.random() * 6 + 4,
+      size: Math.random() * 8 + 6,
       baseSpeedY: Math.random() * 0.7 + 0.35,
       speedY: 0,
       speedX: Math.random() * 1 - 0.5,
@@ -80,6 +79,22 @@ const CherryBlossomBackground = () => {
       }
     };
 
+    const drawPetal = (petal: Petal) => {
+      ctx.save();
+      ctx.translate(petal.x, petal.y);
+      ctx.rotate(petal.angle);
+      ctx.fillStyle = petal.color;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, petal.size, petal.size / 1.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    };
+
+    const drawStaticFrame = () => {
+      ctx.clearRect(0, 0, width, height);
+      petals.forEach(drawPetal);
+    };
+
     const animate = () => {
       if (!isTabVisible) return;
 
@@ -95,29 +110,36 @@ const CherryBlossomBackground = () => {
           Object.assign(petal, randomPetal(false));
         }
 
-        ctx.save();
-        ctx.translate(petal.x, petal.y);
-        ctx.rotate(petal.angle);
-        ctx.fillStyle = petal.color;
-        ctx.beginPath();
-        ctx.ellipse(0, 0, petal.size, petal.size / 1.5, 0, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
+        drawPetal(petal);
       });
 
       scrollSpeed *= 0.95;
       animationFrameId = requestAnimationFrame(animate);
     };
 
+    // Sous prefers-reduced-motion, on affiche les pétales figés (pas de rAF)
+    // plutôt que de masquer totalement l'effet.
+    const handleResize = prefersReducedMotion
+      ? () => {
+          resize();
+          drawStaticFrame();
+        }
+      : resize;
+
     resize();
-    window.addEventListener('resize', resize);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    animationFrameId = requestAnimationFrame(animate);
+    window.addEventListener('resize', handleResize);
+
+    if (prefersReducedMotion) {
+      drawStaticFrame();
+    } else {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+      animationFrameId = requestAnimationFrame(animate);
+    }
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', resize);
+      window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
@@ -125,7 +147,7 @@ const CherryBlossomBackground = () => {
 
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none cherry-blossom-gradient" aria-hidden="true">
-      <canvas ref={canvasRef} className="w-full h-full opacity-60" />
+      <canvas ref={canvasRef} className="w-full h-full opacity-70" />
     </div>
   );
 };
