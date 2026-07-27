@@ -284,7 +284,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 pt-8 text-center">
           <p className="text-gray-400">
-            &copy; 2025 Alliance Judo Bassin Biterrois. Tous droits réservés.
+            &copy; {new Date().getFullYear()} Alliance Judo Bassin Biterrois. Tous droits réservés.
           </p>
         </div>
       </div>

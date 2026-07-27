@@ -70,7 +70,7 @@ const Hero = () => {
               </div>
               
               <p>Que vous cherchiez une activité physique, un cadre éducatif ou un défi personnel, l'AJBB vous accompagne sur le tatami avec bienveillance et professionnalisme.</p>
-              <p>📍 Présent à Villeneuve-lès-Béziers, Sauvian et Thézan-lès-Béziers</p>
+              <p>📍 Présent à Villeneuve-lès-Béziers, Sauvian et Thézan-lès-Béziers, à quelques minutes de Béziers</p>
             </div>
             
             <div className="flex flex-wrap gap-4">

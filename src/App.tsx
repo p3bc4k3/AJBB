@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SeoManager from './components/SeoManager';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Locations from './components/Locations';
@@ -17,6 +18,7 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen">
+        <SeoManager />
         <Routes>
           <Route path="/inscription" element={<Inscription />} />
           <Route path="/informations-pratiques" element={<InformationsPratiques />} />
