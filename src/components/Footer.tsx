@@ -137,6 +137,14 @@ const Footer = () => {
               ))}
               <li>
                 <a
+                  href="/le-club"
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  Le Club
+                </a>
+              </li>
+              <li>
+                <a
                   href="/planning"
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
@@ -156,7 +164,23 @@ const Footer = () => {
                   href="/photos"
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
-                  Photos
+                  Photos & Actualités
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/quiz"
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  🥋 Quiz Judo
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/partenaires"
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  Partenaires
                 </a>
               </li>
               <li>
@@ -190,6 +214,14 @@ const Footer = () => {
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Accueil
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/le-club"
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  Le Club
                 </a>
               </li>
               <li>
@@ -229,7 +261,23 @@ const Footer = () => {
                   href="/photos"
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
-                  Photos
+                  Photos & Actualités
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/quiz"
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  🥋 Quiz Judo
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/partenaires"
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  Partenaires
                 </a>
               </li>
               <li>

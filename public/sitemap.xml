@@ -21,6 +21,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ajbb.sharejudo.com/le-club</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ajbb.sharejudo.com/partenaires</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://ajbb.sharejudo.com/informations-pratiques</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

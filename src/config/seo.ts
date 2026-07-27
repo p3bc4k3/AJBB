@@ -26,9 +26,19 @@ export const SEO_ROUTES: Record<string, SeoEntry> = {
       "Retrouvez le calendrier des entraînements et événements de l'Alliance Judo Bassin Biterrois.",
   },
   '/photos': {
-    title: 'Photos - Vie du club - AJBB Judo',
+    title: 'Photos & Actualités - Vie du club - AJBB Judo',
     description:
-      "Albums photos des entraînements, stages et événements de l'Alliance Judo Bassin Biterrois.",
+      "Albums photos et actualités (Facebook, TikTok, Instagram) des entraînements, stages et événements de l'Alliance Judo Bassin Biterrois.",
+  },
+  '/le-club': {
+    title: 'Le Club - Histoire, valeurs et objectifs - AJBB Judo',
+    description:
+      "Club de judo à l'esprit familial sur Sauvian, Villeneuve-lès-Béziers et Thézan-lès-Béziers : valeurs, stages, déplacements et vie associative de l'Alliance Judo Bassin Biterrois.",
+  },
+  '/partenaires': {
+    title: 'Nos partenaires - AJBB Judo',
+    description:
+      "Découvrez les entreprises et associations qui soutiennent l'Alliance Judo Bassin Biterrois.",
   },
   '/informations-pratiques': {
     title: "Informations pratiques - Catégories d'âge, tenue, tarifs - AJBB Judo",

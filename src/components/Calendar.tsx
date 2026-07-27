@@ -300,7 +300,7 @@ const Calendar = () => {
     <section id="calendrier" className="py-20">
       <div className="max-w-6xl mx-auto px-5">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-black mb-4 text-gray-900">Calendrier</h2>
+          <h1 className="text-4xl font-black mb-4 text-gray-900">Calendrier</h1>
           <p className="text-lg text-gray-600">Événements à venir et dates importantes</p>
         </div>
 

@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Camera, Image as ImageIcon } from 'lucide-react';
+import { Camera, Image as ImageIcon, Newspaper } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PhotoGallery from '../components/PhotoGallery';
+import Videos from '../components/Videos';
+import CtaBanner from '../components/CtaBanner';
 import { loadAlbums, Album } from '../utils/albums';
 
 const Photos = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
   const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<'photos' | 'actualites'>('photos');
 
   useEffect(() => {
     try {
@@ -40,14 +43,81 @@ const Photos = () => {
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Camera className="w-10 h-10 text-yellow-600" />
-            <h1 className="text-4xl font-black text-gray-900">Photos</h1>
+            <h1 className="text-4xl font-black text-gray-900">Photos & Actualités</h1>
           </div>
           <p className="text-lg text-gray-600">
             Revivez les meilleurs moments du club en images
           </p>
         </div>
 
-        {loading ? (
+        <div className="flex justify-center gap-3 mb-12">
+          <button
+            onClick={() => setActiveTab('photos')}
+            className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold transition-all duration-300 ${
+              activeTab === 'photos'
+                ? 'bg-yellow-600 text-white shadow-lg'
+                : 'bg-white text-gray-700 hover:bg-gray-100'
+            }`}
+          >
+            <ImageIcon size={18} />
+            Photos
+          </button>
+          <button
+            onClick={() => setActiveTab('actualites')}
+            className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold transition-all duration-300 ${
+              activeTab === 'actualites'
+                ? 'bg-yellow-600 text-white shadow-lg'
+                : 'bg-white text-gray-700 hover:bg-gray-100'
+            }`}
+          >
+            <Newspaper size={18} />
+            Actualités
+          </button>
+        </div>
+
+        {activeTab === 'actualites' ? (
+          <>
+            <Videos />
+            <div className="mt-12 p-6 bg-blue-50 rounded-2xl border-l-4 border-blue-500">
+              <div className="flex items-start gap-3">
+                <Newspaper size={20} className="text-blue-600 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-bold text-blue-900 mb-2">Suivez-nous</h4>
+                  <p className="text-blue-800 text-sm">
+                    Retrouvez toute notre actualité sur{' '}
+                    <a
+                      href="https://www.facebook.com/groups/226073905995315"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline font-semibold"
+                    >
+                      Facebook
+                    </a>
+                    , TikTok{' '}
+                    <a
+                      href="https://www.tiktok.com/@ajbb707"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline font-semibold"
+                    >
+                      @ajbb707
+                    </a>{' '}
+                    et Instagram{' '}
+                    <a
+                      href="https://www.instagram.com/alliance_judo_bassin_biterrois/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline font-semibold"
+                    >
+                      @alliance_judo_bassin_biterrois
+                    </a>
+                    .
+                  </p>
+                </div>
+              </div>
+            </div>
+          </>
+        ) : loading ? (
           <div className="text-center py-12">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-600"></div>
             <p className="mt-4 text-gray-600">Chargement des albums...</p>
@@ -98,18 +168,25 @@ const Photos = () => {
           </div>
         )}
 
-        <div className="mt-12 p-6 bg-blue-50 rounded-2xl border-l-4 border-blue-500">
-          <div className="flex items-start gap-3">
-            <Camera size={20} className="text-blue-600 mt-1 flex-shrink-0" />
-            <div>
-              <h4 className="font-bold text-blue-900 mb-2">À propos des photos</h4>
-              <p className="text-blue-800 text-sm">
-                Retrouvez ici les photos des événements marquants du club : remises de grade,
-                stages, compétitions et moments conviviaux. Les albums sont régulièrement mis à jour.
-              </p>
+        {activeTab === 'photos' && (
+          <div className="mt-12 p-6 bg-blue-50 rounded-2xl border-l-4 border-blue-500">
+            <div className="flex items-start gap-3">
+              <Camera size={20} className="text-blue-600 mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="font-bold text-blue-900 mb-2">À propos des photos</h4>
+                <p className="text-blue-800 text-sm">
+                  Retrouvez ici les photos des événements marquants du club : remises de grade,
+                  stages, compétitions et moments conviviaux. Les albums sont régulièrement mis à jour.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        )}
+
+        <CtaBanner
+          title="Envie de vivre ces moments avec nous ?"
+          description="Rejoignez l'AJBB et participez aux prochains entraînements, stages et événements du club."
+        />
       </main>
       <Footer />
     </div>

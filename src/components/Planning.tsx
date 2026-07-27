@@ -158,7 +158,7 @@ const Planning = () => {
     <section id="planning" className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-5">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-black mb-4 text-gray-900">Planning des entraînements</h2>
+          <h1 className="text-4xl font-black mb-4 text-gray-900">Planning des entraînements</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Retrouvez tous nos cours organisés par catégorie d'âge, jour ou lieu
           </p>
