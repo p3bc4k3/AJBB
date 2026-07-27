@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes cherry-blossom-gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.cherry-blossom-gradient {
+  background: linear-gradient(120deg, #fff7f8, #ffe8ef, #fffaf0, #ffeef5);
+  background-size: 300% 300%;
+  animation: cherry-blossom-gradient 30s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cherry-blossom-gradient {
+    animation: none;
+  }
+}

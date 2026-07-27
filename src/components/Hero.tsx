@@ -16,7 +16,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="accueil" className="mt-20 min-h-screen flex items-center py-8 bg-gradient-to-br from-gray-50 to-white">
+    <section id="accueil" className="mt-20 min-h-screen flex items-center py-8 bg-gradient-to-br from-gray-50/80 to-white/80">
       <div className="max-w-6xl mx-auto px-5">
         {/* Tags sur toute la largeur */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
@@ -28,10 +28,6 @@ const Hero = () => {
             <span>👶</span>
             <span>De 3 à 99 ans</span>
           </div>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 text-green-700 rounded-full text-xs font-semibold">
-            <span>🎯</span>
-            <span>Loisirs</span>
-          </div>
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-red-100 text-red-700 rounded-full text-xs font-semibold">
             <span>🏆</span>
             <span>Compétitions</span>
@@ -39,14 +35,6 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold">
             <span>📍</span>
             <span>Bassin Biterrois</span>
-          </div>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-pink-100 text-pink-700 rounded-full text-xs font-semibold">
-            <span>👨‍👩‍👧‍👦</span>
-            <span>Esprit familial</span>
-          </div>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-100 text-indigo-700 rounded-full text-xs font-semibold">
-            <span>🥋</span>
-            <span>Tous niveaux</span>
           </div>
         </div>
 
@@ -58,22 +46,16 @@ const Hero = () => {
               <span className="text-yellow-600">Bassin Biterrois</span>
             </h1>
             
-            <div className="text-lg text-gray-600 mb-8 leading-relaxed space-y-4">
-              <p>Rejoignez l'Alliance Judo Bassin Biterrois !</p>
-              <p>Plongez dans l'univers du judo, un art martial alliant respect, discipline et dépassement de soi, dans une ambiance à la fois familiale et dynamique.</p>
-              
-              <div className="space-y-2">
-                <p>🏅 Cours accessibles dès 3 ans jusqu'à l'âge adulte</p>
-                <p>👨‍👩‍👧‍👦 Pour tous les niveaux : débutants, loisirs ou compétiteurs</p>
-                <p>🥋 Encadrement de qualité par des enseignants diplômés et passionnés</p>
-                <p>🤝 Valeurs fortes : entraide, respect, progression et inclusion</p>
-              </div>
-              
-              <p>Que vous cherchiez une activité physique, un cadre éducatif ou un défi personnel, l'AJBB vous accompagne sur le tatami avec bienveillance et professionnalisme.</p>
-              <p>📍 Présent à Villeneuve-lès-Béziers, Sauvian et Thézan-lès-Béziers, à quelques minutes de Béziers</p>
+            <div className="text-lg text-gray-600 mb-8 leading-relaxed space-y-3">
+              <p>
+                Rejoignez l'Alliance Judo Bassin Biterrois ! Des cours de judo pour tous,
+                dès 3 ans, dans une ambiance familiale et dynamique.
+              </p>
+              <p>🏅 Cours accessibles dès 3 ans jusqu'à l'âge adulte, en loisir ou en compétition</p>
+              <p>📍 Villeneuve-lès-Béziers, Sauvian et Thézan-lès-Béziers, près de Béziers</p>
             </div>
-            
-            <div className="flex flex-wrap gap-4">
+
+            <div className="flex flex-wrap gap-4 mb-4">
               <a
                 href="/planning"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-yellow-600 text-white font-semibold rounded-xl hover:bg-black transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
@@ -89,6 +71,10 @@ const Hero = () => {
                 S'inscrire
               </a>
             </div>
+
+            <a href="/le-club" className="text-yellow-700 font-semibold hover:underline">
+              → Découvrir nos valeurs et notre équipe
+            </a>
           </div>
           
           <div className="relative">
