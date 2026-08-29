@@ -4,7 +4,7 @@ import Lightbox from './Lightbox';
 
 // Délai (ms) avant agrandissement : survol prolongé à la souris ou appui
 // long au doigt sur mobile.
-const ZOOM_PRESS_DELAY = 4000;
+const ZOOM_PRESS_DELAY = 1200;
 
 interface LocationPhoto {
   src: string;
