@@ -1,8 +1,42 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { MapPin, Navigation } from 'lucide-react';
+import Lightbox from './Lightbox';
+
+// Délai (ms) avant agrandissement : survol prolongé à la souris ou appui
+// long au doigt sur mobile.
+const ZOOM_PRESS_DELAY = 4000;
+
+interface LocationPhoto {
+  src: string;
+  alt: string;
+}
+
+interface LocationInfo {
+  name: string;
+  address: string;
+  googleMapsUrl: string;
+  photos?: LocationPhoto[];
+}
 
 const Locations = () => {
-  const locations = [
+  const [lightbox, setLightbox] = useState<{ images: string[]; index: number } | null>(null);
+  const pressTimer = useRef<number | null>(null);
+
+  const clearPress = () => {
+    if (pressTimer.current !== null) {
+      window.clearTimeout(pressTimer.current);
+      pressTimer.current = null;
+    }
+  };
+
+  const startPress = (photos: LocationPhoto[], index: number) => {
+    clearPress();
+    pressTimer.current = window.setTimeout(() => {
+      setLightbox({ images: photos.map((photo) => photo.src), index });
+    }, ZOOM_PRESS_DELAY);
+  };
+
+  const locations: LocationInfo[] = [
     {
       name: "Villeneuve-lès-Béziers",
       address: "Chem. Saint-Michel\n34420 Villeneuve-lès-Béziers",
@@ -11,7 +45,21 @@ const Locations = () => {
     {
       name: "Thézan-lès-Béziers",
       address: "Rue Antoine de Saint-Exupéry\n34490 Thézan-lès-Béziers",
-      googleMapsUrl: "https://maps.app.goo.gl/43a6zSveVgwm777i9"
+      googleMapsUrl: "https://maps.app.goo.gl/43a6zSveVgwm777i9",
+      photos: [
+        {
+          src: "/img/locations/thezan-les-beziers/dojo-thezan-les-beziers-exterieur.webp",
+          alt: "Extérieur du dojo de judo de l'AJBB à Thézan-lès-Béziers"
+        },
+        {
+          src: "/img/locations/thezan-les-beziers/dojo-thezan-les-beziers-tatami.webp",
+          alt: "Tatami du dojo de judo de l'AJBB à Thézan-lès-Béziers"
+        },
+        {
+          src: "/img/locations/thezan-les-beziers/dojo-thezan-les-beziers-entree.webp",
+          alt: "Accueil et entrée du dojo de judo de l'AJBB à Thézan-lès-Béziers"
+        }
+      ]
     },
     {
       name: "Sauvian",
@@ -21,6 +69,7 @@ const Locations = () => {
   ];
 
   return (
+    <>
     <section id="lieux" className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-5">
         <div className="text-center mb-12">
@@ -39,7 +88,27 @@ const Locations = () => {
               </div>
               
               <h3 className="text-xl font-bold mb-4 text-gray-900">{location.name}</h3>
-              
+
+              {location.photos && (
+                <div className="grid grid-cols-3 gap-1.5 mb-6">
+                  {location.photos.map((photo, photoIndex) => (
+                    <img
+                      key={photo.src}
+                      src={photo.src}
+                      alt={photo.alt}
+                      loading="lazy"
+                      className="w-full aspect-square object-cover rounded-lg cursor-zoom-in select-none"
+                      onMouseEnter={() => startPress(location.photos!, photoIndex)}
+                      onMouseLeave={clearPress}
+                      onTouchStart={() => startPress(location.photos!, photoIndex)}
+                      onTouchEnd={clearPress}
+                      onTouchCancel={clearPress}
+                      onContextMenu={(e) => e.preventDefault()}
+                    />
+                  ))}
+                </div>
+              )}
+
               <p className="text-gray-600 leading-relaxed whitespace-pre-line">
                 {location.address}
               </p>
@@ -58,6 +127,16 @@ const Locations = () => {
         </div>
       </div>
     </section>
+
+    {lightbox && (
+      <Lightbox
+        images={lightbox.images}
+        currentIndex={lightbox.index}
+        onClose={() => setLightbox(null)}
+        onNavigate={(navIndex) => setLightbox({ ...lightbox, index: navIndex })}
+      />
+    )}
+    </>
   );
 };
 
