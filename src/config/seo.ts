@@ -16,9 +16,9 @@ export const SEO_DEFAULT: SeoEntry = {
 export const SEO_ROUTES: Record<string, SeoEntry> = {
   '/': SEO_DEFAULT,
   '/planning': {
-    title: 'Planning & horaires des cours de judo - AJBB',
+    title: 'Planning, horaires de judo et préparation physique - AJBB',
     description:
-      "Consultez les horaires des cours de judo de l'Alliance Judo Bassin Biterrois à Villeneuve-lès-Béziers, Sauvian et Thézan-lès-Béziers, pour tous les âges.",
+      "Horaires des cours de judo à Villeneuve-lès-Béziers, Sauvian et Thézan-lès-Béziers pour tous les âges, et séance de préparation physique en circuit training le vendredi, ouverte à tous et aux parents des judokas.",
   },
   '/calendrier': {
     title: 'Calendrier du club - AJBB Judo',

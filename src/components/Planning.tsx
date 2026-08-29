@@ -61,6 +61,16 @@ const Planning = () => {
         { day: "Vendredi", time: "19h30-21h00", location: "Villeneuve-lès-Béziers" }
       ],
       color: "#dc2626"
+    },
+    {
+      category: "Préparation physique",
+      year: "Minimes et + (2014 et avant) — ouvert à tous et aux parents !",
+      birthYearMin: 1950,
+      birthYearMax: 2014,
+      sessions: [
+        { day: "Vendredi", time: "19h30-20h30", location: "Villeneuve-lès-Béziers" }
+      ],
+      color: "#2563eb"
     }
   ];
 
@@ -75,7 +85,7 @@ const Planning = () => {
 
   const categoryMatchesBirthYear = (category: Category) => {
     if (selectedBirthYear === 'all') return true;
-    if (selectedBirthYear === 'lte-2014') return category.category === 'Ados & Adultes';
+    if (selectedBirthYear === 'lte-2014') return category.birthYearMax <= 2014;
     const y = parseInt(selectedBirthYear);
     return y >= category.birthYearMin && y <= category.birthYearMax;
   };
@@ -109,7 +119,7 @@ const Planning = () => {
 
     if (selectedBirthYear !== 'all') {
       if (selectedBirthYear === 'lte-2014') {
-        filtered = filtered.filter(s => s.category === 'Ados & Adultes');
+        filtered = filtered.filter(s => s.birthYearMax <= 2014);
       } else {
         const y = parseInt(selectedBirthYear);
         filtered = filtered.filter(s => y >= s.birthYearMin && y <= s.birthYearMax);
@@ -402,6 +412,28 @@ const Planning = () => {
             </button>
           </div>
         )}
+
+        <div
+          className="mt-12 p-6 rounded-2xl border-l-4"
+          style={{ backgroundColor: '#2563eb10', borderLeftColor: '#2563eb' }}
+        >
+          <div className="flex items-start gap-3">
+            <Clock size={20} className="mt-1 flex-shrink-0" style={{ color: '#2563eb' }} />
+            <div>
+              <h4 className="font-bold text-gray-900 mb-2">
+                Nouveau : préparation physique en circuit training
+              </h4>
+              <p className="text-gray-700 text-sm">
+                Tous les vendredis à Villeneuve-lès-Béziers, le cours Ados & Adultes débute par une
+                séance de préparation physique en circuit training de 19h30 à 20h30, suivie de judo
+                de 20h30 à 21h00. Cette première heure est ouverte à tous les judokas minimes et
+                plus (nés en 2014 et avant), <strong>et aussi aux parents des judokas</strong> qui
+                souhaitent pratiquer une activité physique en famille — et il est tout à fait
+                possible de venir uniquement pour la préparation physique, sans enchaîner sur le judo.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
